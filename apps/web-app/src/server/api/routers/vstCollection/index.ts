@@ -192,19 +192,16 @@ export const collectionVstRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const collection = await ctx.db.collection.findFirst({
+      const vstCollectionsCount = await ctx.db.collectionVst.count({
         where: {
-          id: input.collectionId,
+          collectionId: input.collectionId,
+          deletedAt: null,
         },
       });
 
-      if (!collection) {
-        throw new Error("Collection not found");
+      if (vstCollectionsCount >= MAX_COLLECTION_SIZE) {
+        throw new Error("Maxiumum collection size reached");
       }
-
-      // if (collection.sequence?.split(",").length > MAX_COLLECTION_SIZE) {
-      //   throw new Error("Collection is full");
-      // }
 
       return ctx.db.collectionVst.create({
         data: {

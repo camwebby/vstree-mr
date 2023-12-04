@@ -5,6 +5,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+  Checkbox,
 } from "vst-ui";
 import { Avatar, AvatarFallback, AvatarImage } from "vst-ui";
 import { useState } from "react";
@@ -26,8 +27,6 @@ import { Collection } from "@prisma/client";
 import { api } from "@/utils/api";
 import { useDebouncedValue } from "@mantine/hooks";
 import { toast } from "vst-ui";
-
-
 
 const CollectionMetaCard: React.FC<{
   collection: Collection;
@@ -121,7 +120,7 @@ const CollectionMetaCard: React.FC<{
                   "ml-0",
                   false
                     ? "ring-2 ring-primary/10"
-                    : "border-none text-base disabled:cursor-default disabled:text-foreground disabled:opacity-100",
+                    : "border-none text-base disabled:cursor-default disabled:text-foreground disabled:opacity-100 xl:min-w-[400px]",
                 )}
                 value={collectionState?.name}
                 onChange={(e) => {
@@ -148,33 +147,33 @@ const CollectionMetaCard: React.FC<{
           />
         </CardContent>
         <Separator />
-        <CardFooter className="flex items-center gap-x-2 pt-5">
+        <CardFooter className="flex items-center gap-x-5 pt-5">
           {props.belongsToSessionUser && (
             <>
-              <div className="flex items-center gap-x-2">
+              <div className="flex items-center gap-x-1">
                 <Label>Private</Label>
-                <Switch
+                <Checkbox
                   disabled={!props.belongsToSessionUser}
                   checked={collectionState?.private}
                   onCheckedChange={(v) => {
                     setCollectionState({
                       ...collectionState,
-                      private: v,
+                      private: !!v.valueOf(),
                     });
                   }}
                 />
               </div>
             </>
           )}
-          <div className="flex items-center gap-x-2">
+          <div className="flex items-center gap-x-1">
             <Label>Has order</Label>
-            <Switch
+            <Checkbox
               disabled={!props.belongsToSessionUser}
               checked={collectionState?.hasOrder}
               onCheckedChange={(v) => {
                 setCollectionState({
                   ...collectionState,
-                  hasOrder: v,
+                  hasOrder: !!v.valueOf(),
                 });
               }}
             />

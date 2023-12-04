@@ -3,9 +3,10 @@ import React from "react";
 import {
   Table,
   TableBody,
+  TableCaption,
   TableCell,
   TableFooter,
-  TableHead,
+  TableHeader,
   TableRow,
 } from "vst-ui";
 import { Card, CardContent, CardHeader, CardTitle } from "vst-ui";
@@ -81,7 +82,7 @@ const CollectionPrices = ({
       </CardHeader>
       <CardContent className="">
         <Tabs defaultValue={uniqueCurrencies[0]} className="">
-          <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="">
             {uniqueCurrencies.map((currency) => (
               <TabsTrigger key={currency + "_trigger"} value={currency}>
                 {currency}
@@ -92,12 +93,16 @@ const CollectionPrices = ({
             <TabsContent key={currency} value={currency}>
               {!!collectionVsts?.length || !!isFetching ? (
                 <Table>
-                  <TableHead>
-                    <TableRow>
+                  <TableCaption>A list of your recent invoices.</TableCaption>
+                  <TableHeader>
+                    <TableRow
+                      className="w-full text-sm text-muted-foreground"
+                      key="header"
+                    >
                       <TableCell>Vst</TableCell>
                       <TableCell>Price</TableCell>
                     </TableRow>
-                  </TableHead>
+                  </TableHeader>
                   <TableBody>
                     {collectionVsts.map((colVst) => (
                       <TableRow key={colVst.vst.id}>
@@ -141,7 +146,9 @@ const CollectionPrices = ({
                       </TableRow>
                     ))}
                   </TableBody>
-                  <TableFooter>
+                  <TableFooter
+                    className="bg-background text-foreground text-sm border-t"
+                  >
                     <TableRow>
                       <TableCell>Total</TableCell>
                       <TableCell>~&nbsp; {totalLowestPrice}</TableCell>
