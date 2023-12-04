@@ -30,7 +30,7 @@ export const scrapeForPrice = async (
   }
 };
 
-export const scrapeForData = async <T extends Record<string, string>>(
+export const scrapeForData = async (
   wtf: WhereToFind,
 
   /**
@@ -38,8 +38,8 @@ export const scrapeForData = async <T extends Record<string, string>>(
    * @example { price: `[id=123]`, name: `[id=832]` }
    *
    */
-  xpathSchema: T
-): Promise<T | null> => {
+  xpathSchema: Record<string, string>
+): Promise<Record<string, string> | null> => {
   // extract root domain
   const domain = getRootDomain(wtf.url);
 
