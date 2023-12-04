@@ -1,0 +1,12 @@
+{
+  "index": "My Homepage",
+  "about": "About Us",
+  "---": {
+    "type": "separator"
+  },
+  "github_link": {
+    "title": "Github",
+    "href": "https://github.com/camwebby/vstree-mr",
+    "newWindow": true
+  }
+}
