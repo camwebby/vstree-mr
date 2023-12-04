@@ -1,0 +1,16 @@
+{
+  "name": "vst-utils",
+  "module": "index.ts",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "winston": "^3.11.0"
+  }
+}

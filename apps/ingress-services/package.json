@@ -1,0 +1,22 @@
+{
+  "name": "vst-pricing",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun run src/index.ts"
+  },
+  "devDependencies": {
+    "bun-types": "latest",
+    "prisma": "^5.1.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "vst-database": "workspace:*",
+    "vst-utils": "workspace:*",
+    "postgres": "^3.4.2",
+    "puppeteer": "^21.4.1",
+    "winston": "^3.11.0"
+  }
+}
