@@ -46,7 +46,7 @@ const Showcase = () => {
             </span>{" "}
             and more
           </h1>
-          <p className="text-sm lg:text-lg text-muted-foreground max-w-lg">
+          <p className="supplement-copy">
             LooksRare is the web3 NFT Marketplace where traders and collectors
             have earned over $1.3 Billion in rewards.
           </p>

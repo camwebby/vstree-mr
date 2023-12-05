@@ -51,7 +51,7 @@ export const DropzoneUpload = ({
   const onDrop: <T extends File>(
     acceptedFiles: T[],
     fileRejections: FileRejection[],
-    event: DropEvent
+    event: DropEvent,
   ) => void = useCallback(async (acceptedFiles) => {
     if (!acceptedFiles[0]) return;
 
@@ -87,8 +87,8 @@ export const DropzoneUpload = ({
       const base64 = btoa(
         new Uint8Array(readerResult as ArrayBufferLike).reduce(
           (data, byte) => data + String.fromCharCode(byte),
-          ""
-        )
+          "",
+        ),
       );
 
       try {

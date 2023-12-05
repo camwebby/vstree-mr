@@ -42,7 +42,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "vst-ui";
-import {DropzoneUpload} from "vst-ui";
+import { DropzoneUpload } from "vst-ui";
 import { S3_FOLDER } from "@/pages/api/file-upload/consts";
 import Image from "next/image";
 import { signIn, useSession } from "next-auth/react";
@@ -383,7 +383,7 @@ export function NewCollection() {
 
                       <Button
                         type="button"
-                        variant={"outline"}
+                        variant={"secondary"}
                         onClick={() => {
                           setSearchDialogOpen(true);
                         }}
@@ -393,7 +393,7 @@ export function NewCollection() {
                       </Button>
                     </div>
 
-                    <div className="container sticky top-0 h-screen bg-card/90 pt-10">
+                    <div className="container sticky top-0 flex h-screen flex-col gap-y-4 bg-card/90 pt-10">
                       <FormField
                         name="collectionName"
                         render={({ field }) => (
@@ -477,7 +477,7 @@ export function NewCollection() {
                       />
 
                       <DropzoneUpload
-                        className="top-0 my-5 cursor-pointer rounded-md border border-dashed border-muted-foreground bg-background bg-opacity-100 p-3 text-sm text-zinc-600  duration-200 ease-in-out hover:border-primary  hover:bg-opacity-50"
+                        className="top-0 my-5 cursor-pointer rounded-md border border-dashed border-border bg-muted-foreground/10 bg-opacity-100 p-3 text-sm text-muted-foreground duration-200 ease-in-out hover:border-primary hover:bg-opacity-50"
                         onSuccess={(url) => {
                           form.setValue("iconUrl", url);
                         }}
@@ -505,9 +505,9 @@ export function NewCollection() {
                               <p className="mt-2">Change image</p>
                             </div>
                           ) : (
-                            <div className="flex flex-col items-center">
+                            <div className="flex flex-col items-center ">
                               <p>Upload image</p>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="text-xs text-muted-foreground/70">
                                 (Optional)
                               </p>
                             </div>

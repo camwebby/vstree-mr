@@ -1,6 +1,10 @@
 import { CollectionVst, Vst, WhereToFind } from "@prisma/client";
-import React from "react";
+import React, { useState } from "react";
 import {
+  Button,
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
   Table,
   TableBody,
   TableCaption,
@@ -18,6 +22,7 @@ import { currencyFormatter } from "./where-to-find";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "vst-ui";
 import Link from "next/link";
 import { OpenInNewWindowIcon } from "@radix-ui/react-icons";
+import { ChevronDown } from "lucide-react";
 
 const FormattedPrice = ({
   wtfs,
@@ -57,14 +62,17 @@ const CollectionPrices = ({
     vst: Vst;
   })[];
 }) => {
-  const {
-    data: prices,
-    isLoading,
-    isFetching,
-  } = api.collection.findPrices.useQuery({
-    vstIds: collectionVsts?.map((vst) => vst.vstId) || [],
-    mode: "lowest",
-  });
+  const [cardOpen, setCardOpen] = useState(false);
+
+  const { data: prices, isFetching } = api.collection.findPrices.useQuery(
+    {
+      vstIds: collectionVsts?.map((vst) => vst.vstId) || [],
+      mode: "lowest",
+    },
+    {
+      enabled: !!collectionVsts?.length && cardOpen,
+    },
+  );
 
   const uniqueCurrencies = ["USD", "EUR", "GBP"];
 
@@ -76,93 +84,113 @@ const CollectionPrices = ({
   const router = useRouter();
 
   return (
-    <Card className="">
-      <CardHeader>
-        <CardTitle>Price compare</CardTitle>
-      </CardHeader>
-      <CardContent className="">
-        <Tabs defaultValue={uniqueCurrencies[0]} className="">
-          <TabsList className="">
-            {uniqueCurrencies.map((currency) => (
-              <TabsTrigger key={currency + "_trigger"} value={currency}>
-                {currency}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-          {uniqueCurrencies.map((currency) => (
-            <TabsContent key={currency} value={currency}>
-              {!!collectionVsts?.length || !!isFetching ? (
-                <Table>
-                  <TableCaption>A list of your recent invoices.</TableCaption>
-                  <TableHeader>
-                    <TableRow
-                      className="w-full text-sm text-muted-foreground"
-                      key="header"
-                    >
-                      <TableCell>Vst</TableCell>
-                      <TableCell>Price</TableCell>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {collectionVsts.map((colVst) => (
-                      <TableRow key={colVst.vst.id}>
-                        <TableCell className="flex flex-row items-center gap-x-3">
-                          <Avatar
-                            className="cursor-pointer transition-opacity duration-300 hover:opacity-80"
-                            onClick={() => {
-                              router
-                                .push(`/vsts/${colVst.vst.slug}`)
-                                .catch((err) => {
-                                  // TODO: handle error
-                                });
-                            }}
-                          >
-                            <AvatarImage
-                              src={colVst.vst.iconUrl || ""}
-                              width={100}
-                              height={100}
-                              className="object-cover"
-                              alt={colVst.vst.name}
-                            />
+    <Collapsible onOpenChange={(v) => setCardOpen(v)}>
+      <Card className="">
+        <CollapsibleTrigger>
+          <CardHeader className="flex w-full flex-row items-center justify-between gap-x-2 border">
+            <CardTitle>Price compare</CardTitle>
+            <Button variant="ghost" size="sm">
+              <ChevronDown
+                className={`h-4 w-4 transform transition-transform ${
+                  cardOpen ? "rotate-180" : ""
+                }`}
+              />
+              <span className="sr-only">Toggle</span>
+            </Button>
+          </CardHeader>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <CardContent className="">
+            <Tabs defaultValue={uniqueCurrencies[0]} className="">
+              <TabsList className="">
+                {uniqueCurrencies.map((currency) => (
+                  <TabsTrigger key={currency + "_trigger"} value={currency}>
+                    {currency}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+              {uniqueCurrencies.map((currency) => (
+                <TabsContent key={currency} value={currency}>
+                  {!!collectionVsts?.length || !!isFetching ? (
+                    <Table>
+                      <TableCaption>
+                        *Prices are not guaranteed to be accurate
+                      </TableCaption>
+                      <TableHeader>
+                        <TableRow
+                          className="w-full text-sm text-muted-foreground"
+                          key="header"
+                        >
+                          <TableCell>Vst</TableCell>
+                          <TableCell>Price</TableCell>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {collectionVsts
+                          .filter(
+                            (vst, index, self) =>
+                              self.findIndex((v) => v.vstId === vst.vstId) ===
+                              index,
+                          )
+                          .map((colVst) => (
+                            <TableRow key={colVst.id}>
+                              <TableCell className="flex flex-row items-center gap-x-3">
+                                <Avatar
+                                  className="cursor-pointer transition-opacity duration-300 hover:opacity-80"
+                                  onClick={() => {
+                                    router
+                                      .push(`/vsts/${colVst.vst.slug}`)
+                                      .catch((err) => {
+                                        // TODO: handle error
+                                      });
+                                  }}
+                                >
+                                  <AvatarImage
+                                    src={colVst.vst.iconUrl || ""}
+                                    width={100}
+                                    height={100}
+                                    className="object-cover"
+                                    alt={colVst.vst.name}
+                                  />
 
-                            <AvatarFallback>
-                              {colVst.vst.name.charAt(0).toUpperCase()}
-                            </AvatarFallback>
-                          </Avatar>
-                          {colVst.vst.name}
-                        </TableCell>
-                        <TableCell>
-                          <FormattedPrice
-                            wtfs={
-                              prices
-                                ?.filter((p) => !p)
-                                .filter(
-                                  (price) => price?.currency === currency,
-                                ) || []
-                            }
-                            vstId={colVst.vstId}
-                          />
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                  <TableFooter
-                    className="bg-background text-foreground text-sm border-t"
-                  >
-                    <TableRow>
-                      <TableCell>Total</TableCell>
-                      <TableCell>~&nbsp; {totalLowestPrice}</TableCell>
-                    </TableRow>
-                  </TableFooter>
-                </Table>
-              ) : (
-                <SkeletonCard />
-              )}
-            </TabsContent>
-          ))}
-        </Tabs>
-      </CardContent>
-    </Card>
+                                  <AvatarFallback>
+                                    {colVst.vst.name.charAt(0).toUpperCase()}
+                                  </AvatarFallback>
+                                </Avatar>
+                                {colVst.vst.name}
+                              </TableCell>
+                              <TableCell>
+                                <FormattedPrice
+                                  wtfs={
+                                    prices
+                                      ?.filter((p) => !p)
+                                      .filter(
+                                        (price) => price?.currency === currency,
+                                      ) || []
+                                  }
+                                  vstId={colVst.vstId}
+                                />
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                      </TableBody>
+                      <TableFooter className="border-t bg-background text-sm text-foreground">
+                        <TableRow>
+                          <TableCell>Total</TableCell>
+                          <TableCell>~&nbsp; {totalLowestPrice}</TableCell>
+                        </TableRow>
+                      </TableFooter>
+                    </Table>
+                  ) : (
+                    <SkeletonCard />
+                  )}
+                </TabsContent>
+              ))}
+            </Tabs>
+          </CardContent>
+        </CollapsibleContent>
+      </Card>
+    </Collapsible>
   );
 };
 

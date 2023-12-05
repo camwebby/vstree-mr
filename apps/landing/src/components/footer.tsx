@@ -3,13 +3,11 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className=" ">
-      <div className="container px-5 rounded-2xl bg-secondary/50 border mb-10 flex items-center justify-between border-t border-border py-20">
+    <footer className="bg-secondary/20 pt-32 pb-5 border-t border-secondary/40">
+      <div className="container px-5 mb-10 flex items-center justify-between py-20">
         <Link href="/" className="text-lg font-medium text-primary">
           vst tree
         </Link>
-
-        
 
         {/* <Link
           href="https://vst-tree.vercel.app/"

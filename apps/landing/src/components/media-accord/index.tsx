@@ -79,11 +79,20 @@ const NestedImageDesktop = ({
   );
 };
 
-const MediaAccord = ({ data }: { data: typeof featuresContent }) => {
+const MediaAccord = ({
+  data,
+  id,
+}: {
+  data: typeof featuresContent;
+  id?: string;
+}) => {
   const [selected, setSelected] = useState(0);
 
   return (
-    <section className="py-10  lg:py-32 relative z-20 overflow-hidden text-white">
+    <section
+      id={id}
+      className="py-10  lg:py-32 relative z-20 overflow-hidden text-white"
+    >
       <div className="container grid grid-cols-12 place-content-center">
         <LayoutGroup>
           <div className="col-span-12 lg:col-span-5 my-auto">
@@ -100,8 +109,8 @@ const MediaAccord = ({ data }: { data: typeof featuresContent }) => {
                 transition={{ duration: 0.5, ease: [0.5, 0, 0.24, 1] }}
               >
                 <div
-                  className={`px-3 lg:p-5
-                ${i === 0 ? "pb-6" : "py-6"}
+                  className={`px-3 lg:p-8
+                ${i === 0 ? "pb-6" : "py-10"}
                 `}
                 >
                   <div className="flex items-center justify-between text-left">
@@ -154,7 +163,7 @@ const MediaAccord = ({ data }: { data: typeof featuresContent }) => {
                         duration: 0.5,
                         ease: [0.5, 0, 0.24, 1],
                       }}
-                      className={`text-sm md:text-sm text-left lg:mt-3 pointer-events-none
+                      className={`supplement-copy text-left lg:mt-3 pointer-events-none
                     `}
                     >
                       {item.copy}

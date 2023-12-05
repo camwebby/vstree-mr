@@ -1,6 +1,5 @@
 import { PrismaClient } from "vst-database";
 import { env } from "@/env.mjs";
-import { logger } from "vst-utils";
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;

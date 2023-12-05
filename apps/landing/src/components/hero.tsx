@@ -247,9 +247,9 @@ const Hero = () => {
             </span>{" "}
             and more
           </h1>
-          <p className="text-sm lg:text-lg text-muted-foreground max-w-lg">
-            LooksRare is the web3 NFT Marketplace where traders and collectors
-            have earned over $1.3 Billion in rewards.
+          <p className="supplement-copy">
+            Vstree is a community driven platform for rating, collating and more
+            for vsts, plugins and more. Get started for free.
           </p>
 
           <Link

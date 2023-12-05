@@ -15,7 +15,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Showcase />
-      <MediaAccord data={featuresContent} />
+      <MediaAccord id="features" data={featuresContent} />
       <TextImage />
       <Footer />
     </main>
