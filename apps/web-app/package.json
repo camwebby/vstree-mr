@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
-    "lint": "next lint",
-    "start": "next start",
+    "dev": "./node_modules/next/dist/bin/next dev",
+    "build": "./node_modules/next/dist/bin/next build",
+    "start": "./node_modules/next/dist/bin/next start",
+    "lint": "./node_modules/next/dist/bin/next lint",
     "seed-db": "bun run scripts/seedDb.ts"
   },
   "dependencies": {
@@ -69,5 +69,8 @@
   },
   "ct3aMetadata": {
     "initVersion": "7.20.2"
+  },
+  "resolutions": {
+    "next": "^13.5.6"
   }
 }
