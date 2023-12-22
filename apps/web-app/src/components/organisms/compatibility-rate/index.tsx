@@ -52,10 +52,9 @@ import {
   AccordionTrigger,
 } from "vst-ui";
 import { AccordionHeader } from "@radix-ui/react-accordion";
-import { useSession } from "next-auth/react";
 import { User } from "@prisma/client";
 
-export default function ExperienceRateDialog(
+export default function CompatabilityRateDialog(
   props: ComponentProps<typeof Dialog> & {
     vstId: number;
     userData: User;
@@ -140,7 +139,7 @@ export default function ExperienceRateDialog(
   return (
     <Dialog {...props}>
       <DialogTrigger asChild>
-        <Button variant={"outline"}>Rate</Button>
+        <Button variant={"secondary"}>Rate compatibility</Button>
       </DialogTrigger>
       <Form {...form}>
         <form className="space-y-8">

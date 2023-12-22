@@ -1,24 +1,10 @@
 import { VstPage } from "@/components/pages/vst";
-import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
 
-export const getServerSideProps: GetServerSideProps = async ({ ...props }) => {
-  const { slug } = props.params as { slug: string };
+const VstSlugPage = () => {
+  const slug = useRouter().query.slug as string;
 
-  if (!slug) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      slug,
-    },
-  };
-};
-
-const VstSlugPage = ({ ...props }: { slug: string }) => {
-  return <VstPage slug={props.slug} />;
+  return <VstPage slug={slug} />;
 };
 
 export default VstSlugPage;

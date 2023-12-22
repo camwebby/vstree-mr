@@ -10,7 +10,7 @@ import { Badge } from "vst-ui";
 import { CardTitle } from "vst-ui";
 import { Loader2Icon } from "lucide-react";
 import { useSession } from "next-auth/react";
-import { experienceRateOptions } from "./experience-rate/consts";
+import { experienceRateOptions } from "./compatibility-rate/consts";
 
 const useExperienceByUserSetup = ({ vstId }: { vstId: number }) => {
   const { data: session } = useSession();

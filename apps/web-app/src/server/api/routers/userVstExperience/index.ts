@@ -3,7 +3,7 @@ import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 import {
   experienceRateOptions,
   rateExpSchema,
-} from "@/components/organisms/experience-rate/consts";
+} from "@/components/organisms/compatibility-rate/consts";
 
 export const userCanSubmitVstExp = (userId: number, vstId: number) => {};
 

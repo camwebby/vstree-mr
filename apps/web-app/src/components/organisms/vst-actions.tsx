@@ -29,7 +29,7 @@ import {
   TooltipTrigger,
 } from "vst-ui";
 import { toast } from "vst-ui";
-import ExperienceRateDialog from "./experience-rate";
+import ExperienceRateDialog from "./compatibility-rate";
 import { useSession } from "next-auth/react";
 
 const VSTActions = ({
@@ -71,7 +71,7 @@ const VSTActions = ({
         <CardHeader>
           <CardTitle>Actions</CardTitle>
         </CardHeader>
-        <Separator />
+        {/* <Separator /> */}
 
         {!isLoadingUserVst ? (
           <CardContent className="mt-5 flex gap-5">
@@ -138,7 +138,7 @@ const VSTActions = ({
 
         <CardFooter className="mt-5 flex-wrap flex flex-row items-center gap-2 whitespace-nowrap">
           <Button
-            variant={"outline"}
+
             onClick={() => {
               // If form is open, show warn dialog
               if (showNewCollectionForm) {

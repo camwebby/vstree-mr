@@ -1,6 +1,6 @@
 import { api } from "@/utils/api";
 import { SkeletonCard } from "../organisms/skeleton-card";
-import { Card, CardContent, CardFooter } from "vst-ui";
+import { Card, CardContent, CardFooter, CardTitle } from "vst-ui";
 import Layout from "../organisms/layout";
 import { Separator } from "vst-ui";
 import { FactoryIcon, FormInputIcon } from "lucide-react";
@@ -89,7 +89,7 @@ export function VstPage({ slug }: { slug: string }) {
           <TwoColFirst>
             <Card className="h-fit">
               <CardContent className="mt-8 text-sm text-muted-foreground">
-                <p>{vst?.overview}</p>
+                <CompatabilityHeatmap vstId={vst?.id || -1} />
               </CardContent>
               <Separator />
               <CardFooter className="flex flex-row flex-wrap items-center gap-2 pt-5">
@@ -100,8 +100,6 @@ export function VstPage({ slug }: { slug: string }) {
                 ))}
 
                 <div />
-
-                <CompatabilityHeatmap vstId={vst?.id || -1} />
               </CardFooter>
             </Card>
 

@@ -5,7 +5,7 @@ import {
   experienceRateOptions,
   memoryOptions,
   operatingSystems,
-} from "./experience-rate/consts";
+} from "./compatibility-rate/consts";
 import { ComponentProps, useMemo, useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "vst-ui";
 import {
@@ -119,7 +119,7 @@ const CompatabilityHeatmap: React.FC<
           className="flex items-center gap-x-3"
         >
           <Code2Icon />
-          <span>Check requirements</span>
+          <span>Check compatibility</span>
         </Button>
       </DialogTrigger>
       <DialogContent>

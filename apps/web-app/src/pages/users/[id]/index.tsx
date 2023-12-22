@@ -1,33 +1,11 @@
 import UserProfilePage from "@/components/pages/userProfile";
-import { GetServerSideProps, NextPage } from "next";
-import { signIn } from "next-auth/react";
+import { NextPage } from "next";
+import { useRouter } from "next/router";
 
-export const getServerSideProps: GetServerSideProps = async ({ ...props }) => {
-  const { id } = props.params as { id: string };
+const UserPage: NextPage = () => {
+  const id = useRouter().query.id as string;
 
-  if (!id) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      id,
-    },
-  };
-};
-
-const UserPage: NextPage<{
-  id: string;
-}> = ({ ...props }) => {
-  if (!props.id) {
-    signIn().catch((e) => {
-      //
-    });
-  }
-
-  return <UserProfilePage id={props.id} />;
+  return <UserProfilePage id={id} />;
 };
 
 export default UserPage;

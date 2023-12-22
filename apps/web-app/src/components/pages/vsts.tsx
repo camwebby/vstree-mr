@@ -68,8 +68,6 @@ export function Vsts({
 
   return (
     <div className="relative">
-
-      
       <div
         className={cn(
           "max-w-screen sticky top-0 z-10 mb-5 flex items-center gap-5 overflow-x-auto border-l border-border bg-background/60 p-3 backdrop-blur-sm lg:border-b",
@@ -98,7 +96,7 @@ export function Vsts({
             disabled={types[0] && !types[1]}
             checked={types[0]}
             onCheckedChange={(v) => {
-              setTypes([!!v, types[1]]);
+              setTypes([true, !types.every(Boolean)]);
             }}
             id="effects"
           />
@@ -112,7 +110,7 @@ export function Vsts({
             disabled={types[1] && !types[0]}
             checked={types[1]}
             onCheckedChange={(v) => {
-              setTypes([types[0], !!v]);
+              setTypes([!types.every(Boolean), true]);
             }}
             id="instruments"
           />
