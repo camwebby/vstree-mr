@@ -6,6 +6,7 @@ export const newCollectionVstItem = z.object({
   iconUrl: z.string().optional(),
   id: z.number(),
   note: z.string().optional(),
+  isInstrument: z.boolean().optional(),
 });
 
 export const vstItem = z.object({

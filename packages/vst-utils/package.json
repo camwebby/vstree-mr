@@ -11,6 +11,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@types/winston": "^2.4.4",
     "winston": "^3.11.0"
   }
 }

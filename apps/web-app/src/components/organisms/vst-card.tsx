@@ -18,7 +18,7 @@ const VSTHoverCard = dynamic(() => import("./vst-hover-card"), {
   loading: () => <SkeletonCard />,
 });
 
-const EffectIcon = ({ className }: { className?: string }) => (
+export const EffectIcon = ({ className }: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -34,7 +34,7 @@ const EffectIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const InstrumentIcon = ({ className }: { className?: string }) => (
+export const InstrumentIcon = ({ className }: { className?: string }) => (
   <svg
     width="37"
     height="37"

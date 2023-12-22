@@ -1,7 +1,7 @@
 import { Vst } from "@prisma/client";
 import * as fs from "fs";
 import { db } from "@/server/db";
-import { generateSlug } from "@/utils/generateSlug";
+import { generateSlug } from "vst-utils";
 
 const readJSONFile = async (filePath: string) => {
   const data = fs.readFileSync(filePath);

@@ -87,7 +87,7 @@ const CollectionPrices = ({
     <Collapsible onOpenChange={(v) => setCardOpen(v)}>
       <Card className="">
         <CollapsibleTrigger>
-          <CardHeader className="flex w-full flex-row items-center justify-between gap-x-2 border">
+          <CardHeader className="flex w-full flex-row items-center justify-between gap-x-2">
             <CardTitle>Price compare</CardTitle>
             <Button variant="ghost" size="sm">
               <ChevronDown

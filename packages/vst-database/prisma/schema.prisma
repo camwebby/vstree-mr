@@ -379,3 +379,19 @@ model UserAchievement {
 
     @@index([userId], map: "userId", type: Hash)
 }
+
+model IngressEvent {
+    id      Int    @id @default(autoincrement())
+    model   Int
+    payload Json
+    url     String
+
+    lastCheckedAt DateTime?
+    checkCount    Int       @default(0)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([lastCheckedAt], map: "lastCheckedAt")
+    @@index([model], map: "model")
+}
