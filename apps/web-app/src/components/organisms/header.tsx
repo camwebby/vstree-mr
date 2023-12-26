@@ -2,7 +2,7 @@ import { Input } from "vst-ui";
 import UserCommand from "./user-command";
 import Link from "next/link";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "vst-ui/src/lib/utils";
 
 import SiteSearch from "./site-search";
 

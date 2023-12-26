@@ -2,7 +2,7 @@ import { GripVertical, StickyNoteIcon, Trash2Icon } from "lucide-react";
 import { Button, Input } from "vst-ui";
 import { EffectIcon, InstrumentIcon } from "../../vst-card";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "vst-ui/src/lib/utils";
 
 const TableItem: React.FC<{
   vst: {

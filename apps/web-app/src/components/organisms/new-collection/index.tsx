@@ -18,7 +18,7 @@ import { VstSearchCommandMenu } from "./../vst-command-search";
 import { api } from "@/utils/api";
 import { Collection } from "@prisma/client";
 import { toast } from "vst-ui";
-import { cn } from "@/lib/utils";
+import { cn } from "vst-ui/src/lib/utils";
 import { Reorder } from "framer-motion";
 import { NewCollectionContext } from "@/contexts/new-collection";
 import {

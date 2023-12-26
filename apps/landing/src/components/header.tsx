@@ -1,44 +1,67 @@
-import { APP_URL } from "@/consts/envs";
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import Button from "./button";
 
 const Header = () => {
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const isAtTopOfPage = useMemo(() => {
+    if (typeof window !== "undefined") {
+      return window.scrollY < 300;
+    }
+    return true;
+  }, [typeof window !== "undefined" ? window.scrollY : undefined, scrollY]);
+
   return (
-    <header className="bg-primary/5 w-screen backdrop-blur-md border-b border-white/10 p-5 left-0 top-0 fixed z-[999]">
+    <header
+      className={` shadow-sm w-screen backdrop-blur-lg border-b border-foreground/10 p-5 left-0 top-0 fixed z-[999] duration-300 ease-in-out
+    ${isAtTopOfPage ? "bg-foreground/5 " : "bg-foreground/90"}
+    `}
+    >
       <div className="container px-5 flex items-center justify-between">
-        <Link href="/" className="text-base font-bold text-primary">
-          <span>VST TREE</span>
+        <Link href="/" className="text-base font-semibold ">
+          <span className={isAtTopOfPage ? "text-foreground" : "text-background"}>
+            vstree
+          </span>
         </Link>
 
-        <>
-          <div className="items-center gap-x-12 justify-center text-sm text-white/80 hidden lg:flex">
-            <Link
-              className="hover:text-primary duration-300 ease-in-out"
-              href="#pricing"
-            >
-              Pricing
-            </Link>
-            <Link
-              className="hover:text-primary duration-300 ease-in-out"
-              href="#features"
-            >
-              Features
-            </Link>
-            <Link
-              className="hover:text-primary duration-300 ease-in-out"
-              href="#faqs"
-            >
-              FAQs
-            </Link>
-          </div>
-        </>
+        <div className="items-center gap-x-12 justify-center text-sm text-background/70 hidden lg:flex">
+          <Link
+            className="text-zinc-500 hover:text-zinc-600 duration-300 ease-in-out"
+            href="#features"
+          >
+            Features
+          </Link>
+          <Link
+            className="text-zinc-500 hover:text-zinc-600 duration-300 ease-in-out"
+            href="#faqs"
+          >
+            FAQs
+          </Link>
+          <Link
+            className="text-zinc-500 hover:text-zinc-600 duration-300 ease-in-out"
+            href="#faqs"
+          >
+            Contact
+          </Link>
+        </div>
 
-        <Link
+        <Button variant="secondary">Get started</Button>
+        {/* <Link
           href={APP_URL}
           className="bg-primary/10 rounded-full w-fit px-6 py-3 text-xs text-foreground border border-primary/20 hover:bg-primary/20 hover:text-primary duration-300 ease-in-out hover:border-primary/50"
         >
           Get started
-        </Link>
+        </Link> */}
       </div>
     </header>
   );

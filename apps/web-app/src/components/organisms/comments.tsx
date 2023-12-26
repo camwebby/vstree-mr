@@ -9,7 +9,7 @@ import {
 } from "vst-ui";
 import { Button } from "vst-ui";
 import { VstComment, CollectionComment } from "@prisma/client";
-import { cn } from "@/lib/utils";
+import { cn } from "vst-ui/src/lib/utils";
 import { toast } from "vst-ui";
 import { Avatar, AvatarFallback, AvatarImage } from "vst-ui";
 import Link from "next/link";

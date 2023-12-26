@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { APP_URL } from "@/consts/envs";
+import Button from "../button";
 
 const Widget = () => (
   <svg
@@ -103,8 +104,8 @@ const Widget = () => (
         y2="102.5"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#AFDC76" />
-        <stop offset="1" stop-color="#27A433" />
+        <stop stop-color="hsl(263.4 70% 50.4%)" />
+        <stop offset="1" stop-color="hsl(263.4 70% 70.4%)" />
       </linearGradient>
     </defs>
   </svg>
@@ -172,8 +173,8 @@ export const WidgetTwo = () => (
         y2="66.5"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#3DBA43" />
-        <stop offset="1" stop-color="#A9DA74" />
+        <stop stop-color="hsl(263.4 70% 50.4%)" />
+        <stop offset="1" stop-color="hsl(253.4 70% 70%)" />
       </linearGradient>
     </defs>
   </svg>
@@ -181,9 +182,6 @@ export const WidgetTwo = () => (
 
 const Fade = ({ className }: { className?: string }) => (
   <svg
-    // initial={{ opacity: 0 }}
-    // animate={{ opacity: 1 }}
-    // transition={{ duration: 2, ease: [0.4, 0, 0.2, 1] }}
     className={className + " pointer-events-none"}
     width="1143"
     height="1164"
@@ -198,7 +196,7 @@ const Fade = ({ className }: { className?: string }) => (
         width="653"
         height="732"
         rx="326.5"
-        fill="#57E1FF"
+        fill="hsl(263.4 70% 50.4%)"
         fill-opacity="0.1"
       />
     </g>
@@ -230,11 +228,11 @@ const Fade = ({ className }: { className?: string }) => (
 
 const Hero = () => {
   return (
-    <section className=" w-screen bg-background text-primary overflow-hidden overflow-x-hidden max-w-screen">
+    <section className=" w-screen bg-background overflow-hidden overflow-x-hidden max-w-screen">
       <div className="container px-5 grid grid-cols-1 lg:grid-cols-2 gap-7 py-32 md:py-40 lg:py-0 place-items-center min-h-screen relative">
         <Fade className="top-0 right-0 absolute" />
         <div className="flex flex-col gap-y-5">
-          <h1 className="text-4xl lg:text-6xl font-semibold max-w-sm lg:max-w-xl">
+          <h1 className="text-4xl lg:text-6xl font-semibold text-foreground max-w-sm lg:max-w-xl">
             Rate, collate vsts,{" "}
             <span
               style={{
@@ -247,19 +245,12 @@ const Hero = () => {
             </span>{" "}
             and more
           </h1>
-          <p className="supplement-copy">
+          <p className="text-muted-foreground max-w-md">
             Vstree is a community driven platform for rating, collating and more
             for vsts, plugins and more. Get started for free.
           </p>
 
-          <Link
-            href={APP_URL}
-            className="bg-primary/10 rounded-full w-fit px-8 py-3 text-sm text-foreground border border-primary/20
-              hover:bg-primary/20 hover:text-primary duration-300 ease-in-out hover:border-primary/50
-            "
-          >
-            Get started
-          </Link>
+          <Button>Get started</Button>
         </div>
         <div className="w-full h-full flex items-center justify-center relative">
           <div className="h-fit relative w-full flex justify-center">

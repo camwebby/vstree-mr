@@ -10,9 +10,8 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "vst-ui";
 import { useState } from "react";
 import { Label } from "vst-ui";
-import { Switch } from "vst-ui";
 import { Separator } from "vst-ui";
-import { cn } from "@/lib/utils";
+import { cn } from "vst-ui/src/lib/utils";
 import { Input } from "vst-ui";
 import { Textarea } from "vst-ui";
 import UpdateImageDialog from "@/components/organisms/update-image-dialog";

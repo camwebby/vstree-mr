@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  transpilePackages: ["vst-ui", "vst-utils"],
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

@@ -13,7 +13,7 @@ import { Label } from "vst-ui";
 import { Switch } from "vst-ui";
 import { Separator } from "vst-ui";
 import CollectionVstTable from "../../organisms/collection-vst-table";
-import { cn } from "@/lib/utils";
+import { cn } from "vst-ui/src/lib/utils";
 import CollectionMetaCard from "../../organisms/collection-meta";
 import CollectionActions from "../../organisms/collection-actions";
 import dynamic from "next/dynamic";

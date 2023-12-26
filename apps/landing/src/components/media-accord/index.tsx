@@ -91,7 +91,7 @@ const MediaAccord = ({
   return (
     <section
       id={id}
-      className="py-10  lg:py-32 relative z-20 overflow-hidden text-white"
+      className="py-16  lg:py-32 relative z-20 overflow-hidden text-background bg-foreground/95"
     >
       <div className="container grid grid-cols-12 place-content-center">
         <LayoutGroup>
@@ -103,8 +103,8 @@ const MediaAccord = ({
                 onClick={() =>
                   selected === i ? setSelected(-1) : setSelected(i)
                 }
-                className={`block w-full cursor-pointer border-b hover:border-white
-                border-white/30 ${i === selected ? "" : ""}`}
+                className={`block w-full cursor-pointer border-b
+                border-background/20 ${i === selected ? "" : ""}`}
                 layoutId={`item-${i}`}
                 transition={{ duration: 0.5, ease: [0.5, 0, 0.24, 1] }}
               >
@@ -129,14 +129,14 @@ const MediaAccord = ({
                         duration: 0.5,
                         ease: [0.5, 0, 0.24, 1],
                       }}
-                      className={`shrink-0 ${""}`}
+                      className={`shrink-0 text-zinc-400 ${""}`}
                       width="23"
                       height="9"
                       viewBox="0 0 23 9"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path d="M1 1L11.7838 8L22 1" stroke="white" />
+                      <path d="M1 1L11.7838 8L22 1" stroke="currentColor" />
                     </motion.svg>
                   </div>
                   <AnimatePresence>
@@ -163,7 +163,7 @@ const MediaAccord = ({
                         duration: 0.5,
                         ease: [0.5, 0, 0.24, 1],
                       }}
-                      className={`supplement-copy text-left lg:mt-3 pointer-events-none
+                      className={` text-left lg:mt-3 pointer-events-none 
                     `}
                     >
                       {item.copy}

@@ -6,7 +6,7 @@ import { tags } from "@/constants/tags";
 import { Button } from "vst-ui";
 import { Loader2Icon } from "lucide-react";
 import ComboBoxSelect from "../organisms/combo-select";
-import { cn } from "@/lib/utils";
+import { cn } from "vst-ui/src/lib/utils";
 import { toast } from "vst-ui";
 import { creators } from "@/constants/creators";
 import { useRouter } from "next/router";

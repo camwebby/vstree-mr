@@ -6,7 +6,7 @@ import { NewCollectionContext } from "@/contexts/new-collection";
 import { useContext } from "react";
 import { PencilIcon, PlusIcon } from "lucide-react";
 import localFont from "next/font/local";
-import { cn } from "@/lib/utils";
+import { cn } from "vst-ui/src/lib/utils";
 
 export const insSans = localFont({
   src: [

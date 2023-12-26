@@ -1,5 +1,5 @@
 import * as React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "vst-ui/src/lib/utils";
 import { Button } from "vst-ui";
 import { Input } from "vst-ui";
 import { Label } from "vst-ui";

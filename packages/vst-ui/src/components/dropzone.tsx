@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { DropEvent, FileRejection, useDropzone } from "react-dropzone";
-import { cn } from "@/lib/utils";
+import { cn } from "../lib/utils";;
 import { BLOB_FOLDERS } from "vst-utils";
 
 export const DropzoneUpload = ({

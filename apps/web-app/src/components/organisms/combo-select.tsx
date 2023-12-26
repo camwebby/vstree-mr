@@ -1,7 +1,5 @@
 import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
-
-import { cn } from "@/lib/utils";
 import { Button } from "vst-ui";
 import {
   Command,
@@ -10,11 +8,8 @@ import {
   CommandInput,
   CommandItem,
 } from "vst-ui";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "vst-ui";
+import { Popover, PopoverContent, PopoverTrigger } from "vst-ui";
+import { cn } from "vst-ui/src/lib/utils";
 
 export default function ComboBoxSelect({
   values,

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "vst-ui/src/lib/utils";
 import { Button } from "vst-ui";
 import {
   Command,
@@ -10,11 +10,7 @@ import {
 } from "vst-ui";
 import { Dialog } from "vst-ui";
 import { Label } from "vst-ui";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "vst-ui";
+import { Popover, PopoverContent, PopoverTrigger } from "vst-ui";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "vst-ui";
 import { LogInIcon, LogOutIcon, PencilIcon, PlusIcon } from "lucide-react";

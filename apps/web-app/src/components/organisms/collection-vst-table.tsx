@@ -10,7 +10,7 @@ import { VstSearchCommandMenu } from "./vst-command-search";
 import { Trash } from "lucide-react";
 import { toast } from "vst-ui";
 import { useDebouncedValue } from "@mantine/hooks";
-import { cn } from "@/lib/utils";
+import { cn } from "vst-ui/src/lib/utils";
 import { Reorder } from "framer-motion";
 import dynamic from "next/dynamic";
 import { SkeletonCard } from "./skeleton-card";

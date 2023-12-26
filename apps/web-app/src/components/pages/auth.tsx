@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn } from "vst-ui/src/lib/utils";
 import { buttonVariants } from "vst-ui";
 import { UserAuthForm } from "../organisms/user-auth-form";
 
