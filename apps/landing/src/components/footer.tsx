@@ -55,7 +55,7 @@ const Footer = () => {
           <p className="hidden lg:block opacity-30">|</p>
 
           <div>
-            &copy; {new Date().getFullYear()} vst tree. All rights reserved.
+            &copy; {new Date().getFullYear()} vstree. All rights reserved.
           </div>
         </div>
       </div>
