@@ -18,7 +18,7 @@ const VSTApp: AppType<{ session: Session | null }> = ({
     <>
       <HighlightInit
         projectId={"lgxjrz4d"}
-        environment={env.NODE_ENV}
+        environment={env.NEXT_PUBLIC_VERCEL_ENV || "development"}
         serviceName="vstree-web-app"
         tracingOrigins={["staging.vstree.app", "new.vstree.app"]}
         networkRecording={{
