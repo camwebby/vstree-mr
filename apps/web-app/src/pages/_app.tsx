@@ -20,7 +20,13 @@ const VSTApp: AppType<{ session: Session | null }> = ({
         projectId={"lgxjrz4d"}
         environment={env.NEXT_PUBLIC_VERCEL_ENV || "development"}
         serviceName="vstree-web-app"
-        tracingOrigins
+        tracingOrigins={[
+          "new.vstree.app",
+          "new.vstree.app/api",
+          "staging.vstree.app",
+          "staging.vstree.app/api",
+          "localhost",
+        ]}
         networkRecording={{
           enabled: true,
           recordHeadersAndBody: true,

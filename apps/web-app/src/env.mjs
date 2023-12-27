@@ -41,6 +41,9 @@ export const env = createEnv({
 
     GOOGLE_CLIENT_ID: z.string(),
     GOOGLE_CLIENT_SECRET: z.string(),
+
+    VERCEL_ENV: z.string().optional(),
+    VERCEL_GIT_COMMIT_SHA: z.string().optional(),
   },
 
   /**
@@ -50,6 +53,7 @@ export const env = createEnv({
    */
   client: {
     NEXT_PUBLIC_VERCEL_ENV: z.string().optional(),
+    NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA: z.string().optional(),
     // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
   },
 
@@ -68,6 +72,10 @@ export const env = createEnv({
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
     NEXT_PUBLIC_VERCEL_ENV: process.env.NEXT_PUBLIC_VERCEL_ENV,
+    NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA:
+      process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA,
+    VERCEL_ENV: process.env.VERCEL_ENV,
+    VERCEL_GIT_COMMIT_SHA: process.env.VERCEL_GIT_COMMIT_SHA,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
