@@ -8,8 +8,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@vstree/eslint-config": "*",
-    "@vstree/typescript-config": "*",
+    "vst-eslint": "workspace:*",
+    "vst-typescript": "workspace:*",
     "prettier": "^3.1.0",
     "turbo": "latest"
   },

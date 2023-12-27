@@ -1,5 +1,5 @@
 {
-  "name": "@vstree/eslint-config",
+  "name": "vst-eslint",
   "version": "0.0.0",
   "private": true,
   "files": [
