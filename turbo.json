@@ -8,8 +8,11 @@
     "db:push": {
       "cache": false
     },
+    "vst-webapp#build": {
+      "dependsOn": ["^build", "db:generate"]
+    },
     "build": {
-      "dependsOn": ["^build", "db:generate"],
+      "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
