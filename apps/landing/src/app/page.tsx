@@ -20,6 +20,7 @@ export default function Home() {
       <Header />
       <Hero />
       <TextAndImage
+        id="features"
         title="Create
         collections"
         description="You can group, sort and design collections of your favourite vsts. Add notes against an effect or instrument to let people know how to use an effect in the context your collection. You can share collections with your friends, or keep them all to yourself."

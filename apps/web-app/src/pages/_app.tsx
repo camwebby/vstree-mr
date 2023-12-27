@@ -1,4 +1,4 @@
-import "vst-ui/src/styles/globals.css"
+import "vst-ui/src/styles/globals.css";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
@@ -7,6 +7,8 @@ import { Toaster } from "vst-ui";
 import { NewCollection } from "@/components/organisms/new-collection";
 import NewCollectionProvider from "@/contexts/new-collection";
 import { ThemeProvider } from "@/contexts/theme";
+import { env } from "@/env.mjs";
+import { HighlightInit } from "@highlight-run/next/client";
 
 const VSTApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -14,17 +16,17 @@ const VSTApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <>
-      {/* <HighlightInit
-        projectId={"qe911n4g"}
+      <HighlightInit
+        projectId={"lgxjrz4d"}
         environment={env.NODE_ENV}
-        serviceName="vst-tree-client"
-        tracingOrigins={["localhost", "vst-tree.vercel.app/api/trpc"]}
+        serviceName="vstree-web-app"
+        tracingOrigins={["staging.vstree.app", "new.vstree.app"]}
         networkRecording={{
           enabled: true,
           recordHeadersAndBody: true,
           urlBlocklist: [],
         }}
-      /> */}
+      />
       <SessionProvider session={session}>
         <NewCollectionProvider>
           <NewCollection />

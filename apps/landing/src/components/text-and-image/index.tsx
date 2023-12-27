@@ -7,9 +7,10 @@ const TextAndImage: React.FC<{
   description: string;
   imageSource: string;
   reverse?: boolean;
+  id?: string;
 }> = ({ ...props }) => {
   return (
-    <section className="bg-foreground py-16 lg:py-32">
+    <section id={props.id} className="bg-foreground py-16 lg:py-32">
       <div className=" container gap-5 grid grid-cols-1 lg:grid-cols-2 place-items-center lg:gap-20">
         <div
           className={
