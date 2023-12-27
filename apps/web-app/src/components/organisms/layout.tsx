@@ -5,28 +5,8 @@ import { useRouter } from "next/router";
 import { NewCollectionContext } from "@/contexts/new-collection";
 import { useContext } from "react";
 import { PencilIcon, PlusIcon } from "lucide-react";
-import localFont from "next/font/local";
 import { cn } from "vst-ui/src/lib/utils";
-
-export const insSans = localFont({
-  src: [
-    {
-      path: "../../fonts/Givonic-Regular.otf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../fonts/Givonic-SemiBold.otf",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../../fonts/Givonic-Bold.otf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-});
+import { givonic } from "vst-ui/src/fonts";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
@@ -42,10 +22,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <main
       className={cn(
         "min-w-screen relative min-h-screen bg-muted",
-        insSans.className,
+        givonic.className,
       )}
     >
-      <Header className={insSans.className} />
+      <Header className={givonic.className} />
 
       <div className="relative grid grid-cols-5">
         <div
