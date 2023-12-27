@@ -31,13 +31,6 @@ packages
 └── vst-utils
 ```
 
-| Path                  | Description                              |
-| --------------------- | ---------------------------------------- |
-| `apps/www/app`        | The Next.js application for the website. |
-| `apps/www/components` | The React components for the website.    |
-| `apps/www/content`    | The content for the website.             |
-| `apps/www/registry`   | The registry for the components.         |
-| `packages/cli`        | The `shadcn-ui` package.                 |
 
 ## Development
 
@@ -84,7 +77,7 @@ pnpm --filter=www dev
 2. To run the `shadcn-ui` package:
 
 ```bash
-pnpm --filter=shadcn-ui dev
+bun dev --filter=shadcn-ui
 ```
 
 ## Documentation

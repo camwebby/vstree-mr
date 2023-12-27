@@ -44,11 +44,11 @@ const Footer = () => {
         >Made with lukewarm interest in Worcester</p>
 
         <div className="flex flex-col lg:flex-row items-center gap-4">
-          <Link href="/terms" className="mr-5">
+          <Link href="/terms-conditions.pdf" className="mr-5">
             Terms
           </Link>
 
-          <Link href="/privacy" className="mr-5">
+          <Link href="/privacy.pdf" className="mr-5">
             Privacy
           </Link>
 
