@@ -43,7 +43,7 @@ export default function ComboBoxSelect({
         </Button>
       </PopoverTrigger>
 
-      <Button
+      {/* <Button
         className={cn(values.length === 0 ? "hidden" : "block", "shrink-0")}
         onClick={() => setValues([])}
         aria-label="Clear filter"
@@ -61,7 +61,7 @@ export default function ComboBoxSelect({
             clipRule="evenodd"
           />
         </svg>
-      </Button>
+      </Button> */}
 
       <PopoverContent className="max-h-[600px] w-[200px] overflow-y-auto p-0 text-sm">
         <Command>

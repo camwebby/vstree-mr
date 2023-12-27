@@ -3,8 +3,8 @@ import { api } from "@/utils/api";
 import { SkeletonCard } from "../organisms/skeleton-card";
 import { useEffect, useState } from "react";
 import { tags } from "@/constants/tags";
-import { Button } from "vst-ui";
-import { Loader2Icon } from "lucide-react";
+import { Badge, Button } from "vst-ui";
+import { Loader2Icon, SidebarCloseIcon, XCircle } from "lucide-react";
 import ComboBoxSelect from "../organisms/combo-select";
 import { cn } from "vst-ui/src/lib/utils";
 import { toast } from "vst-ui";
@@ -66,11 +66,14 @@ export function Vsts({
       },
     );
 
+  const showTabBar = !!selectedCreators?.length || !!selectedTags?.length;
+
   return (
     <div className="relative">
       <div
         className={cn(
-          "max-w-screen sticky top-0 z-10 mb-5 flex items-center gap-5 overflow-x-auto border-l border-border bg-background/60 p-3 backdrop-blur-sm lg:border-b",
+          "max-w-screen sticky top-0 z-10 flex items-center gap-5 overflow-x-auto border-l border-border bg-background/60 p-3 backdrop-blur-sm lg:border-b",
+          !showTabBar ? "mb-5" : "mb-0",
         )}
       >
         <ComboBoxSelect
@@ -122,6 +125,58 @@ export function Vsts({
           </label>
         </div>
       </div>
+
+      {showTabBar && (
+        <div
+          className={cn(
+            "max-w-screen sticky top-0 z-10 mb-5 flex items-center gap-2 overflow-x-auto border-l border-border bg-background/90 p-3 backdrop-blur-sm lg:border-b",
+          )}
+        >
+          {!!selectedCreators?.length && (
+            <>
+              <p className="text-xs font-medium leading-none">Creators</p>
+              <div className="flex gap-x-2">
+                {selectedCreators.map((tag) => (
+                  <Badge
+                    onClick={() => {
+                      setSelectedCreators((prev) =>
+                        prev.filter((t) => t !== tag),
+                      );
+                    }}
+                    key={tag}
+                    variant="secondary"
+                    className="group flex shrink-0 items-center gap-x-1"
+                  >
+                    <span>{tag}</span>
+                    <XCircle className="hidden h-3 w-3 group-hover:flex" />
+                  </Badge>
+                ))}
+              </div>
+            </>
+          )}
+
+          {!!selectedTags?.length && (
+            <>
+              <p className="ml-2 text-xs font-medium leading-none">Tags</p>
+              <div className="flex gap-x-2">
+                {selectedTags.map((tag) => (
+                  <Badge
+                    onClick={() => {
+                      setSelectedTags((prev) => prev.filter((t) => t !== tag));
+                    }}
+                    key={tag}
+                    variant="secondary"
+                    className="group flex shrink-0 items-center gap-x-1"
+                  >
+                    <span>{tag}</span>
+                    <XCircle className="hidden h-3 w-3 group-hover:flex" />
+                  </Badge>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      )}
 
       <div className="grid grid-cols-1 gap-5 px-4 md:grid-cols-2 lg:px-7 2xl:grid-cols-3">
         {isLoading && <SkeletonCard />}
