@@ -19,11 +19,6 @@ export default function Home() {
     >
       <Header />
       <Hero />
-
-      <div
-        id="features"
-        className="w-screen bg-gradient-to-b from-muted-foreground/30 to-foreground h-[50px] lg:h-[200px]"
-      />
       <TextAndImage
         title="Create
         collections"
