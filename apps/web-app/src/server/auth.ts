@@ -5,7 +5,6 @@ import {
   type DefaultSession,
   type NextAuthOptions,
 } from "next-auth";
-// import GitHubProvider from "next-auth/providers/github";
 import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -64,16 +63,10 @@ export const authOptions: NextAuthOptions = {
      *
      * @see https://next-auth.js.org/providers/github
      */
-    // GitHubProvider({
-    //   clientId: "Iv1.a9b5e74392ca14b6",
-    //   clientSecret: "49d4b06cbb2a64c4d9c0dec8643b5252513adc3d",
-
-    // }),
 
     GoogleProvider({
-      clientId:
-        "1094509313394-ukjq54ov9bg98i4h8lm16pbatvlvi24l.apps.googleusercontent.com",
-      clientSecret: "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",
+      clientId: env.GOOGLE_CLIENT_ID,
+      clientSecret: env.GOOGLE_CLIENT_SECRET,
     }),
   ],
 };
