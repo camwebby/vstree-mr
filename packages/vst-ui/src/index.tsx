@@ -29,3 +29,4 @@ export * from "./components/table";
 export * from "./components/tabs";
 export * from "./components/tooltip";
 export * from "./components/toaster";
+export * from "./components/toggle-group";

@@ -160,7 +160,7 @@ const CollectionActions: React.FC<{
               }}
               className="rounded border-2 border-border p-2"
             >
-              <ShareIcon className="text-foreground" />
+              <ShareIcon className="text-foreground duration-300 hover:text-muted-foreground" />
             </button>
           )}
         </div>

@@ -1,6 +1,6 @@
 import { api } from "@/utils/api";
 import { SkeletonCard } from "../../organisms/skeleton-card";
-import { Card, CardFooter } from "vst-ui";
+import { Card, CardFooter, ToggleGroup, ToggleGroupItem } from "vst-ui";
 import Layout from "../../organisms/layout";
 import { useMemo, useState } from "react";
 import { useSession } from "next-auth/react";
@@ -17,7 +17,9 @@ import { cn } from "vst-ui/src/lib/utils";
 import CollectionMetaCard from "../../organisms/collection-meta";
 import CollectionActions from "../../organisms/collection-actions";
 import dynamic from "next/dynamic";
+import { vstStatIconMap, vstUserAction } from "@/constants/vstUserAction";
 
+// #region dynamic imports
 const CollectionPrices = dynamic(
   () => import("../../organisms/collection-prices"),
   {
@@ -31,6 +33,7 @@ const CollectionComments = dynamic(
     loading: () => <SkeletonCard />,
   },
 );
+// #endregion
 
 export function CollectionPage({ slug }: { slug: string }) {
   const { data: collection, isLoading } = api.collection.getBySlug.useQuery({
@@ -55,6 +58,22 @@ export function CollectionPage({ slug }: { slug: string }) {
 
   const [editTableMode, setEditTableMode] = useState(false);
 
+  // #region associations
+  const [showAssociations, setShowAssociations] = useState<
+    (typeof vstUserAction)[keyof typeof vstUserAction][]
+  >([]);
+
+  const { data: userVsts } = api.userVst.getByUserId.useQuery(
+    {
+      userId: userData?.user.id || "",
+    },
+    {
+      enabled: !!userData?.user.id && !!showAssociations?.length,
+      retry: false,
+    },
+  );
+  // #endregion
+
   return (
     <Layout>
       <TwoColContainer>
@@ -74,16 +93,18 @@ export function CollectionPage({ slug }: { slug: string }) {
           >
             <CollectionVstTable
               editMode={editTableMode}
+              showAssociations={showAssociations}
               belongsToSessionUser={belongsToSessionUser}
               collectionVsts={collectionVsts || []}
+              userVsts={userVsts || []}
             />
 
             {belongsToSessionUser && (
               <>
                 <Separator />
 
-                <CardFooter>
-                  <div className="mt-5 flex flex-row items-center gap-x-3">
+                <CardFooter className="justify-start gap-x-8">
+                  <div className="mt-5 flex flex-row items-center gap-x-2">
                     <Label>Edit mode</Label>
                     <Switch
                       onCheckedChange={(v) => {
@@ -91,6 +112,24 @@ export function CollectionPage({ slug }: { slug: string }) {
                       }}
                       checked={editTableMode}
                     />
+                  </div>
+
+                  <div className="mt-5 flex flex-row items-center gap-x-2">
+                    <Label>Show</Label>
+                    <ToggleGroup
+                      type="multiple"
+                      onValueChange={(v) => {
+                        setShowAssociations(
+                          v as (typeof vstUserAction)[keyof typeof vstUserAction][],
+                        );
+                      }}
+                    >
+                      {Object.keys(vstUserAction).map((ua) => (
+                        <ToggleGroupItem value={vstUserAction[ua]}>
+                          {vstStatIconMap[ua].checked}
+                        </ToggleGroupItem>
+                      ))}
+                    </ToggleGroup>
                   </div>
                 </CardFooter>
               </>

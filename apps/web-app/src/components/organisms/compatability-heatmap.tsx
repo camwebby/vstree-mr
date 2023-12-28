@@ -6,7 +6,7 @@ import {
   memoryOptions,
   operatingSystems,
 } from "./compatibility-rate/consts";
-import { ComponentProps, useMemo, useState } from "react";
+import { ComponentProps, useEffect, useMemo, useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "vst-ui";
 import {
   Select,
@@ -17,7 +17,7 @@ import {
 } from "vst-ui";
 import { api } from "@/utils/api";
 import { Button } from "vst-ui";
-import { Code2Icon } from "lucide-react";
+import { Code2Icon, Loader2 } from "lucide-react";
 
 const axisOpts = [
   "daw",
@@ -64,9 +64,16 @@ const CompatabilityHeatmap: React.FC<
     vstId: number;
   }
 > = ({ ...props }) => {
-  const { data } = api.userVstExperience.retrieveByVstId.useQuery({
-    vstId: props.vstId,
-  });
+  const [triggerFetch, setTriggerFetch] = useState(false);
+
+  const { data, isLoading } = api.userVstExperience.retrieveByVstId.useQuery(
+    {
+      vstId: props.vstId,
+    },
+    {
+      enabled: triggerFetch,
+    },
+  );
 
   const [xAxis, setXAxis] = useState<(typeof axisOpts)[number] | undefined>(
     axisOpts[0],
@@ -112,7 +119,12 @@ const CompatabilityHeatmap: React.FC<
 
   return (
     <Dialog {...props}>
-      <DialogTrigger asChild>
+      <DialogTrigger
+        onClick={() => {
+          setTriggerFetch(true);
+        }}
+        asChild
+      >
         <Button
           size={"sm"}
           variant={"secondary"}
@@ -161,39 +173,43 @@ const CompatabilityHeatmap: React.FC<
         </div>
 
         <div className=" w-full">
-          <HeatMapGrid
-            data={transformedData}
-            xLabels={xLabels as string[]}
-            yLabels={yLabels as string[]}
-            xLabelsStyle={(index) => ({
-              fontSize: "11px",
-            })}
-            yLabelsStyle={(index) => ({
-              fontSize: "11px",
-            })}
-            cellHeight="2rem"
-            xLabelsPos="bottom"
-            yLabelsPos="right"
-            cellRender={(x, y, value) => (
-              <div
-                title={
-                  value === -1
-                    ? "No data"
-                    : "Experience rating: " + value + "/3"
-                }
-              >
-                {value === -1 ? "❓" : value}
-              </div>
-            )}
-            cellStyle={(_x, _y, ratio) => ({
-              background: `hsl(var(--primary))`,
-              opacity: !!ratio ? ratio : 0,
-              fontSize: "11px",
-              borderRadius: "0px",
-              border: "none",
-              margin: "1px",
-            })}
-          />
+          {isLoading ? (
+            <Loader2 className="h-5 w-5 animate-spin text-primary" />
+          ) : (
+            <HeatMapGrid
+              data={transformedData}
+              xLabels={xLabels as string[]}
+              yLabels={yLabels as string[]}
+              xLabelsStyle={(index) => ({
+                fontSize: "11px",
+              })}
+              yLabelsStyle={(index) => ({
+                fontSize: "11px",
+              })}
+              cellHeight="2rem"
+              xLabelsPos="bottom"
+              yLabelsPos="right"
+              cellRender={(x, y, value) => (
+                <div
+                  title={
+                    value === -1
+                      ? "No data"
+                      : "Experience rating: " + value + "/3"
+                  }
+                >
+                  {value === -1 ? "❓" : value}
+                </div>
+              )}
+              cellStyle={(_x, _y, ratio) => ({
+                background: `hsl(var(--primary))`,
+                opacity: !!ratio ? ratio : 0,
+                fontSize: "11px",
+                borderRadius: "0px",
+                border: "none",
+                margin: "1px",
+              })}
+            />
+          )}
         </div>
         <div className="mt-3 w-full border-t border-border bg-secondary">
           {experienceRateOptions.map((opt, index) => (
