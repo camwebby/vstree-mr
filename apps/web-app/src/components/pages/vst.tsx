@@ -1,6 +1,6 @@
 import { api } from "@/utils/api";
 import { SkeletonCard } from "../organisms/skeleton-card";
-import { Card, CardContent, CardFooter, CardTitle } from "vst-ui";
+import { Card, CardContent, CardFooter, CardTitle, Skeleton } from "vst-ui";
 import Layout from "../organisms/layout";
 import { Separator } from "vst-ui";
 import { FactoryIcon, FormInputIcon } from "lucide-react";
@@ -39,7 +39,7 @@ const CompatabilityHeatmap = dynamic(
 
 // Component
 export function VstPage({ slug }: { slug: string }) {
-  const { data: vst } = api.vsts.getBySlug.useQuery({
+  const { data: vst, isFetching } = api.vsts.getBySlug.useQuery({
     slug,
   });
 
@@ -67,21 +67,30 @@ export function VstPage({ slug }: { slug: string }) {
           <div className="mx-auto flex items-center gap-5 text-primary">
             <VSTAvatar className="h-20 w-20 rounded-md" item={vst as Vst} />
             <div>
-              <h1 className="text-2xl font-bold text-foreground">
-                {vst?.name}
-              </h1>
-              <Link
-                href={`/?creatorsFilter=${vst?.creatorName}`}
-                className="flex items-end gap-x-3 pt-1 text-sm text-muted-foreground hover:text-primary hover:underline"
-              >
-                <FactoryIcon
-                  className="h-5 w-5 text-muted-foreground"
-                  strokeWidth={1}
-                />
-                <span className="text-sm text-muted-foreground">
-                  {vst?.creatorName}
-                </span>
-              </Link>
+              {isFetching ? (
+                <>
+                  <Skeleton className="mb-2 h-5 w-52" />
+                  <Skeleton className="h-5 w-32" />
+                </>
+              ) : (
+                <>
+                  <h1 className="text-2xl font-bold text-foreground">
+                    {vst?.name}
+                  </h1>
+                  <Link
+                    href={`/?creatorsFilter=${vst?.creatorName}`}
+                    className="flex items-end gap-x-3 pt-1 text-sm text-muted-foreground hover:text-primary hover:underline"
+                  >
+                    <FactoryIcon
+                      className="h-5 w-5 text-muted-foreground"
+                      strokeWidth={1}
+                    />
+                    <span className="text-sm text-muted-foreground">
+                      {vst?.creatorName}
+                    </span>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </section>

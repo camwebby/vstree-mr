@@ -179,7 +179,16 @@ export function Vsts({
       )}
 
       <div className="grid grid-cols-1 gap-5 px-4 md:grid-cols-2 lg:px-7 2xl:grid-cols-3">
-        {isLoading && <SkeletonCard />}
+        {isLoading && (
+          <>
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
+          </>
+        )}
         {data?.pages
           .flatMap((page) => page.items)
           .map((vst) => <VstCard key={vst.id} vst={vst} />)}

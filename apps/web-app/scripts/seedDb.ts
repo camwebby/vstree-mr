@@ -17,7 +17,6 @@ const mapJSONVstToPrismaVst = (vst: any): Partial<Vst> => {
     "_",
   )}`;
 
-  console.log({ iconUrl });
 
   return {
     name: vst.display_name,

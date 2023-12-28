@@ -132,7 +132,7 @@ const VSTActions = ({
             )}
           </CardContent>
         ) : (
-          <Loader2 className="mx-auto my-5 h-5 w-5 animate-spin text-zinc-500" />
+          <Loader2 className="mx-auto my-5 h-5 w-5 animate-spin text-muted-foreground" />
         )}
         <Separator />
 

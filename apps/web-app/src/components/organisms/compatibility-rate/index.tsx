@@ -115,7 +115,6 @@ export default function CompatabilityRateDialog(
     // parse price as number
     try {
       const parsedData = rateExpSchema.safeParse(data);
-      console.log({ parsedData });
 
       if (!parsedData.success) {
         toast({

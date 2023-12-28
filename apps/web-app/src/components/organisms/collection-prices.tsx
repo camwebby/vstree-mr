@@ -1,7 +1,8 @@
 import { CollectionVst, Vst, WhereToFind } from "@prisma/client";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   Button,
+  CardDescription,
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
@@ -15,14 +16,13 @@ import {
 } from "vst-ui";
 import { Card, CardContent, CardHeader, CardTitle } from "vst-ui";
 import { Avatar, AvatarFallback, AvatarImage } from "vst-ui";
-import { SkeletonCard } from "./skeleton-card";
 import { api } from "@/utils/api";
 import { useRouter } from "next/router";
 import { currencyFormatter } from "./where-to-find";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "vst-ui";
 import Link from "next/link";
 import { OpenInNewWindowIcon } from "@radix-ui/react-icons";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Loader2 } from "lucide-react";
 
 const FormattedPrice = ({
   wtfs,
@@ -40,7 +40,7 @@ const FormattedPrice = ({
   return (
     <div
       className={`flex flex-row items-center gap-x-2 ${
-        !!wtf ? "text-primary" : "text-gray-400"
+        !!wtf ? "text-foreground" : "text-muted-foreground"
       }`}
     >
       <span>
@@ -48,7 +48,7 @@ const FormattedPrice = ({
           ? currencyFormatter(wtf.currency).format((wtf?.price || 0) / 100)
           : "N/A"}
       </span>
-      <Link href={`/vsts/${vstId}`}>
+      <Link rel="noopener noreferrer" target="_blank" href={wtf.url}>
         <OpenInNewWindowIcon />
       </Link>
     </div>
@@ -70,15 +70,28 @@ const CollectionPrices = ({
       mode: "lowest",
     },
     {
-      enabled: !!collectionVsts?.length && cardOpen,
+      enabled: !!collectionVsts?.length && !!cardOpen,
     },
   );
 
   const uniqueCurrencies = ["USD", "EUR", "GBP"];
 
-  const totalLowestPrice = prices?.reduce(
-    (acc: number, curr) => acc + (curr.price || 0),
-    0,
+  const totalLowestPrice = useCallback(
+    (currency: string, prices: WhereToFind[]): number => {
+      if (!prices?.length) {
+        return 0;
+      }
+
+      return (
+        prices?.reduce((acc: number, curr) => {
+          if (curr.currency === currency) {
+            return acc + (curr.price ?? 0);
+          }
+          return acc;
+        }, 0) ?? 0
+      );
+    },
+    [],
   );
 
   const router = useRouter();
@@ -88,8 +101,13 @@ const CollectionPrices = ({
       <Card className="">
         <CollapsibleTrigger>
           <CardHeader className="flex w-full flex-row items-center justify-between gap-x-2">
-            <CardTitle>Price compare</CardTitle>
-            <Button variant="ghost" size="sm">
+            <div className="text-left">
+              <CardTitle className="mb-2">Price compare</CardTitle>
+              <CardDescription>
+                The lowest price for each VST in your collection
+              </CardDescription>
+            </div>
+            <Button variant="ghost" size="sm" className="fl ">
               <ChevronDown
                 className={`h-4 w-4 transform transition-transform ${
                   cardOpen ? "rotate-180" : ""
@@ -136,7 +154,6 @@ const CollectionPrices = ({
                             <TableRow key={colVst.id}>
                               <TableCell className="flex flex-row items-center gap-x-3">
                                 <Avatar
-                                  className="cursor-pointer transition-opacity duration-300 hover:opacity-80"
                                   onClick={() => {
                                     router
                                       .push(`/vsts/${colVst.vst.slug}`)
@@ -144,6 +161,7 @@ const CollectionPrices = ({
                                         // TODO: handle error
                                       });
                                   }}
+                                  className="cursor-pointer transition-opacity duration-300 hover:opacity-80"
                                 >
                                   <AvatarImage
                                     src={colVst.vst.iconUrl || ""}
@@ -163,10 +181,9 @@ const CollectionPrices = ({
                                 <FormattedPrice
                                   wtfs={
                                     prices
-                                      ?.filter((p) => !p)
-                                      .filter(
-                                        (price) => price?.currency === currency,
-                                      ) || []
+                                      ?.filter((p) => !!p)
+                                      .filter((p) => p.currency === currency) ||
+                                    []
                                   }
                                   vstId={colVst.vstId}
                                 />
@@ -177,12 +194,18 @@ const CollectionPrices = ({
                       <TableFooter className="border-t bg-background text-sm text-foreground">
                         <TableRow>
                           <TableCell>Total</TableCell>
-                          <TableCell>~&nbsp; {totalLowestPrice}</TableCell>
+                          <TableCell>
+                            ~&nbsp;
+                            {currencyFormatter(currency).format(
+                              (totalLowestPrice(currency, prices || []) || 0) /
+                                100,
+                            )}
+                          </TableCell>
                         </TableRow>
                       </TableFooter>
                     </Table>
                   ) : (
-                    <SkeletonCard />
+                    <Loader2 className="mx-auto my-5 h-5 w-5 animate-spin text-muted-foreground" />
                   )}
                 </TabsContent>
               ))}
