@@ -38,7 +38,7 @@ const CompatibilityHeatmap = dynamic(
 
 // Component
 export function VstPage({ slug }: { slug: string }) {
-  const { data: vst, isFetching } = api.vsts.getBySlug.useQuery({
+  const { data: vst, isLoading } = api.vsts.getBySlug.useQuery({
     slug,
   });
 
@@ -66,7 +66,7 @@ export function VstPage({ slug }: { slug: string }) {
           <div className="mx-auto flex items-center gap-5 text-primary">
             <VSTAvatar className="h-20 w-20 rounded-md" item={vst as Vst} />
             <div>
-              {isFetching ? (
+              {isLoading ? (
                 <>
                   <Skeleton className="mb-2 h-5 w-52" />
                   <Skeleton className="h-5 w-32" />

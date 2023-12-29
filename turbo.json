@@ -10,7 +10,8 @@
     },
     "build": {
       "dependsOn": ["db:generate", "^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**"],
+      "cache": true
     },
     "lint": {
       "dependsOn": ["^lint"]
@@ -18,6 +19,9 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "start": {
+      "dependsOn": ["db:generate"]
     }
   }
 }

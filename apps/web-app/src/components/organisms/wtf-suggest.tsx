@@ -50,7 +50,7 @@ export default function WTFSuggest(
     },
   });
 
-  const { mutate, isLoading } = api.whereToFind.submit.useMutation({
+  const { mutate, isLoading } = api.whereToFind.submitNew.useMutation({
     onSuccess: () => {
       toast({
         title: "Thanks for your suggestion. We'll review it soon.",

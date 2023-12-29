@@ -6,8 +6,7 @@
     "dev": "./node_modules/next/dist/bin/next dev",
     "build": "./node_modules/next/dist/bin/next build",
     "start": "./node_modules/next/dist/bin/next start",
-    "lint": "./node_modules/next/dist/bin/next lint",
-    "seed-db": "bun run scripts/seedDb.ts"
+    "lint": "./node_modules/next/dist/bin/next lint"
   },
   "dependencies": {
     "vst-utils": "workspace:*",
