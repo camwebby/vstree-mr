@@ -105,7 +105,7 @@ export const ColVstRowItem: React.FC<{
           {props.showAssociations.map((a, index) =>
             props.userVst?.[a] ? (
               <Fragment key={a + "_icon_" + props.colVst.id + "_" + index}>
-                vstStatIconMap[a].checked
+                {vstStatIconMap[a].checked}
               </Fragment>
             ) : (
               <></>
