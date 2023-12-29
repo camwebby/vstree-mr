@@ -125,7 +125,7 @@ export function CollectionPage({ slug }: { slug: string }) {
                     >
                       {Object.keys(vstUserAction).map((ua) => (
                         <ToggleGroupItem value={vstUserAction[ua]}>
-                          {vstStatIconMap[ua].checked}
+                          {vstStatIconMap[ua].unchecked}
                         </ToggleGroupItem>
                       ))}
                     </ToggleGroup>
