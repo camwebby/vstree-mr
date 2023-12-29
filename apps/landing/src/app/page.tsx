@@ -1,16 +1,16 @@
-import Button from "@/components/button";
 import FAQs from "@/components/faqs";
+import Hero from "@/components/hero";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import Hero from "@/components/hero";
-import TextAndImage from "@/components/text-and-image";
+import Button from "@/components/button";
 import { givonic } from "vst-ui/src/fonts";
-import CollectionIcon from "vst-ui/src/assets/icons/collection";
-import ShoppingIcon from "vst-ui/src/assets/icons/shopping";
+import MediaAccord from "@/components/media-accord";
+import TextAndImage from "@/components/text-and-image";
 import FilterIcon from "vst-ui/src/assets/icons/filter";
 import SearchIcon from "vst-ui/src/assets/icons/search";
-import MediaAccord from "@/components/media-accord";
 import { vstActionsContent } from "@/content/vst-actions";
+import ShoppingIcon from "vst-ui/src/assets/icons/shopping";
+import CollectionIcon from "vst-ui/src/assets/icons/collection";
 
 export default function Home() {
   return (
