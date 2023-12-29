@@ -107,14 +107,13 @@ const CollectionPrices = ({
                 The lowest price for each VST in your collection
               </CardDescription>
             </div>
-            <Button variant="ghost" size="sm" className="fl ">
-              <ChevronDown
-                className={`h-4 w-4 transform transition-transform ${
-                  cardOpen ? "rotate-180" : ""
-                }`}
-              />
-              <span className="sr-only">Toggle</span>
-            </Button>
+            <div className="flex-grow" />
+            <ChevronDown
+              className={`h-4 w-4 transform transition-transform ${
+                cardOpen ? "rotate-180" : ""
+              }`}
+            />
+            <span className="sr-only">Toggle</span>
           </CardHeader>
         </CollapsibleTrigger>
         <CollapsibleContent>

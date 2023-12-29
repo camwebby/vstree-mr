@@ -101,8 +101,10 @@ export const ColVstRowItem: React.FC<{
       </TableCell>
 
       {!!props.showAssociations?.length && (
-        <TableCell>
-          {props.showAssociations.map((a) => vstStatIconMap[a].checked)}
+        <TableCell className="flex flex-row items-center gap-x-3">
+          {props.showAssociations.map((a) =>
+            props.userVst?.[a] ? vstStatIconMap[a].checked : null,
+          )}
         </TableCell>
       )}
 

@@ -54,7 +54,7 @@ import {
 import { AccordionHeader } from "@radix-ui/react-accordion";
 import { User } from "@prisma/client";
 
-export default function CompatabilityRateDialog(
+export default function CompatibilityRateDialog(
   props: ComponentProps<typeof Dialog> & {
     vstId: number;
     userData: User;

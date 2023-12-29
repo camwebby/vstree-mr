@@ -69,7 +69,6 @@ export function CollectionPage({ slug }: { slug: string }) {
     },
     {
       enabled: !!userData?.user.id && !!showAssociations?.length,
-      retry: false,
     },
   );
   // #endregion

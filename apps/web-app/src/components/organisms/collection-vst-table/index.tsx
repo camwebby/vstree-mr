@@ -156,7 +156,7 @@ const CollectionVstTable = ({
             <TableCell>#</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Note</TableCell>
-            {!!showAssociations?.length && <TableCell>What do</TableCell>}
+            {!!showAssociations?.length && <TableCell>Your vsts</TableCell>}
             {editMode && belongsToSessionUser && (
               <>
                 <TableCell>Remove</TableCell>

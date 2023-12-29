@@ -24,7 +24,6 @@ const SiteSearch = (props: ComponentProps<typeof CommandDialog>) => {
     },
   );
 
-
   return (
     <CommandDialog {...props}>
       <CommandInput placeholder="Search..." />

@@ -109,7 +109,7 @@ const VSTHoverCard = ({
           <>
             <Separator className="my-3" />
             <p className="mb-1 text-xs text-muted-foreground">
-              Compatability with your setup:
+              Compatibility with your setup:
             </p>
             <div className="flex flex-row flex-wrap gap-2">
               {formattedExps?.map((exp) => (

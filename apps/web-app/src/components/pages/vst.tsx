@@ -1,9 +1,9 @@
 import { api } from "@/utils/api";
 import { SkeletonCard } from "../organisms/skeleton-card";
-import { Card, CardContent, CardFooter, CardTitle, Skeleton } from "vst-ui";
+import { Card, CardContent, CardFooter, Skeleton } from "vst-ui";
 import Layout from "../organisms/layout";
 import { Separator } from "vst-ui";
-import { FactoryIcon, FormInputIcon } from "lucide-react";
+import { FactoryIcon } from "lucide-react";
 import { useState } from "react";
 import {
   TwoColContainer,
@@ -17,7 +17,6 @@ import { Vst } from "@prisma/client";
 import { Badge } from "vst-ui";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { SkeletonText } from "../organisms/skeleton-text";
 
 // Dynamic imports
 const VSTActions = dynamic(() => import("../organisms/vst-actions"), {
@@ -33,8 +32,8 @@ const VSTTable = dynamic(() => import("../organisms/vst-table"), {
   ssr: false,
 });
 
-const CompatabilityHeatmap = dynamic(
-  () => import("../organisms/compatability-heatmap"),
+const CompatibilityHeatmap = dynamic(
+  () => import("../organisms/compatibility-heatmap"),
 );
 
 // Component
@@ -98,7 +97,7 @@ export function VstPage({ slug }: { slug: string }) {
           <TwoColFirst>
             <Card className="h-fit">
               <CardContent className="mt-8 text-sm text-muted-foreground">
-                <CompatabilityHeatmap vstId={vst?.id || -1} />
+                <CompatibilityHeatmap vstId={vst?.id || -1} />
               </CardContent>
               <Separator />
               <CardFooter className="flex flex-row flex-wrap items-center gap-2 pt-5">

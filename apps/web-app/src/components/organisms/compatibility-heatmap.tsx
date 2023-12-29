@@ -6,7 +6,7 @@ import {
   memoryOptions,
   operatingSystems,
 } from "./compatibility-rate/consts";
-import { ComponentProps, useEffect, useMemo, useState } from "react";
+import { ComponentProps, useMemo, useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "vst-ui";
 import {
   Select,
@@ -59,7 +59,7 @@ export const formatRating = (rating: number): string => {
   return "No dice";
 };
 
-const CompatabilityHeatmap: React.FC<
+const CompatibilityHeatmap: React.FC<
   ComponentProps<typeof Dialog> & {
     vstId: number;
   }
@@ -236,4 +236,4 @@ const CompatabilityHeatmap: React.FC<
   );
 };
 
-export default CompatabilityHeatmap;
+export default CompatibilityHeatmap;

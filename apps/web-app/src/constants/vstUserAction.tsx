@@ -14,7 +14,8 @@ export const vstToggleToCount = {
 } as const;
 
 export const vstStatIconMap: Record<
-  keyof typeof vstUserAction,
+  | keyof typeof vstUserAction
+  | (typeof vstUserAction)[keyof typeof vstUserAction],
   {
     checked: React.ReactNode;
     unchecked: React.ReactNode;
@@ -22,13 +23,29 @@ export const vstStatIconMap: Record<
 > = {
   Like: {
     checked: <HeartIcon className="fill-primary text-primary" />,
-    unchecked: <HeartIcon className="fill-muted-foreground/50 text-muted-foreground/40" />,
+    unchecked: (
+      <HeartIcon className="fill-muted-foreground/50 text-muted-foreground/40" />
+    ),
+  },
+  likesAt: {
+    checked: <HeartIcon className="fill-primary text-primary" />,
+    unchecked: (
+      <HeartIcon className="fill-muted-foreground/50 text-muted-foreground/40" />
+    ),
   },
   Want: {
     checked: <ShoppingBag className="text-primary" />,
     unchecked: <ShoppingBag className="text-muted-foreground/40" />,
   },
+  wantsAt: {
+    checked: <ShoppingBag className="text-primary" />,
+    unchecked: <ShoppingBag className="text-muted-foreground/40" />,
+  },
   Own: {
+    checked: <LibraryIcon className="text-primary" />,
+    unchecked: <LibraryIcon className="text-muted-foreground/40" />,
+  },
+  ownsAt: {
     checked: <LibraryIcon className="text-primary" />,
     unchecked: <LibraryIcon className="text-muted-foreground/40" />,
   },

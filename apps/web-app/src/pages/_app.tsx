@@ -33,20 +33,20 @@ const VSTApp: AppType<{ session: Session | null }> = ({
           urlBlocklist: [],
         }}
       />
-      <SessionProvider session={session}>
-        <NewCollectionProvider>
-          <NewCollection />
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="dark"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <SessionProvider session={session}>
+          <NewCollectionProvider>
+            <NewCollection />
             <Component {...pageProps} />
-          </ThemeProvider>
-        </NewCollectionProvider>
-        <Toaster />
-      </SessionProvider>
+            <Toaster />
+          </NewCollectionProvider>
+        </SessionProvider>
+      </ThemeProvider>
     </>
   );
 };
