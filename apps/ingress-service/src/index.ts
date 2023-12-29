@@ -29,7 +29,7 @@ export const main = async () => {
 
     if (!!err && err.handleAction === "retry") {
       console.error(err.errMessage);
-      markIngressEventAsChecked(ingressEvent);
+      await markIngressEventAsChecked(ingressEvent);
     }
     if (!!err && err.handleAction === "discard") {
       console.error(err.errMessage);
