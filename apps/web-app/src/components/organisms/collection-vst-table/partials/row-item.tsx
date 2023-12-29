@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { TableCell } from "vst-ui";
 import { Input } from "vst-ui";
 import VSTAvatar from "../../vst-avatar";
@@ -102,8 +102,14 @@ export const ColVstRowItem: React.FC<{
 
       {!!props.showAssociations?.length && (
         <TableCell className="flex flex-row items-center gap-x-3">
-          {props.showAssociations.map((a) =>
-            props.userVst?.[a] ? vstStatIconMap[a].checked : null,
+          {props.showAssociations.map((a, index) =>
+            props.userVst?.[a] ? (
+              <Fragment key={a + "_icon_" + props.colVst.id + "_" + index}>
+                vstStatIconMap[a].checked
+              </Fragment>
+            ) : (
+              <></>
+            ),
           )}
         </TableCell>
       )}

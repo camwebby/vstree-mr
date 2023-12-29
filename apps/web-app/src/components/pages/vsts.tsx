@@ -160,17 +160,20 @@ export function Vsts({
               <p className="ml-2 text-xs font-medium leading-none">Tags</p>
               <div className="flex gap-x-2">
                 {selectedTags.map((tag) => (
-                  <Badge
+                  <button
                     onClick={() => {
                       setSelectedTags((prev) => prev.filter((t) => t !== tag));
                     }}
                     key={tag}
-                    variant="secondary"
-                    className="group flex shrink-0 items-center gap-x-1"
                   >
-                    <span>{tag}</span>
-                    <XCircle className="hidden h-3 w-3 group-hover:flex" />
-                  </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="group flex shrink-0 items-center gap-x-1"
+                    >
+                      <span>{tag}</span>
+                      <XCircle className="hidden h-3 w-3 group-hover:flex" />
+                    </Badge>
+                  </button>
                 ))}
               </div>
             </>
