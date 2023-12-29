@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 import { zCurrency } from "@/constants/zod/curency";
+import { WhereToFind } from "vst-database";
+import { modelIntMap } from "vst-database/consts";
 
 export const whereToFindRouter = createTRPCRouter({
   submit: publicProcedure
@@ -41,5 +43,38 @@ export const whereToFindRouter = createTRPCRouter({
           currency: input.currency as string,
         },
       });
+    }),
+
+  submitNew: publicProcedure
+    .input(
+      z.object({
+        vstId: z.number().min(0),
+
+        url: z.string(),
+        currency: zCurrency,
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      // user must be logged in
+      if (!ctx?.session?.user?.id) {
+        throw new Error("You must be logged in to submit a link");
+      }
+
+      const payload: Partial<WhereToFind> = {
+        url: input.url,
+        vstId: input.vstId,
+        currency: input.currency as string,
+        vendorName: "",
+      };
+
+      const ingressEvent = await ctx.db.ingressEvent.create({
+        data: {
+          model: modelIntMap["WhereToFind"],
+          payload,
+          url: input.url,
+        },
+      });
+
+      return ingressEvent;
     }),
 });

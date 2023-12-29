@@ -23,8 +23,18 @@ export class GenericProcessor implements IngressEventProcessor {
      * Fields that are required to be in the xpath schema
      */
     mandatoryXpathFields: string[] = [],
+
+    /**
+     * Implementation specific function to create an entity from the event
+     */
     createEntityFromEvent: (
+      /**
+       * The original untampered event
+       */
       ingressEvent: IngressEvent,
+      /**
+       * Data returned from the scrape
+       */
       data: Record<string, string>
     ) => Promise<ScrapeErr>
   ) {

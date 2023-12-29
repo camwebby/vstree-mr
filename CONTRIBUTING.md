@@ -4,14 +4,12 @@ Thanks for your interest in contributing to vstree. We're happy to have you here
 
 Please take a moment to review this document before submitting your first pull request. We also strongly recommend that you check for open issues and pull requests to see if someone else is working on something similar.
 
-
 ## About this repository
 
 This repository is a turborepo monorepo.
 
-- We use [bun](https://pnpm.io) and [`workspaces`](https://pnpm.io/workspaces) for development.
+- We use [bun](https://bun.sh) and [`workspaces`](https://bun.sh/docs/install/workspaces) for development.
 - We use [Turborepo](https://turbo.build/repo) as our build system.
-- We use [changesets](https://github.com/changesets/changesets) for managing releases.
 
 ## Structure
 
@@ -30,7 +28,6 @@ packages
 └── vst-ui
 └── vst-utils
 ```
-
 
 ## Development
 
@@ -59,36 +56,36 @@ git checkout -b my-new-branch
 ### Install dependencies
 
 ```bash
-pnpm install
+bun install
 ```
 
 ### Run a workspace
 
-You can use the `pnpm --filter=[WORKSPACE]` command to start the development process for a workspace.
+You can use the `bun run [cmd] --filter=[WORKSPACE]` command to start the development process for a workspace.
 
 #### Examples
 
-1. To run the `ui.shadcn.com` website:
+1. To run the `new.vstree.app` website:
 
 ```bash
-pnpm --filter=www dev
+bun run dev --filter=vst-webapp
 ```
 
-2. To run the `shadcn-ui` package:
+2. To run the `vstree` marketing site:
 
 ```bash
-bun dev --filter=shadcn-ui
+bun run dev --filter=landing
 ```
 
 ## Documentation
 
-The documentation for this project is located in the `www` workspace. You can run the documentation locally by running the following command:
+The documentation for this project is located in the `docs` workspace. You can run the documentation locally by running the following command:
 
 ```bash
-pnpm --filter=www dev
+bun run dev --filter=docs
 ```
 
-Documentation is written using [MDX](https://mdxjs.com). You can find the documentation files in the `apps/www/content/docs` directory.
+Documentation is written using [MDX](https://mdxjs.com). You can find the documentation files in the `apps/docs` directory.
 
 ## Components
 
@@ -143,22 +140,16 @@ If you are interested in the detailed specification you can visit
 https://www.conventionalcommits.org/ or check out the
 [Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines).
 
-## Requests for new components
+## Requests for new features
 
-If you have a request for a new component, please open a discussion on GitHub. We'll be happy to help you out.
-
-## CLI
-
-The `shadcn-ui` package is a CLI for adding components to your project. You can find the documentation for the CLI [here](https://ui.shadcn.com/docs/cli).
-
-Any changes to the CLI should be made in the `packages/cli` directory. If you can, it would be great if you could add tests for your changes.
+If you have a request for a new feature, please open a discussion on GitHub. We'll be happy to help you out.
 
 ## Testing
 
 Tests are written using [Vitest](https://vitest.dev). You can run all the tests from the root of the repository.
 
 ```bash
-pnpm test
+bun test
 ```
 
 Please ensure that the tests are passing when submitting a pull request. If you're adding new features, please include tests.

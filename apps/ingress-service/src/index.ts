@@ -5,17 +5,20 @@ import {
   discardIngressEvent,
   markIngressEventAsChecked,
 } from "./utils/eventProcessor/utils";
-import { logger } from "vst-utils";
 
 export const main = async () => {
+  console.log(`Starting ingress service run`);
+
   // retrieve unverified vsts
   const events = await db.ingressEvent.findMany({
     where: {
-      lastCheckedAt: {
-        lt: new Date(),
-      },
+      // lastCheckedAt: {
+      //   lt: new Date(),
+      // },
     },
   });
+
+  console.log(`Found ${events.length} events to process`);
 
   // scrapes
   for (const ingressEvent of events) {
@@ -36,4 +39,8 @@ export const main = async () => {
       await discardIngressEvent(ingressEvent);
     }
   }
+
+  console.log(`Finished ingress service run`);
 };
+
+await main();

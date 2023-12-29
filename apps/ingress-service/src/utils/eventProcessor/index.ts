@@ -6,13 +6,13 @@ import { db } from "../../lib/db";
 import { parseMoney } from "../parseMoney";
 import { getRootDomain } from "../getRootDomain";
 import { nameDomainMap } from "../../consts/nameDomainMap";
+import { modelIntMap } from "vst-database/consts";
 
 export const createProcessor = (
   ingressEvent: IngressEvent
 ): IngressEventProcessor => {
   switch (ingressEvent.model) {
-    // Where to find
-    case 1: {
+    case modelIntMap["WhereToFind"]: {
       return new GenericProcessor(
         {
           "valhalladsp.com": {},
@@ -22,13 +22,14 @@ export const createProcessor = (
           "producerspot.com": {},
           "kvraudio.com": {},
         },
-        ["price", "vstId", "vendorName", "currency"],
+        ["vstId", "vendorName", "currency"],
         async (ingressEvent, data) => {
           const { vstId, currency } = JSON.parse(
             ingressEvent.payload?.toString() || "{}"
           );
 
           const domain = getRootDomain(ingressEvent.url);
+
           if (!domain) {
             return {
               errMessage: "Could not parse domain",
@@ -38,9 +39,10 @@ export const createProcessor = (
 
           const vendorName = nameDomainMap[domain];
 
-          const { name, price, url, currency: scrapedCurr } = data;
+          const { price, currency: scrapedCurr } = data;
 
           const parsedPrice = parseMoney(price);
+
           if (!parsedPrice) {
             return {
               errMessage: "Could not parse price",
@@ -53,7 +55,7 @@ export const createProcessor = (
               data: {
                 vstId,
                 price: parsedPrice.value,
-                url,
+                url: ingressEvent.url,
                 currency: scrapedCurr || currency,
                 vendorName,
               },
@@ -68,7 +70,7 @@ export const createProcessor = (
       );
     }
     // VST
-    case 2: {
+    case modelIntMap["Vst"]: {
       return new GenericProcessor(
         {
           "valhalladsp.com": {

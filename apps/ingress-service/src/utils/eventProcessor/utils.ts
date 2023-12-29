@@ -25,11 +25,11 @@ export const discardIngressEvent = async (ingressEvent: IngressEvent) => {
 };
 
 export const validatePayloadHasAllKeys = (ingressEvent: IngressEvent) => {
-  const payload = JSON.parse(ingressEvent.payload?.toString() || "{}");
+  const payload = ingressEvent.payload?.valueOf() as object;
   const modelName = modelMap[ingressEvent.model as 1 | 2];
-
   const payloadKeysArr = Object.keys(payload);
   const modelKeysArr = Object.keys(db[modelName].fields);
+  console.log({ modelKeysArr, payloadKeysArr });
 
   const isValid = payloadKeysArr.every((key) => modelKeysArr.includes(key));
 
