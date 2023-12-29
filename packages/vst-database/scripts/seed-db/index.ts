@@ -1,7 +1,6 @@
-import { Vst } from "@prisma/client";
+import { PrismaClient, Vst } from "@prisma/client";
 import * as fs from "fs";
-import { db } from "@/server/db";
-import { generateSlug } from "vst-utils";
+import { generateSlug } from "vst-utils/src/slug.js";
 
 const readJSONFile = async (filePath: string) => {
   const data = fs.readFileSync(filePath);
@@ -14,9 +13,8 @@ const readJSONFile = async (filePath: string) => {
 const mapJSONVstToPrismaVst = (vst: any): Partial<Vst> => {
   const iconUrl = `https://vst-assets.s3.eu-west-1.amazonaws.com/vst-icon/${vst.display_name.replace(
     " ",
-    "_",
+    "_"
   )}`;
-
 
   return {
     name: vst.display_name,
@@ -33,7 +31,9 @@ const mapJSONVstToPrismaVst = (vst: any): Partial<Vst> => {
 };
 
 export const seed = async () => {
-  const vsts = await readJSONFile("/Users/cameron/Documents/vst-data.json");
+  const db = new PrismaClient({ log: ["query"] });
+
+  const vsts = await readJSONFile("./vst-data.json");
 
   const plugins = vsts.plugins;
 

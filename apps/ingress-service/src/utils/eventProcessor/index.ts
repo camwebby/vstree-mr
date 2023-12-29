@@ -12,7 +12,7 @@ export const createProcessor = (
   ingressEvent: IngressEvent
 ): IngressEventProcessor => {
   switch (ingressEvent.model) {
-    case modelIntMap["WhereToFind"]: {
+    case modelIntMap["whereToFind"]: {
       return new GenericProcessor(
         {
           "valhalladsp.com": {},
@@ -70,7 +70,7 @@ export const createProcessor = (
       );
     }
     // VST
-    case modelIntMap["Vst"]: {
+    case modelIntMap["vst"]: {
       return new GenericProcessor(
         {
           "valhalladsp.com": {

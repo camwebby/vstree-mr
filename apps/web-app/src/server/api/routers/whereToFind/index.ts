@@ -69,7 +69,7 @@ export const whereToFindRouter = createTRPCRouter({
 
       const ingressEvent = await ctx.db.ingressEvent.create({
         data: {
-          model: modelIntMap["WhereToFind"],
+          model: modelIntMap["whereToFind"],
           payload,
           url: input.url,
         },
