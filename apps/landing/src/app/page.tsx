@@ -22,7 +22,7 @@ export default function Home() {
 
       <div
         id="features"
-        className="bg-foreground py-12 flex lg:justify-center items-center"
+        className="bg-foreground pt-24 flex lg:justify-center items-center"
       >
         <div className="container ">
           <p className="text-primary text-left lg:text-center">Features</p>
@@ -60,7 +60,7 @@ export default function Home() {
       />
       <MediaAccord data={vstActionsContent} />
       <FAQs />
-      <div className="w-screen pb-5 bg-background">
+      <div className="w-screen pb-5 bg-background p-5 lg:p-0">
         <div className="container pt-16 lg:pt-32 justify items-center justify-center">
           <h3 className="text-3xl text-foreground lg:text-5xl font-semibold text-center mb-4 lg:mb-6">
             Try for free today

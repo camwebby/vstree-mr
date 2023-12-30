@@ -4,8 +4,8 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="container mt-20 border rounded-xl shadow-xl bg-foreground/5">
-      <div className="px-5 flex items-center justify-between py-12">
-        <Link href="/" className="text-base font-semibold text-foreground">
+      <div className="px-5 items-center hidden lg:flex justify-between py-12">
+        <Link href="/" className="text-base font-semibold text-foreground ">
           <span>vstree</span>
         </Link>
 
@@ -37,7 +37,7 @@ const Footer = () => {
         </ul>
       </div>
 
-      <hr />
+      <hr className="hidden lg:block" />
       <div className="container px-5 flex flex-col lg:flex-row items-center justify-between py-10 text-sm">
         <p className="hidden lg:block">Made with ☕ in London</p>
 

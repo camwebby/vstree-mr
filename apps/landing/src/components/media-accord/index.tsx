@@ -126,7 +126,7 @@ const MediaAccord = ({
                     <motion.h3
                       layout="position"
                       layoutId={`title-${i}`}
-                      className="text-2xl lg:text-3xl font-display"
+                      className="text-xl lg:text-2xl font-display"
                     >
                       {item.title}
                     </motion.h3>

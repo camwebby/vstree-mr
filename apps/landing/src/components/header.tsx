@@ -23,7 +23,7 @@ const Header = () => {
 
   return (
     <header
-      className={` shadow-sm w-screen backdrop-blur-lg border-b border-foreground/10 p-5 left-0 top-0 fixed z-[999] duration-300 ease-in-out
+      className={` shadow-sm w-screen backdrop-blur-lg border-b border-foreground/10 py-5 lg:p-5 left-0 top-0 fixed z-[999] duration-300 ease-in-out
     ${isAtTopOfPage ? "bg-foreground/5 " : "bg-foreground/90"}
     `}
     >
