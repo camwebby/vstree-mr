@@ -45,32 +45,26 @@ const Header = () => {
 
         <div className="items-center gap-x-12 justify-center text-sm text-background/70 hidden lg:flex">
           <Link
-            className="text-zinc-500 hover:text-zinc-600 duration-300 ease-in-out"
+            className="text-zinc-500 hover:text-zinc-400 underline-offset-1 hover:underline hover:underline-offset-4 duration-300 ease-in-out"
             href="#features"
           >
             Features
           </Link>
           <Link
-            className="text-zinc-500 hover:text-zinc-600 duration-300 ease-in-out"
+            className="text-zinc-500 hover:text-zinc-400 underline-offset-1 hover:underline hover:underline-offset-4 duration-300 ease-in-out"
             href="#faqs"
           >
             FAQs
           </Link>
           <Link
-            className="text-zinc-500 hover:text-zinc-600 duration-300 ease-in-out"
-            href="#faqs"
+            className="text-zinc-500 hover:text-zinc-400 underline-offset-1 hover:underline hover:underline-offset-4 duration-300 ease-in-out"
+            href="mailto:contact@vstree.app"
           >
             Contact
           </Link>
         </div>
 
         <Button variant="secondary">Get started</Button>
-        {/* <Link
-          href={APP_URL}
-          className="bg-primary/10 rounded-full w-fit px-6 py-3 text-xs text-foreground border border-primary/20 hover:bg-primary/20 hover:text-primary duration-300 ease-in-out hover:border-primary/50"
-        >
-          Get started
-        </Link> */}
       </div>
     </header>
   );

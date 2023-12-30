@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "vstree | home",
-  description: "vstree is a community-driven database of VST plugins.",
+  description: "vstree is a community-driven hub of VST plugins.",
 };
 
 export default function RootLayout({

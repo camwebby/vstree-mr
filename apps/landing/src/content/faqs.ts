@@ -6,7 +6,7 @@ export const faqs = [
   },
   {
     question: "How fresh is the data?",
-    answer: `Because vstree is enabled by its community, and much of the data is submitted by reputable users that help, the data is as fresh as the community makes it. We have a team of moderators that help keep the data fresh and up to date.`,
+    answer: `We're hoping to build more consistent ways to improve data freshness, but currently vstree currently is enabled by its community and much of the data is submitted by reputable users that help, the data is as fresh as the community makes it.`,
   },
   {
     question: "Whats on the roadmap",
@@ -15,9 +15,5 @@ export const faqs = [
   {
     question: "How can I get in touch?",
     answer: `Feel free to send us an email. For press send to press@vstree.app. For anything else, send away to contact@vstree.app.`,
-  },
-  {
-    question: "Can I request features",
-    answer: ``,
   },
 ] as const;
