@@ -91,8 +91,17 @@ const MediaAccord = ({
   return (
     <section
       id={id}
-      className="py-16  lg:py-32 relative z-20 overflow-hidden text-background bg-foreground/95"
+      className="py-16  lg:py-32 relative z-20 overflow-hidden text-background bg-foreground border-y border-muted-foreground/20"
     >
+      <div className="container my-12 flex lg:justify-center items-center">
+        <div>
+          <p className="text-primary text-left lg:text-center">Features</p>
+          <h2 className="text-3xl  lg:max-w-sm lg:text-5xl font-bold text-background/90  text-left lg:text-center text-balance">
+            VST quick actions
+          </h2>
+        </div>
+      </div>
+
       <div className="container grid grid-cols-12 place-content-center">
         <LayoutGroup>
           <div className="col-span-12 lg:col-span-5 my-auto">
@@ -163,7 +172,7 @@ const MediaAccord = ({
                         duration: 0.5,
                         ease: [0.5, 0, 0.24, 1],
                       }}
-                      className={` text-left lg:mt-3 pointer-events-none 
+                      className={` text-left lg:mt-3 pointer-events-none text-background/60
                     `}
                     >
                       {item.copy}

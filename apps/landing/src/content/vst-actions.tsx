@@ -17,7 +17,7 @@ export const vstActionsContent = [
   },
   {
     title: "Give it a like",
-    copy: "Sƒhow your love to your most used effects and instruments.",
+    copy: "Show your love to your most used effects and instruments.",
     image: {
       src: "/stock/AdobeStock_423594554-min.webp",
       alt: "Personnalisé et de qualité",

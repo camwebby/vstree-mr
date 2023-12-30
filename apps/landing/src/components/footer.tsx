@@ -29,7 +29,7 @@ const Footer = () => {
           <li>
             <Link
               className="text-zinc-200 hover:text-zinc-600 duration-300 ease-in-out"
-              href="#faqs"
+              href="mailto:contact@vstree.app"
             >
               Contact
             </Link>
@@ -39,9 +39,7 @@ const Footer = () => {
 
       <hr />
       <div className="container px-5 flex flex-col lg:flex-row items-center justify-between py-10 text-sm">
-        <p
-          className="hidden lg:block"
-        >Made with lukewarm interest in Worcester</p>
+        <p className="hidden lg:block">Made with ☕ in London</p>
 
         <div className="flex flex-col lg:flex-row items-center gap-4">
           <Link href="/terms-conditions.pdf" className="mr-5">
