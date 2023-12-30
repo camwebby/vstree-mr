@@ -19,8 +19,19 @@ export default function Home() {
     >
       <Header />
       <Hero />
-      <TextAndImage
+
+      <div
         id="features"
+        className="bg-foreground py-12 flex lg:justify-center items-center"
+      >
+        <div className="container ">
+          <p className="text-primary text-left lg:text-center">Features</p>
+          <h2 className="text-3xl lg:text-5xl font-bold text-background/90  text-left lg:text-center text-balance">
+            So what can it do?
+          </h2>
+        </div>
+      </div>
+      <TextAndImage
         title="Create
         collections"
         description="You can group, sort and design collections of your favourite vsts. Add notes against an effect or instrument to let people know how to use an effect in the context your collection. You can share collections with your friends, or keep them all to yourself."

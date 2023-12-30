@@ -65,7 +65,7 @@ const NestedImageDesktop = ({
   return (
     <motion.div
       layoutId={layoutId}
-      className={`rounded-lg border border-border shadow-white aspect-square hidden lg:block w-full overflow-hidden relative ${
+      className={`rounded-lg  shadow-white aspect-square hidden lg:block w-full overflow-hidden relative ${
         className ? className : ""
       }`}
     >
