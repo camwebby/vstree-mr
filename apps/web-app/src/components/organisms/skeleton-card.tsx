@@ -4,7 +4,7 @@ import { Skeleton } from "vst-ui";
 export const SkeletonCard = () => {
   return (
     <>
-      <Card className="flex p-5 items-center space-x-4 bg-background">
+      <Card className="flex p-4 items-center space-x-4 bg-background">
         <CardHeader className="grid grid-cols-[1fr_110px] items-start gap-4 space-y-0">
           <Skeleton className="h-12 w-12 rounded-full bg-muted-foreground" />
           <div className=" space-y-2">
