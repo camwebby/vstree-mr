@@ -29,13 +29,24 @@ const TextAndImage: React.FC<{
           </div>
         </div>
 
-        <div className="relative aspect-[13/10] rounded-xl lg:rounded-2xl overflow-hidden border w-full">
-          <Image
-            src={props.imageSource}
-            alt={props.title + " image"}
-            className="object-cover"
-            fill
-          />
+        <div className="relative aspect-[16/10] rounded-xl lg:rounded-2xl overflow-hidden w-full">
+          {props.imageSource.includes(".webm") ? (
+            <video
+              loop
+              muted
+              className="object-cover"
+              src={props.imageSource}
+            />
+          ) : (
+            <Image
+              unoptimized
+              src={props.imageSource}
+              alt={props.title + " image"}
+              className="object-cover"
+              fill
+              loading="lazy"
+            />
+          )}
         </div>
       </div>
     </section>

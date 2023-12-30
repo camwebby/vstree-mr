@@ -24,13 +24,13 @@ export default function Home() {
         title="Create
         collections"
         description="You can group, sort and design collections of your favourite vsts. Add notes against an effect or instrument to let people know how to use an effect in the context your collection. You can share collections with your friends, or keep them all to yourself."
-        imageSource="/screenshots/vsts.png"
+        imageSource="/collection.gif"
         icon={<CollectionIcon />}
       />
       <TextAndImage
         title="Find where you can buy"
         description="Powered by the community, helpful volunteers locate the best places to download and buy vsts for supported currencies."
-        imageSource="/screenshots/vsts.png"
+        imageSource="/prices.webm"
         reverse
         icon={<ShoppingIcon />}
       />

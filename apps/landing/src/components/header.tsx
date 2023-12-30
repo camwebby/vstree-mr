@@ -28,10 +28,19 @@ const Header = () => {
     `}
     >
       <div className="container px-5 flex items-center justify-between">
-        <Link href="/" className="text-base font-semibold ">
-          <span className={isAtTopOfPage ? "text-foreground" : "text-background"}>
-            vstree
-          </span>
+        <Link
+          className={`rounded-full border-2 border-muted-foreground/10 p-2 px-3 text-xs
+          font-semibold uppercase tracking-widest
+          duration-500 hover:bg-secondary
+          ${
+            isAtTopOfPage
+              ? "text-foreground"
+              : "text-black/90 hover:text-foreground"
+          }
+          `}
+          href={"/"}
+        >
+          VSTREE
         </Link>
 
         <div className="items-center gap-x-12 justify-center text-sm text-background/70 hidden lg:flex">
