@@ -232,6 +232,10 @@ const Hero = () => {
       <div className="container px-5 grid grid-cols-1 lg:grid-cols-2 gap-7 py-32 md:py-40 lg:py-0 place-items-center min-h-screen relative">
         <Fade className="top-0 right-0 absolute" />
         <div className="flex flex-col gap-y-5">
+          <div className="rounded-full text-xs w-fit flex items-center gap-x-2 px-4 uppercase py-1 bg-muted-foreground/10 border border-muted-foreground/30">
+            <p className="font-bold">V0.1.0</p>
+            <p>Currently in open beta</p>
+          </div>
           <h1 className="text-4xl lg:text-6xl font-semibold text-foreground max-w-sm lg:max-w-xl">
             Rate, collate vsts,{" "}
             <span
