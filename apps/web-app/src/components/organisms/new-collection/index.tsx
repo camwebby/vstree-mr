@@ -243,7 +243,7 @@ export function NewCollection() {
                 >
                   <div className="relative m-0 grid grid-cols-1 p-0 md:grid-cols-2">
                     <div
-                      className={`container h-[87vh] w-full max-w-[2xl] overflow-y-scroll border bg-card/80 pb-24 pt-12 md:max-h-none md:pb-36
+                      className={`container h-[87vh] w-full max-w-[2xl] overflow-y-scroll border-t bg-card/80 pb-24 pt-12 md:max-h-none md:pb-36
                     ${mobileView === 0 ? "block" : "hidden md:block"}
                     `}
                     >
