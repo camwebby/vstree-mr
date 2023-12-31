@@ -1,4 +1,4 @@
-import AWS from "aws-sdk";
+import AWS, { S3 } from "aws-sdk";
 import { NextApiRequest, NextApiResponse } from "next";
 import crypto from "crypto";
 import { S3_FOLDER } from "./consts";
@@ -69,7 +69,7 @@ const Endpoint = async (
 
     const params = {
       Bucket: "vst-assets",
-      Folder: "folder-name",
+      Folder: S3_FOLDER.COLLECTION_ICONS,
       Key: `${S3_FOLDER[folder as keyof typeof S3_FOLDER]}/${guid}.${fileType}`,
       Body: buffer,
       ACL: "public-read",
@@ -81,7 +81,7 @@ const Endpoint = async (
       const uploadedFile = await s3.upload(params).promise();
       res.status(200).json({ uploadedFile });
     } catch (error) {
-      res.status(500).json({ error: "WHOOPS" });
+      res.status(500).json({ error: error as string });
     }
   }
 };
