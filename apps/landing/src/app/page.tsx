@@ -35,20 +35,20 @@ export default function Home() {
         title="Create
         collections"
         description="You can group, sort and design collections of your favourite vsts. Add notes against an effect or instrument to let people know how to use an effect in the context your collection. You can share collections with your friends, or keep them all to yourself."
-        imageSource="/screenshots/vsts.png"
+        imageSource="/collection.png"
         icon={<CollectionIcon />}
       />
       <TextAndImage
         title="Find where you can buy"
         description="Powered by the community, helpful volunteers locate the best places to download and buy vsts for supported currencies."
-        imageSource="/screenshots/vsts.png"
+        imageSource="/wtf.png"
         reverse
         icon={<ShoppingIcon />}
       />
       <TextAndImage
         title="Compatibility with your system"
         description="Thinking of upgrading your operating system but not sure if it’ll affect your Serum patch? Enter your system’s detail into vstree to see whether users with a similar system to yours have any issues."
-        imageSource="/screenshots/vsts.png"
+        imageSource="/compatibility.png"
         icon={<FilterIcon />}
       />
       <TextAndImage
