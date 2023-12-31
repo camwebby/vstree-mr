@@ -4,7 +4,7 @@ import { Header } from "./header";
 import { useRouter } from "next/router";
 import { NewCollectionContext } from "@/contexts/new-collection";
 import { useContext, useEffect, useState } from "react";
-import { PencilIcon, PlusIcon } from "lucide-react";
+import { Loader2, PencilIcon, PlusIcon } from "lucide-react";
 import { cn } from "vst-ui/src/lib/utils";
 import { givonic } from "vst-ui/src/fonts";
 import { useSession } from "next-auth/react";
@@ -35,7 +35,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       {loading ? (
-        <></>
+        <div className="min-w-screen flex min-h-screen items-center justify-center bg-background">
+          <Loader2 className="h-5 w-5 animate-spin text-foreground" />
+        </div>
       ) : (
         <>
           <main
