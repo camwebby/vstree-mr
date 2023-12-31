@@ -1,7 +1,7 @@
-import AWS, { S3 } from "aws-sdk";
+import AWS from "aws-sdk";
 import { NextApiRequest, NextApiResponse } from "next";
 import crypto from "crypto";
-import { S3_FOLDER } from "./consts";
+import { BLOB_FOLDERS } from "vst-utils";
 
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_S3,
@@ -11,7 +11,7 @@ const s3 = new AWS.S3({
 const Endpoint = async (
   req: NextApiRequest,
   res: NextApiResponse<{
-    uploadedFile?: AWS.S3.ManagedUpload.SendData;
+    uploadedFileRes?: Pick<AWS.S3.ManagedUpload.SendData, "Location">;
     error?: string;
   }>,
 ) => {
@@ -40,10 +40,14 @@ const Endpoint = async (
       res.status(400).json({ error: "Invalid file type" });
       return;
     }
-    // if (!(folder in Object.values(S3_FOLDER))) {
-    //   res.status(400).json({ error: "Invalid folder" });
-    //   return;
-    // }
+    if (
+      !Object.values(BLOB_FOLDERS).includes(
+        folder as (typeof BLOB_FOLDERS)[keyof typeof BLOB_FOLDERS],
+      )
+    ) {
+      res.status(400).json({ error: "Invalid folder" });
+      return;
+    }
     if (!file) {
       res.status(400).json({ error: "No file" });
       return;
@@ -69,8 +73,8 @@ const Endpoint = async (
 
     const params = {
       Bucket: "vst-assets",
-      Folder: S3_FOLDER.COLLECTION_ICONS,
-      Key: `${S3_FOLDER[folder as keyof typeof S3_FOLDER]}/${guid}.${fileType}`,
+      Folder: folder,
+      Key: `${folder}/${guid}.${fileType}`,
       Body: buffer,
       ACL: "public-read",
       ContentEncoding: "base64",
@@ -79,7 +83,12 @@ const Endpoint = async (
 
     try {
       const uploadedFile = await s3.upload(params).promise();
-      res.status(200).json({ uploadedFile });
+
+      const uploadedFileRes = {
+        Location: uploadedFile.Location,
+      };
+
+      res.status(200).json({ uploadedFileRes });
     } catch (error) {
       res.status(500).json({ error: error as string });
     }
