@@ -3,10 +3,11 @@ import { Button } from "vst-ui";
 import { Header } from "./header";
 import { useRouter } from "next/router";
 import { NewCollectionContext } from "@/contexts/new-collection";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PencilIcon, PlusIcon } from "lucide-react";
 import { cn } from "vst-ui/src/lib/utils";
 import { givonic } from "vst-ui/src/fonts";
+import { useSession } from "next-auth/react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
@@ -17,6 +18,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     setMinimized,
     form,
   } = useContext(NewCollectionContext);
+
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    if (!session) {
+      router?.push("/auth/signin");
+    }
+  }, [session]);
 
   return (
     <main

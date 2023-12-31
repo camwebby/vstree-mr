@@ -3,25 +3,22 @@ import { cn } from "vst-ui/src/lib/utils";
 import { Button } from "vst-ui";
 import { Input } from "vst-ui";
 import { Label } from "vst-ui";
+import { Loader2 } from "lucide-react";
+import { signIn } from "next-auth/react";
+import { Provider } from "next-auth/providers";
 
 export function UserAuthForm({
   className,
+  providers,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: React.HTMLAttributes<HTMLDivElement> & {
+  providers: Provider[];
+}) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
-
-  async function onSubmit(event: React.SyntheticEvent) {
-    event.preventDefault();
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  }
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
-      <form onSubmit={onSubmit}>
+      {/* <form onSubmit={onSubmit}>
         <div className="grid gap-2">
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
@@ -38,10 +35,7 @@ export function UserAuthForm({
             />
           </div>
           <Button disabled={isLoading}>
-            {isLoading && (
-              //   <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-              <> </>
-            )}
+            {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             Sign In with Email
           </Button>
         </div>
@@ -55,10 +49,23 @@ export function UserAuthForm({
             Or continue with
           </span>
         </div>
-      </div>
-      <Button variant="outline" type="button" disabled={isLoading}>
-        {isLoading && <></>}
-      </Button>
+      </div> */}
+
+      <>
+        {Object.values(providers).map((provider) => (
+          <div key={provider.name}>
+            <Button
+              type="button"
+              disabled={isLoading}
+              variant={"outline"}
+              className="w-full"
+              onClick={() => signIn(provider.id)}
+            >
+              Continue in with {provider.name}
+            </Button>
+          </div>
+        ))}
+      </>
     </div>
   );
 }
