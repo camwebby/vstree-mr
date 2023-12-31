@@ -60,7 +60,7 @@ export default function Home() {
       />
       <MediaAccord data={vstActionsContent} />
       <FAQs />
-      <div className="w-screen pb-5 bg-background p-5 lg:p-0">
+      <div className="w-screen pb-5 bg-background p-5">
         <div className="container pt-16 lg:pt-32 justify items-center justify-center">
           <h3 className="text-3xl text-foreground lg:text-5xl font-semibold text-center mb-4 lg:mb-6">
             Try for free today
