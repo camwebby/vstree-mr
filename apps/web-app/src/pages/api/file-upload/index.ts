@@ -19,7 +19,6 @@ const Endpoint = async (
     //----------------------------------
     // VALIDATION
     //----------------------------------
-
     const { file, folder, mimeType } = req.body
       ? JSON.parse(req.body)
       : { file: "", folder: "", mimeType: "" };
@@ -89,8 +88,10 @@ const Endpoint = async (
       };
 
       res.status(200).json({ uploadedFileRes });
+      return;
     } catch (error) {
       res.status(500).json({ error: error as string });
+      return;
     }
   }
 };

@@ -148,6 +148,8 @@ export function NewCollection() {
 
   const isCreating = isCreatingCol || isCreatingVstCol;
 
+  const [mobileView, setMobileView] = useState(0);
+
   return (
     <>
       <Dialog
@@ -196,7 +198,7 @@ export function NewCollection() {
           >
             <SheetContent
               side="bottom"
-              className="z-[50] max-h-[90vh] w-screen p-0"
+              className="z-[50] h-[90vh] w-screen  p-0"
             >
               <VstSearchCommandMenu
                 onOpenChange={(open) => {
@@ -219,13 +221,41 @@ export function NewCollection() {
                 open={searchDialogOpen}
               />
 
+              <Button
+                className="my-2 ml-8 block md:hidden"
+                variant={"secondary"}
+                onClick={() => {
+                  setMobileView(mobileView === 0 ? 1 : 0);
+                }}
+              >
+                {
+                  {
+                    0: "Next",
+                    1: "Back to collection vsts",
+                  }[mobileView]
+                }
+              </Button>
+
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
                   className={cn("m-0 p-0")}
                 >
                   <div className="relative m-0 grid grid-cols-1 p-0 md:grid-cols-2">
-                    <div className="container w-full max-w-[2xl] overflow-y-scroll border bg-card/80 pb-32 pt-12 md:h-screen">
+                    <div
+                      className={`container h-[90vh] w-full max-w-[2xl] overflow-y-scroll border bg-card/80 pb-24 pt-12 md:max-h-none md:pb-36
+                    ${mobileView === 0 ? "block" : "hidden md:block"}
+                    `}
+                    >
+                      <Button
+                        type="button"
+                        onClick={() => {
+                          setSearchDialogOpen(true);
+                        }}
+                        className="mb-5 w-full"
+                      >
+                        Add VST
+                      </Button>
                       <Reorder.Group
                         axis="y"
                         className="flex flex-col gap-2"
@@ -277,20 +307,13 @@ export function NewCollection() {
                           </Reorder.Item>
                         ))}
                       </Reorder.Group>
-
-                      <Button
-                        type="button"
-                        variant={"secondary"}
-                        onClick={() => {
-                          setSearchDialogOpen(true);
-                        }}
-                        className="mt-5 w-full"
-                      >
-                        Add VST
-                      </Button>
                     </div>
 
-                    <div className="container sticky top-0 flex h-screen flex-col gap-y-4 bg-card/90 pt-10">
+                    <div
+                      className={`container flex h-fit flex-col gap-y-4 overflow-y-auto border-t bg-card py-10 md:sticky md:h-screen md:bg-card/90 lg:top-0
+                    ${mobileView === 1 ? "block" : "hidden md:block"}
+                    `}
+                    >
                       <FormField
                         name="collectionName"
                         render={({ field }) => (
@@ -303,7 +326,7 @@ export function NewCollection() {
                                   form.formState.errors.collectionName &&
                                     "border-red-500",
                                 )}
-                                placeholder={field.name}
+                                placeholder={"Best free reverb plugins"}
                                 {...field}
                                 value={form.getValues("collectionName")}
                               />
@@ -328,7 +351,7 @@ export function NewCollection() {
                                   form.formState.errors.description &&
                                     "border-red-500",
                                 )}
-                                placeholder={field.name}
+                                placeholder={""}
                                 {...field}
                               />
                             </FormControl>
