@@ -10,9 +10,6 @@ import { givonic } from "vst-ui/src/fonts";
 import { useSession } from "next-auth/react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const router = useRouter();
-  const [loading, setLoading] = useState(true);
-
   const {
     showNewCollectionForm,
     setShowNewCollectionForm,
@@ -21,6 +18,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   } = useContext(NewCollectionContext);
 
   const { data: session, status } = useSession();
+
+  const router = useRouter();
+
+  const [loading, setLoading] = useState(status !== "authenticated");
 
   useEffect(() => {
     if (!session) {
