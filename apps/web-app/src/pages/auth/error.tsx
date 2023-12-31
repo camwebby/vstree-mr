@@ -2,7 +2,6 @@ import AuthenticationPage from "@/components/pages/auth";
 import { authOptions } from "@/server/auth";
 import { GetServerSidePropsContext } from "next";
 import { getServerSession } from "next-auth";
-import { getProviders } from "next-auth/react";
 import { useRouter } from "next/router";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -12,7 +11,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return { redirect: { destination: "/" } };
   }
 
-  const providers = await getProviders();
+  const providers = authOptions.providers.map((p) => ({
+    id: p.id,
+    name: p.name,
+    type: p.type,
+    options: p.options,
+  }));
 
   return {
     props: { providers: providers ?? [] },
