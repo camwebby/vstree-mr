@@ -6,6 +6,7 @@ import { BLOB_FOLDERS } from "vst-utils";
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_S3,
   secretAccessKey: process.env.AWS_SECRET_KEY_S3,
+  signatureVersion: "v4",
 });
 
 const Endpoint = async (
@@ -90,7 +91,8 @@ const Endpoint = async (
       res.status(200).json({ uploadedFileRes });
       return;
     } catch (error) {
-      res.status(500).json({ error: error as string });
+      console.log({ error });
+      res.status(500).json({ error: "There was an error uploading" });
       return;
     }
   }
