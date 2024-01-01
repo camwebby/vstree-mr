@@ -11,6 +11,7 @@
   "dependencies": {
     "vst-utils": "workspace:*",
     "vst-ui": "workspace:*",
+    "@aws-sdk/client-s3": "^3.484.0",
     "vst-database": "workspace:*",
     "@highlight-run/next": "latest",
     "@hookform/resolvers": "^3.3.1",

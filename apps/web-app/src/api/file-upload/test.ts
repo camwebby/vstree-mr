@@ -1,7 +1,21 @@
-import AWS from "aws-sdk";
+import {
+  S3Client,
+  PutObjectCommand,
+  PutObjectCommandInput,
+} from "@aws-sdk/client-s3";
 import { NextApiRequest, NextApiResponse } from "next";
 import crypto from "crypto";
 import { BLOB_FOLDERS } from "vst-utils";
+
+const s3 = new S3Client({
+  region: process.env.AWS_REGION,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_S3 ?? "",
+    secretAccessKey: process.env.AWS_SECRET_KEY_S3 ?? "",
+  },
+});
+
+const BUCKET_NAME = "vst-assets";
 
 export const FileUploadApiRoute = async (
   req: NextApiRequest,
@@ -72,14 +86,14 @@ export const FileUploadApiRoute = async (
     const guid = crypto.randomUUID();
 
     const params = {
-      Bucket: "vst-assets",
-      Folder: folder,
+      Bucket: BUCKET_NAME,
+      // Folder: folder,
       Key: `${folder}/${guid}.${fileType}`,
       Body: buffer,
       ACL: "public-read",
       ContentEncoding: "base64",
       ContentType: mimeType,
-    };
+    } satisfies PutObjectCommandInput;
 
     try {
       console.log({
@@ -87,24 +101,16 @@ export const FileUploadApiRoute = async (
         timestamp: new Date().toISOString(),
       });
 
-      const s3 = new AWS.S3({
-        accessKeyId: process.env.AWS_ACCESS_KEY_S3,
-        secretAccessKey: process.env.AWS_SECRET_KEY_S3,
-        signatureVersion: "v4",
+      const s3Res = await s3.send(new PutObjectCommand(params));
+
+      console.log({
+        message: "Successfully uploaded file to s3",
+        timestamp: new Date().toISOString(),
+        body: s3Res,
       });
 
-      console.log(s3.config);
-
-      // const uploadedFile = s3.upload(params).promise();
-
-      // console.log({
-      //   message: "Successfully uploaded file to s3",
-      //   timestamp: new Date().toISOString(),
-      //   body: uploadedFile,
-      // });
-
       const uploadedFileRes = {
-        Location: "test",
+        Location: `https://${BUCKET_NAME}.s3.amazonaws.com/${folder}/${guid}.${fileType}`,
       };
 
       res.status(200).json({ uploadedFileRes });
