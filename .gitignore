@@ -37,3 +37,166 @@ yarn-error.log*
 .DS_Store
 *.pem
 packages/vst-database/scripts/seed-db/vst-data.json
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/ABOUT
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Google Chrome for Testing Framework
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Helpers
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Libraries
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Resources
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Google Chrome for Testing Framework
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/app_mode_loader
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/chrome_crashpad_handler
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper (Alerts).app/Contents/Info.plist
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper (Alerts).app/Contents/MacOS/Google Chrome for Testing Helper (Alerts)
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper (Alerts).app/Contents/PkgInfo
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper (Alerts).app/Contents/Resources/app.icns
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper (Alerts).app/Contents/Resources/base.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper (GPU).app/Contents/Info.plist
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper (GPU).app/Contents/MacOS/Google Chrome for Testing Helper (GPU)
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper (GPU).app/Contents/PkgInfo
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper (Plugin).app/Contents/Info.plist
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper (Plugin).app/Contents/MacOS/Google Chrome for Testing Helper (Plugin)
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper (Plugin).app/Contents/PkgInfo
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper (Renderer).app/Contents/Info.plist
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper (Renderer).app/Contents/MacOS/Google Chrome for Testing Helper (Renderer)
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper (Renderer).app/Contents/PkgInfo
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper.app/Contents/Info.plist
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper.app/Contents/MacOS/Google Chrome for Testing Helper
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Helpers/Google Chrome for Testing Helper.app/Contents/PkgInfo
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Libraries/libEGL.dylib
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Libraries/libGLESv2.dylib
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Libraries/libvk_swiftshader.dylib
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Libraries/MEIPreload/manifest.json
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Libraries/MEIPreload/preloaded_data.pb
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Libraries/vk_swiftshader_icd.json
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Libraries/WidevineCdm/_platform_specific/mac_arm64/libwidevinecdm.dylib
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Libraries/WidevineCdm/LICENSE
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Libraries/WidevineCdm/manifest.json
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/af.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/am.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/app_mode-Info.plist
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/ar.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/bg.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/bn.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/ca.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/chrome_100_percent.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/chrome_200_percent.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/cs.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/da.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/de.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/el.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/en.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/en_GB.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/es.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/es_419.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/et.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/fa.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/fi.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/fil.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/fr.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/gpu_shader_cache.bin
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/gu.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/he.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/hi.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/hr.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/hu.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/icudtl.dat
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/id.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/Info.plist
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/install.sh
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/it.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/ja.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/kn.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/ko.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/lt.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/lv.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/ml.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/mr.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/ms.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/nb.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/nl.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/pl.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/product_logo_32.png
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/pt_BR.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/pt_PT.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/resources.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/ro.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/ru.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/sk.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/sl.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/sr.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/sv.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/sw.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/ta.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/te.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/th.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/tr.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/uk.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/ur.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/v8_context_snapshot.arm64.bin
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/vi.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/zh_CN.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/120.0.6099.109/Resources/zh_TW.lproj/locale.pak
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Frameworks/Google Chrome for Testing Framework.framework/Versions/Current
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Info.plist
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/PkgInfo
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/af.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/am.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/app.icns
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/ar.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/bg.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/bn.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/ca.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/com.google.chrome.for.testing.manifest/Contents/Resources/com.google.chrome.for.testing.manifest
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/com.google.chrome.for.testing.manifest/Contents/Resources/en.lproj/Localizable.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/cs.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/da.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/de.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/document.icns
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/el.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/en.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/en_GB.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/es.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/es_419.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/et.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/fa.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/fi.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/fil.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/fr.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/gu.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/he.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/hi.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/hr.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/hu.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/id.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/it.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/ja.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/kn.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/ko.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/lt.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/lv.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/ml.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/mr.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/ms.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/nb.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/nl.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/pl.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/pt_BR.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/pt_PT.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/ro.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/ru.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/scripting.sdef
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/sk.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/sl.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/sr.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/sv.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/sw.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/ta.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/te.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/th.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/tr.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/uk.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/ur.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/vi.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/zh_CN.lproj/InfoPlist.strings
+chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/zh_TW.lproj/InfoPlist.strings

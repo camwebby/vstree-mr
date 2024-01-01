@@ -127,7 +127,7 @@ const YourSetup: React.FC<{
                     name="daw"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>DAW (*)</FormLabel>
+                        <FormLabel>DAW</FormLabel>
                         <Select
                           disabled={!refersToUser}
                           onValueChange={(val) => {
@@ -303,7 +303,7 @@ const YourSetup: React.FC<{
                     name="systemMemory"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Memory (GB)</FormLabel>
+                        <FormLabel>Memory</FormLabel>
                         <Select
                           disabled={!refersToUser}
                           onValueChange={field.onChange}

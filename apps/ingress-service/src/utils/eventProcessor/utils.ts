@@ -16,6 +16,29 @@ export const markIngressEventAsChecked = async (ingressEvent: IngressEvent) => {
   });
 };
 
+export const markIngressEventAsSuccess = async (ingressEvent: IngressEvent) => {
+  // await db.ingressEvent.update({
+  //   where: {
+  //     id: ingressEvent.id,
+  //   },
+  //   data: {
+  //     lastCheckedAt: new Date(),
+  //     checkCount: {
+  //       increment: 1,
+  //     },
+  //     // successCount: {
+  //     //   increment: 1,
+  //     // },
+  //   },
+  // });
+
+  await db.ingressEvent.delete({
+    where: {
+      id: ingressEvent.id,
+    },
+  });
+};
+
 export const discardIngressEvent = async (ingressEvent: IngressEvent) => {
   await db.ingressEvent.delete({
     where: {

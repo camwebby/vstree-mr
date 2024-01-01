@@ -4,9 +4,9 @@ generator client {
 }
 
 datasource db {
-    provider          = "postgres"
-    url               = env("POSTGRES_PRISMA_URL")
-    directUrl         = env("POSTGRES_URL_NON_POOLING")
+    provider  = "postgres"
+    url       = env("POSTGRES_PRISMA_URL")
+    directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model Account {
@@ -299,6 +299,7 @@ model WhereToFind {
     Vendor    Vendor?   @relation(fields: [vendorId], references: [id])
     Vst       Vst       @relation(fields: [vstId], references: [id], onDelete: Cascade)
 
+    @@unique([vstId, vendorName])
     @@index([vstId], type: Hash)
 }
 
@@ -386,7 +387,9 @@ model IngressEvent {
     url     String
 
     lastCheckedAt DateTime?
-    checkCount    Int       @default(0)
+
+    checkCount   Int @default(0)
+    successCount Int @default(0)
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt

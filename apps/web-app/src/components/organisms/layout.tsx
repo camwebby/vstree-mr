@@ -25,7 +25,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(status !== "authenticated");
 
   useEffect(() => {
-    if (!session) {
+    if (status === "unauthenticated") {
       router?.push("/auth/signin");
     }
 
@@ -38,7 +38,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
       setLoading(false);
     }
-  }, [session, status]);
+  }, [session, status, router]);
 
   return (
     <>

@@ -21,7 +21,8 @@
       "persistent": true
     },
     "start": {
-      "dependsOn": ["db:generate"]
+      "dependsOn": ["db:generate"],
+      "cache": false
     }
   }
 }

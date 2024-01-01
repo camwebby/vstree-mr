@@ -16,8 +16,9 @@
     "vst-database": "workspace:*",
     "vst-utils": "workspace:*",
     "postgres": "^3.4.2",
-    "puppeteer": "^21.4.1",
+    "puppeteer": "^21.6.1",
     "winston": "^3.11.0",
-    "lodash": "latest"
+    "lodash": "latest",
+    "fast-fuzzy": "^1.12.0"
   }
 }

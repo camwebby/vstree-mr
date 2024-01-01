@@ -7,6 +7,7 @@ import {
   IngressEventProcessor,
 } from "../eventProcessor/types";
 import { ScrapeErr } from "../types";
+import { SCRAPE_SUPPORTED_DOMAINS } from "../../consts/supportedDomains";
 
 export class GenericProcessor implements IngressEventProcessor {
   _platformModelXpathFieldMap: DomainXpatchSchemaMap;
@@ -35,7 +36,7 @@ export class GenericProcessor implements IngressEventProcessor {
       /**
        * Data returned from the scrape
        */
-      data: Record<string, string>
+      data: Record<string, string | null | undefined>
     ) => Promise<ScrapeErr>
   ) {
     this._platformModelXpathFieldMap = platformModelXpathFieldMap;
@@ -79,11 +80,19 @@ export class GenericProcessor implements IngressEventProcessor {
     }
 
     const domain = getRootDomain(ingressEvent.url);
+    console.log({ domain });
 
     if (domain === null) {
       return {
         errMessage: "Invalid domain",
         handleAction: "retry",
+      };
+    }
+
+    if (!SCRAPE_SUPPORTED_DOMAINS.includes(domain)) {
+      return {
+        errMessage: "Unsupported domain",
+        handleAction: "discard",
       };
     }
 
@@ -93,6 +102,8 @@ export class GenericProcessor implements IngressEventProcessor {
       ingressEvent.url,
       scrapeSchema
     );
+
+    console.log({ data });
 
     // attempt to create record
     const err = await this._createEntityFromEvent(ingressEvent, data);

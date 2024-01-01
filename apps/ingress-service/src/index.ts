@@ -4,6 +4,7 @@ import { createProcessor } from "./utils/eventProcessor";
 import {
   discardIngressEvent,
   markIngressEventAsChecked,
+  markIngressEventAsSuccess,
 } from "./utils/eventProcessor/utils";
 
 export const main = async () => {
@@ -31,13 +32,14 @@ export const main = async () => {
     const err = await processor.process(ingressEvent);
 
     if (!!err && err.handleAction === "retry") {
-      console.error(err.errMessage);
       await markIngressEventAsChecked(ingressEvent);
     }
     if (!!err && err.handleAction === "discard") {
       console.error(err.errMessage);
       await discardIngressEvent(ingressEvent);
     }
+
+    await markIngressEventAsSuccess(ingressEvent);
   }
 
   console.log(`Finished ingress service run`);

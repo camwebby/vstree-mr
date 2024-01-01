@@ -8,7 +8,6 @@ import {
   DialogTrigger,
 } from "vst-ui";
 import { Input } from "vst-ui";
-import { Label } from "vst-ui";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,7 +20,7 @@ import {
   FormLabel,
   FormMessage,
 } from "vst-ui";
-import { ComponentProps } from "react";
+import { ComponentProps, useCallback } from "react";
 import { RadioGroup, RadioGroupItem } from "vst-ui";
 import { zCurrency } from "@/constants/zod/curency";
 import { toast } from "vst-ui";
@@ -70,35 +69,33 @@ export default function WTFSuggest(
     },
   });
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    // safe parse
+  const onSubmit = useCallback(
+    (data: z.infer<typeof formSchema>) => {
+      // parse price as number
+      try {
+        const parsedData = formSchema.safeParse(data);
 
-    // parse price as number
-    try {
-      const parsedData = formSchema.safeParse(data);
+        if (!parsedData.success) {
+          toast({
+            description: parsedData.error.issues[0]?.message,
+          });
+          return;
+        }
 
-      if (!parsedData.success) {
-        toast({
-          description: parsedData.error.issues[0]?.message,
+        mutate({
+          ...data,
+          vstId: props.vstId,
         });
-        return;
+      } catch {
+        toast({
+          variant: "destructive",
+          title: "There was an error submitting your suggestion.",
+          description: "Please enter a valid price.",
+        });
       }
-
-      // const parsedPrice = Number(data.price);
-
-      mutate({
-        ...data,
-        // price: parsedPrice,
-        vstId: props.vstId,
-      });
-    } catch {
-      toast({
-        variant: "destructive",
-        title: "There was an error submitting your suggestion.",
-        description: "Please enter a valid price.",
-      });
-    }
-  };
+    },
+    [formSchema, mutate, props.vstId],
+  );
 
   return (
     <Dialog {...props}>
@@ -143,14 +140,13 @@ export default function WTFSuggest(
                     className="flex flex-wrap gap-5"
                     onValueChange={field.onChange}
                     defaultValue={field.value}
-                    // defaultValue="USD"
                   >
                     {Object.values(zCurrency.Values).map((currency) => (
                       <FormItem key={currency}>
                         <FormControl>
                           <div className="flex items-center space-x-2">
                             <RadioGroupItem value={currency} id={currency} />
-                            <Label htmlFor={currency}>{currency}</Label>
+                            <FormLabel htmlFor={currency}>{currency}</FormLabel>
                           </div>
                         </FormControl>
                       </FormItem>

@@ -10,7 +10,8 @@ const VSTAvatar = ({
 }) => {
   return (
     <Avatar className={className || "h-10 w-10"}>
-      <AvatarImage className="object-cover" src={item?.iconUrl || ""} />
+      {/* <AvatarImage className="object-cover" src={item?.iconUrl || ""} /> */}
+      <AvatarImage className="object-cover" src={""} />
       <AvatarFallback>
         <span className="text-2xl">{item?.name.charAt(0).toUpperCase()}</span>
       </AvatarFallback>

@@ -7,6 +7,7 @@ import { parseMoney } from "../parseMoney";
 import { getRootDomain } from "../getRootDomain";
 import { nameDomainMap } from "../../consts/nameDomainMap";
 import { modelIntMap } from "vst-database/consts";
+import { fuzzy } from "fast-fuzzy";
 
 export const createProcessor = (
   ingressEvent: IngressEvent
@@ -17,16 +18,33 @@ export const createProcessor = (
         {
           "valhalladsp.com": {},
           "adsrsounds.com": {},
-          "gear4music.com": {},
+          "gear4music.com": {
+            price: `/html/body/div[5]/div[2]/div[2]/div[1]/div/div[3]/div[1]/div/div[1]/span[1]/span[2]`,
+            name: `/html/body/div[5]/div[2]/div[2]/div[1]/div/div[1]/div[1]/h1`,
+          },
           "pluginboutique.com": {},
           "producerspot.com": {},
           "kvraudio.com": {},
         },
         ["vstId", "vendorName", "currency"],
         async (ingressEvent, data) => {
-          const { vstId, currency } = JSON.parse(
-            ingressEvent.payload?.toString() || "{}"
-          );
+          console.log({
+            message: "Processing event",
+            ingressEvent,
+            data,
+          });
+
+          if (!data) {
+            return {
+              errMessage: "No data returned from scrape",
+              handleAction: "retry",
+            };
+          }
+
+          const { vstId, currency } = ingressEvent.payload?.valueOf() as {
+            vstId: number;
+            currency: string;
+          };
 
           const domain = getRootDomain(ingressEvent.url);
 
@@ -39,28 +57,76 @@ export const createProcessor = (
 
           const vendorName = nameDomainMap[domain];
 
-          const { price, currency: scrapedCurr } = data;
+          // Parse money
+          const { price, currency: scrapedCurr, name } = data;
+
+          if (!price) {
+            return {
+              errMessage: "Scraped price was empty or not found",
+              handleAction: "retry",
+            };
+          }
 
           const parsedPrice = parseMoney(price);
 
-          if (!parsedPrice) {
+          if (!parsedPrice.value) {
             return {
               errMessage: "Could not parse price",
               handleAction: "retry",
             };
           }
 
+          // Validate name
+          if (!name) {
+            return {
+              errMessage: "Scraped name was empty or not found",
+              handleAction: "retry",
+            };
+          }
+
+          const vst = await db.vst.findUnique({
+            where: {
+              id: vstId,
+            },
+          });
+
+          // Fuzzy name match
+          if (fuzzy(name, vst?.name || "") < 0.7) {
+            return {
+              errMessage: "Event vst name does not match scraped name",
+              handleAction: "discard",
+            };
+          }
+
           try {
-            await db.whereToFind.create({
-              data: {
+            const upsert = await db.whereToFind.upsert({
+              where: {
+                vstId_vendorName: {
+                  vstId,
+                  vendorName,
+                },
+              },
+              create: {
                 vstId,
-                price: parsedPrice.value,
+                price: parsedPrice.value * 100,
                 url: ingressEvent.url,
                 currency: scrapedCurr || currency,
                 vendorName,
               },
+              update: {
+                price: parsedPrice.value * 100,
+              },
             });
-          } catch {
+
+            console.info({
+              message: "WhereToFind upsert successful",
+              timestamp: new Date().toISOString(),
+              body: upsert,
+            });
+            return;
+          } catch (error) {
+            console.error({ error });
+
             return {
               errMessage: "Could not create WhereToFind",
               handleAction: "retry",
@@ -86,6 +152,13 @@ export const createProcessor = (
         ["name"],
         async (ingressEvent, data) => {
           const { name } = data;
+
+          if (!name) {
+            return {
+              errMessage: "Scraped name was empty or not found",
+              handleAction: "retry",
+            };
+          }
 
           const slug = generateSlug(name);
 

@@ -5,10 +5,14 @@ import { useState } from "react";
 import { cn } from "vst-ui/src/lib/utils";
 
 import SiteSearch from "./site-search";
+import { VstSearchCommandMenu } from "./vst-command-search";
+import { useRouter } from "next/router";
+import { Vst } from "vst-database";
 
 export function Header({ className }: { className?: string }) {
   const [showSiteSearch, setShowSiteSearch] = useState(false);
 
+  const router = useRouter();
   return (
     <div
       className={cn(
@@ -40,9 +44,13 @@ export function Header({ className }: { className?: string }) {
         placeholder="Search"
         className="hidden max-w-sm md:block"
       />
-      <SiteSearch
+      <VstSearchCommandMenu
         open={showSiteSearch}
         onOpenChange={(open) => setShowSiteSearch(open)}
+        onVstClick={(vst: Vst) => {
+          router.push(`/vsts/${vst.slug}`);
+          setShowSiteSearch(false);
+        }}
       />
 
       <UserCommand />
