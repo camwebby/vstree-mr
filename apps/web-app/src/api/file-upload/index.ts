@@ -10,7 +10,7 @@ export const FileUploadApiRoute = async (
     error?: string;
   }>,
 ) => {
-  console.info({
+  console.log({
     message: "Received request to upload file",
     timestamp: new Date().toISOString(),
     body: req.body,
@@ -82,7 +82,7 @@ export const FileUploadApiRoute = async (
     };
 
     try {
-      console.info({
+      console.log({
         message: "Attempting to upload file to s3",
         timestamp: new Date().toISOString(),
       });
@@ -95,7 +95,7 @@ export const FileUploadApiRoute = async (
 
       const uploadedFile = await s3.upload(params).promise();
 
-      console.info({
+      console.log({
         message: "Successfully uploaded file to s3",
         timestamp: new Date().toISOString(),
         body: uploadedFile,
