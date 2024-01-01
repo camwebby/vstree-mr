@@ -107,6 +107,8 @@ const Endpoint = async (
       return;
     }
   }
+
+  res.status(405).json({ error: "Method not supported" });
 };
 
 export default Endpoint;
