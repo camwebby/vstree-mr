@@ -5,13 +5,14 @@ import { Handlers } from "@highlight-run/node";
 import { env } from "@/env.mjs";
 import { H } from "@highlight-run/node";
 
-H.init({
-  projectID: "lgxjrz4d",
-  serviceName: "web-app-trpc",
-  environment: env.VERCEL_ENV ?? "development",
-  serviceVersion: env.VERCEL_GIT_COMMIT_SHA ?? "unknown",
-});
-
+if (env.VERCEL_ENV) {
+  H.init({
+    projectID: "lgxjrz4d",
+    serviceName: "web-app-trpc",
+    environment: env.VERCEL_ENV ?? "development",
+    serviceVersion: env.VERCEL_GIT_COMMIT_SHA ?? "unknown",
+  });
+}
 // export API handler
 export default createNextApiHandler({
   router: appRouter,

@@ -10,6 +10,12 @@ const Endpoint = async (
     error?: string;
   }>,
 ) => {
+  console.info({
+    message: "Received request to upload file",
+    timestamp: new Date().toISOString(),
+    body: req.body,
+  });
+
   if (req.method === "POST") {
     //----------------------------------
     // VALIDATION
@@ -26,11 +32,6 @@ const Endpoint = async (
       res.status(400).json({ error: "Invalid request body" });
       return;
     }
-
-    console.info({
-      message: "Received request to upload file",
-      timestamp: new Date().toISOString(),
-    });
 
     // get extension from mime type
     const fileType = mimeType.split("/")[1];
