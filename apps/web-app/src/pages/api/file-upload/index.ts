@@ -27,6 +27,11 @@ const Endpoint = async (
       return;
     }
 
+    console.info({
+      message: "Received request to upload file",
+      timestamp: new Date().toISOString(),
+    });
+
     // get extension from mime type
     const fileType = mimeType.split("/")[1];
 
@@ -76,6 +81,11 @@ const Endpoint = async (
     };
 
     try {
+      console.info({
+        message: "Attempting to upload file to s3",
+        timestamp: new Date().toISOString(),
+      });
+
       const s3 = new AWS.S3({
         accessKeyId: process.env.AWS_ACCESS_KEY_S3,
         secretAccessKey: process.env.AWS_SECRET_KEY_S3,
@@ -91,7 +101,7 @@ const Endpoint = async (
       res.status(200).json({ uploadedFileRes });
       return;
     } catch (error) {
-      console.log({ error });
+      console.log({ error, timestamp: new Date().toISOString() });
       res.status(500).json({ error: "There was an error uploading" });
       return;
     }
