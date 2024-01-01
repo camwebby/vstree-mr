@@ -87,19 +87,21 @@ export const FileUploadApiRoute = async (
         timestamp: new Date().toISOString(),
       });
 
-      //   const s3 = new AWS.S3({
-      //     accessKeyId: process.env.AWS_ACCESS_KEY_S3,
-      //     secretAccessKey: process.env.AWS_SECRET_KEY_S3,
-      //     signatureVersion: "v4",
-      //   });
+      const s3 = new AWS.S3({
+        accessKeyId: process.env.AWS_ACCESS_KEY_S3,
+        secretAccessKey: process.env.AWS_SECRET_KEY_S3,
+        signatureVersion: "v4",
+      });
 
-      //   const uploadedFile = await s3.upload(params).promise();
+      console.log(s3.config);
 
-      //   console.log({
-      //     message: "Successfully uploaded file to s3",
-      //     timestamp: new Date().toISOString(),
-      //     body: uploadedFile,
-      //   });
+      // const uploadedFile = s3.upload(params).promise();
+
+      // console.log({
+      //   message: "Successfully uploaded file to s3",
+      //   timestamp: new Date().toISOString(),
+      //   body: uploadedFile,
+      // });
 
       const uploadedFileRes = {
         Location: "test",
