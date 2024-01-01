@@ -108,7 +108,7 @@ export const FileUploadApiRoute = async (
       res.status(200).json({ uploadedFileRes });
       return;
     } catch (error) {
-      console.log({ error, timestamp: new Date().toISOString() });
+      console.error({ error, timestamp: new Date().toISOString() });
       res.status(500).json({ error: "There was an error uploading" });
       return;
     }
