@@ -1,10 +1,6 @@
 import { api } from "@/utils/api";
 import React, { useMemo } from "react";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "vst-ui";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "vst-ui";
 import { Separator } from "vst-ui";
 import { Badge } from "vst-ui";
 import { CardTitle } from "vst-ui";
@@ -88,37 +84,43 @@ const VSTHoverCard = ({
         {children}
       </HoverCardTrigger>
       <HoverCardContent>
-        {isLoading && (
+        {isLoading ? (
           <Loader2Icon className="h-6 w-6 animate-spin text-foreground" />
-        )}
-        <CardTitle className="text-lg font-medium text-black text-foreground">
-          {vst?.name}
-        </CardTitle>
-        <p
-          className="max-h-24 overflow-hidden
+        ) : (
+          <>
+            <CardTitle className="text-lg font-medium text-black text-foreground">
+              {vst?.name}
+            </CardTitle>
+            <p
+              className="max-h-24 overflow-hidden
           overflow-ellipsis text-xs text-muted-foreground
           "
-        >
-          {vst?.overview}
-        </p>
-        <div className="mt-3 flex items-center gap-x-2 text-xs text-muted-foreground">
-          <Badge variant={"secondary"}>{vst?.countLikes} likes</Badge>
-          <Badge variant={"secondary"}>{vst?.countOwns} owns</Badge>
-        </div>
-        {formattedExps?.length > 0 && (
-          <>
-            <Separator className="my-3" />
-            <p className="mb-1 text-xs text-muted-foreground">
-              Compatibility with your setup:
+            >
+              {vst?.overview}
             </p>
-            <div className="flex flex-row flex-wrap gap-2">
-              {formattedExps?.map((exp) => (
-                <Badge key={exp.key + "_exp_" + vst?.id} variant={"secondary"}>
-                  {/* @ts-ignore */}
-                  {experienceRateOptions[exp.key]} x{exp.value}
-                </Badge>
-              ))}
+            <div className="mt-3 flex items-center gap-x-2 text-xs text-muted-foreground">
+              <Badge variant={"secondary"}>{vst?.countLikes} likes</Badge>
+              <Badge variant={"secondary"}>{vst?.countOwns} owns</Badge>
             </div>
+            {formattedExps?.length > 0 && (
+              <>
+                <Separator className="my-3" />
+                <p className="mb-1 text-xs text-muted-foreground">
+                  Compatibility with your setup:
+                </p>
+                <div className="flex flex-row flex-wrap gap-2">
+                  {formattedExps?.map((exp) => (
+                    <Badge
+                      key={exp.key + "_exp_" + vst?.id}
+                      variant={"secondary"}
+                    >
+                      {/* @ts-ignore */}
+                      {experienceRateOptions[exp.key]} x{exp.value}
+                    </Badge>
+                  ))}
+                </div>
+              </>
+            )}
           </>
         )}
       </HoverCardContent>
