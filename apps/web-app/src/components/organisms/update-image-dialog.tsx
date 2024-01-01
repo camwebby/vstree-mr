@@ -1,7 +1,7 @@
 import { ComponentProps } from "react";
 import { Dialog, DialogContent } from "vst-ui";
-import {DropzoneUpload} from "vst-ui";
-import { S3_FOLDER } from "@/pages/api/file-upload/consts";
+import { DropzoneUpload } from "vst-ui";
+import { BLOB_FOLDERS } from "vst-utils";
 import Image from "next/image";
 import { toast } from "vst-ui";
 
@@ -31,7 +31,7 @@ const UpdateImageDialog = ({
             });
           }}
           imagesOnly
-          folder={S3_FOLDER.COLLECTION_ICONS}
+          folder={BLOB_FOLDERS.COLLECTION_ICONS}
           render={(fileSrc) =>
             !!fileSrc ? (
               <div className="flex flex-col items-center">
