@@ -35,7 +35,7 @@ import {
   DialogTitle,
 } from "vst-ui";
 import { DropzoneUpload } from "vst-ui";
-import { S3_FOLDER } from "@/pages/api/file-upload/consts";
+import { BLOB_FOLDERS } from "vst-utils";
 import Image from "next/image";
 import { signIn, useSession } from "next-auth/react";
 import { Sheet, SheetContent } from "vst-ui";
@@ -410,7 +410,7 @@ export function NewCollection() {
                           });
                         }}
                         imagesOnly
-                        folder={S3_FOLDER.COLLECTION_ICONS}
+                        folder={BLOB_FOLDERS.COLLECTION_ICONS}
                         render={(fileSrc) =>
                           !!fileSrc || form.watch("iconUrl") ? (
                             <div className="flex flex-col items-center">
