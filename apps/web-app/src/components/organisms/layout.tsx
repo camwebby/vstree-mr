@@ -8,6 +8,7 @@ import { Loader2, PencilIcon, PlusIcon } from "lucide-react";
 import { cn } from "vst-ui/src/lib/utils";
 import { givonic } from "vst-ui/src/fonts";
 import { useSession } from "next-auth/react";
+import { H } from "@highlight-run/next/client";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const {
@@ -29,6 +30,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     }
 
     if (status === "authenticated") {
+      !!session.user.email &&
+        H.identify(
+          session?.user.email,
+          session?.user as Record<string, string>,
+        );
+
       setLoading(false);
     }
   }, [session, status]);

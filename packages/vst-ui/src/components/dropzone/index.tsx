@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { DropEvent, FileRejection, useDropzone } from "react-dropzone";
-import { cn } from "../lib/utils";;
+import { cn } from "../../lib/utils";
 import { BLOB_FOLDERS } from "vst-utils";
 
 export const DropzoneUpload = ({
@@ -104,13 +104,13 @@ export const DropzoneUpload = ({
           }),
         });
 
-        const { uploadedFile } = (await res.json()) as {
-          uploadedFile: { Location: string };
+        const { uploadedFileRes } = (await res.json()) as {
+          uploadedFileRes: { Location: string };
         };
 
-        setLastUploadedFile(uploadedFile.Location);
+        setLastUploadedFile(uploadedFileRes.Location);
 
-        onSuccess(uploadedFile.Location);
+        onSuccess(uploadedFileRes.Location);
       } catch (error) {
         !!onError && onError();
       } finally {

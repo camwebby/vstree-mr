@@ -22,7 +22,7 @@ export const VstSearchCommandMenu = ({
 }) => {
   const [search, setSearch] = useState<string>("");
 
-  const { data } = api.vsts.getAll.useQuery(undefined, {
+  const { data, isLoading } = api.vsts.getAll.useQuery(undefined, {
     enabled: open,
   });
 
@@ -36,6 +36,7 @@ export const VstSearchCommandMenu = ({
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Results">
+          {isLoading && <CommandItem>Loading...</CommandItem>}
           {data?.map((vst) => (
             <CommandItem
               key={vst.id}
@@ -44,7 +45,7 @@ export const VstSearchCommandMenu = ({
               }}
             >
               <Avatar className="mr-2 h-6 w-6">
-                <AvatarImage src={vst.iconUrl || ""} />
+                <AvatarImage src={""} />
                 <AvatarFallback>{vst.name[0]}</AvatarFallback>
               </Avatar>
               {vst.name}
