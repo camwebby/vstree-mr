@@ -3,12 +3,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import crypto from "crypto";
 import { BLOB_FOLDERS } from "vst-utils";
 
-const s3 = new AWS.S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY_S3,
-  secretAccessKey: process.env.AWS_SECRET_KEY_S3,
-  signatureVersion: "v4",
-});
-
 const Endpoint = async (
   req: NextApiRequest,
   res: NextApiResponse<{
@@ -82,6 +76,12 @@ const Endpoint = async (
     };
 
     try {
+      const s3 = new AWS.S3({
+        accessKeyId: process.env.AWS_ACCESS_KEY_S3,
+        secretAccessKey: process.env.AWS_SECRET_KEY_S3,
+        signatureVersion: "v4",
+      });
+
       const uploadedFile = await s3.upload(params).promise();
 
       const uploadedFileRes = {
