@@ -1,7 +1,4 @@
-import AWS from "aws-sdk";
-import { NextApiRequest, NextApiResponse } from "next";
-import crypto from "crypto";
-import { S3_FOLDER } from "./consts";
+import { FileUploadApiRoute } from "../../../api/file-upload/test";
 
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_S3,

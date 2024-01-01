@@ -8,7 +8,7 @@ import { H } from "@highlight-run/node";
 H.init({
   projectID: "lgxjrz4d",
   serviceName: "web-app-trpc",
-  environment: env.VERCEL_ENV ?? "development",
+  environment: env.VERCEL_ENV ?? env.NODE_ENV ?? "development",
   serviceVersion: env.VERCEL_GIT_COMMIT_SHA ?? "unknown",
 });
 
