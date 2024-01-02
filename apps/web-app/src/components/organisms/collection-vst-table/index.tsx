@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { CollectionVst, Vst, UserVstAssociation } from "@prisma/client";
 import { api } from "@/utils/api";
 import { Button } from "vst-ui";
-import { VstSearchCommandMenu } from "../vst-command-search";
+import { VstSearchDialog } from "../vst-search-dialog";
 import { toast } from "vst-ui";
 import { useDebouncedValue } from "@mantine/hooks";
 import { Reorder } from "framer-motion";
@@ -130,7 +130,7 @@ const CollectionVstTable = ({
 
   return (
     <>
-      <VstSearchCommandMenu
+      <VstSearchDialog
         onOpenChange={(open) => {
           setSearchDialogOpen(open);
         }}

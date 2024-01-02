@@ -87,8 +87,6 @@ export const FileUploadApiRoute = async (
         timestamp: new Date().toISOString(),
       });
 
-      console.log(new Date().toISOString());
-
       const s3 = new AWS.S3({
         accessKeyId: process.env.AWS_ACCESS_KEY_S3,
         secretAccessKey: process.env.AWS_SECRET_KEY_S3,
@@ -98,8 +96,6 @@ export const FileUploadApiRoute = async (
           secretAccessKey: process.env.AWS_SECRET_KEY_S3 ?? "",
         },
       });
-
-      console.log(new Date().toISOString());
 
       const uploadedFile = await s3.upload(params).promise();
 

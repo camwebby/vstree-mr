@@ -3,9 +3,7 @@ import UserCommand from "./user-command";
 import Link from "next/link";
 import { useState } from "react";
 import { cn } from "vst-ui/src/lib/utils";
-
-import SiteSearch from "./site-search";
-import { VstSearchCommandMenu } from "./vst-command-search";
+import { VstSearchDialog } from "./vst-search-dialog";
 import { useRouter } from "next/router";
 import { Vst } from "vst-database";
 
@@ -44,7 +42,7 @@ export function Header({ className }: { className?: string }) {
         placeholder="Search"
         className="hidden max-w-sm md:block"
       />
-      <VstSearchCommandMenu
+      <VstSearchDialog
         open={showSiteSearch}
         onOpenChange={(open) => setShowSiteSearch(open)}
         onVstClick={(vst: Vst) => {

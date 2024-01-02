@@ -19,7 +19,7 @@ import { search } from "fast-fuzzy";
 import { Loader2 } from "lucide-react";
 import { useDebouncedValue } from "@mantine/hooks";
 
-export const VstSearchCommandMenu = ({
+export const VstSearchDialog = ({
   open,
   onVstClick,
   onOpenChange,

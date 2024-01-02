@@ -17,6 +17,7 @@ import { Vst } from "@prisma/client";
 import { Badge } from "vst-ui";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import Head from "next/head";
 
 // Dynamic imports
 const VSTActions = dynamic(() => import("../organisms/vst-actions"), {
@@ -57,6 +58,9 @@ export function VstPage({ slug }: { slug: string }) {
   return (
     <Layout>
       <>
+        <Head>
+          <title>{vst?.name} | vstree</title>
+        </Head>
         <NewColWarnDialog
           isOpen={showWarnDialog}
           onOpenChange={setShowWarnDialog}

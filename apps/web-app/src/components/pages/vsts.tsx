@@ -11,6 +11,7 @@ import { toast } from "vst-ui";
 import { creators } from "@/constants/creators";
 import { useRouter } from "next/router";
 import { Checkbox } from "vst-ui";
+import Head from "next/head";
 
 export function Vsts({
   initialData,
@@ -70,6 +71,9 @@ export function Vsts({
 
   return (
     <div className="relative">
+      <Head>
+        <title>vsts | vstree</title>
+      </Head>
       <div
         className={cn(
           "max-w-screen sticky top-0 z-10 flex items-center gap-5 overflow-x-auto border-l border-border bg-background/60 p-3 backdrop-blur-sm lg:border-b",

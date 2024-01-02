@@ -14,7 +14,7 @@ import { Textarea } from "vst-ui";
 import { Switch } from "vst-ui";
 import { Loader2 } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
-import { VstSearchCommandMenu } from "./../vst-command-search";
+import { VstSearchDialog } from "../vst-search-dialog";
 import { api } from "@/utils/api";
 import { Collection } from "@prisma/client";
 import { toast } from "vst-ui";
@@ -200,7 +200,7 @@ export function NewCollection() {
               side="bottom"
               className="z-[50] h-[87vh] w-screen  p-0"
             >
-              <VstSearchCommandMenu
+              <VstSearchDialog
                 onOpenChange={(open) => {
                   setSearchDialogOpen(open);
                 }}

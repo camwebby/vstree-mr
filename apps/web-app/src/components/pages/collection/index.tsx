@@ -18,6 +18,7 @@ import CollectionMetaCard from "../../organisms/collection-meta";
 import CollectionActions from "../../organisms/collection-actions";
 import dynamic from "next/dynamic";
 import { vstStatIconMap, vstUserAction } from "@/constants/vstUserAction";
+import Head from "next/head";
 
 // #region dynamic imports
 const CollectionPrices = dynamic(
@@ -75,6 +76,9 @@ export function CollectionPage({ slug }: { slug: string }) {
 
   return (
     <Layout>
+      <Head>
+        <title>{collection?.name || 'Collection'} | vstree</title>
+      </Head>
       <TwoColContainer>
         <TwoColFirst>
           {!!collection ? (

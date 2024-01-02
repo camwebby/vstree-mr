@@ -11,7 +11,7 @@ import { Separator } from "vst-ui";
 import { User } from "@prisma/client";
 import dynamic from "next/dynamic";
 import { SkeletonCard } from "../organisms/skeleton-card";
-
+import Head from "next/head";
 
 const UserVsts = dynamic(() => import("../organisms/user-vsts"), {
   loading: () => <SkeletonCard />,
@@ -41,10 +41,11 @@ const UserProfilePage = ({ id }: { id?: string }) => {
     },
   );
 
-
-
   return (
     <Layout>
+      <Head>
+        <title>Profile | vstree</title>
+      </Head>
       <TwoColContainer>
         <TwoColFirst>
           <Card className="h-fit w-full">
