@@ -1,8 +1,8 @@
-import { db } from "./lib/db";
 import { __CONFIG__ } from "./consts/config";
 import { createProcessor } from "./utils/eventProcessor";
 import {
   discardIngressEvent,
+  getEventsToProcess,
   markIngressEventAsChecked,
   markIngressEventAsSuccess,
 } from "./utils/eventProcessor/utils";
@@ -10,20 +10,16 @@ import {
 export const main = async () => {
   console.log(`Starting ingress service run`);
 
-  // retrieve unverified vsts
-  const events = await db.ingressEvent.findMany({
-    where: {
-      // lastCheckedAt: {
-      //   lt: new Date(),
-      // },
-    },
-  });
+  const events = await getEventsToProcess();
 
   console.log(`Found ${events.length} events to process`);
 
   // scrapes
   for (const ingressEvent of events) {
-    if (ingressEvent.checkCount > __CONFIG__.MAX_VERIFICATIONS) {
+    if (
+      ingressEvent.lastCheckedAt !== ingressEvent.lastSuccessAt &&
+      ingressEvent.checkCount > __CONFIG__.MAX_VERIFICATIONS
+    ) {
       await discardIngressEvent(ingressEvent);
     }
 
@@ -39,7 +35,10 @@ export const main = async () => {
       await discardIngressEvent(ingressEvent);
     }
 
-    await markIngressEventAsSuccess(ingressEvent);
+    // If success
+    if (!err) {
+      await markIngressEventAsSuccess(ingressEvent);
+    }
   }
 
   console.log(`Finished ingress service run`);

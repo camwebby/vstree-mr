@@ -8,7 +8,7 @@ import {
 import { collectionCreateZod, updateCollectionZod } from "./types";
 import { TRPCError } from "@trpc/server";
 import { db } from "@/server/db";
-import { zCurrency } from "@/constants/zod/curency";
+import { zCurrency } from "vst-utils";
 import { WhereToFind } from "@prisma/client";
 
 export const collectionRouter = createTRPCRouter({

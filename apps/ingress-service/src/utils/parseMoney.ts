@@ -1,3 +1,5 @@
+import { zCurrency } from "vst-utils";
+
 type ParsedMoney = {
   value: number | null;
   currency: string | null;
@@ -19,5 +21,11 @@ export function parseMoney(moneyString?: string): ParsedMoney {
   const currency = match[1].trim() || null;
   const value = match[2] ? parseFloat(match[2].replace(",", "")) : null;
 
-  return { value, currency };
+  // validate currency
+  const parsedCurrency = zCurrency.safeParse(currency);
+  if (parsedCurrency.success) {
+    return { value, currency: parsedCurrency.data };
+  }
+
+  return { value, currency: null };
 }

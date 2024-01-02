@@ -22,15 +22,13 @@ import {
 } from "vst-ui";
 import { ComponentProps, useCallback } from "react";
 import { RadioGroup, RadioGroupItem } from "vst-ui";
-import { zCurrency } from "@/constants/zod/curency";
+import { zCurrency } from "vst-utils";
 import { toast } from "vst-ui";
 import { api } from "@/utils/api";
 import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
-  // vendorName: z.string().nonempty(),
   currency: zCurrency,
-  // price: z.string().nonempty(),
   url: z.string().url().nonempty(),
 });
 
@@ -43,9 +41,7 @@ export default function WTFSuggest(
     resolver: zodResolver(formSchema),
     defaultValues: {
       currency: "USD",
-      // vendorName: "",
       url: "",
-      // price: "",
     },
   });
 
@@ -55,7 +51,6 @@ export default function WTFSuggest(
         title: "Thanks for your suggestion. We'll review it soon.",
       });
 
-      // clear form
       form.reset();
 
       props.onOpenChange && props.onOpenChange(false);
@@ -115,20 +110,6 @@ export default function WTFSuggest(
                 Know of a place to find this VST?
               </DialogDescription>
             </DialogHeader>
-            {/* 
-            <FormField
-              control={form.control}
-              name="vendorName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Vendor</FormLabel>
-                  <Input placeholder="Plugin Place" {...field} />
-                  <FormControl></FormControl>
-        
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
 
             <FormField
               control={form.control}
@@ -158,22 +139,6 @@ export default function WTFSuggest(
               )}
             />
 
-            {/* <FormField
-              control={form.control}
-              name="price"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Price ({form.watch("currency")})</FormLabel>
-                  <Input prefix={""} type="number" {...field} />
-                  <FormControl></FormControl>
-                  <FormDescription>
-                    What was the latest price you saw?
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
-
             <FormField
               control={form.control}
               name="url"
@@ -195,7 +160,6 @@ export default function WTFSuggest(
               )}
             />
 
-            {/* <DialogFooter> */}
             <Button
               disabled={isLoading}
               onClick={async () => {
@@ -212,7 +176,6 @@ export default function WTFSuggest(
                 "Make suggestion"
               )}
             </Button>
-            {/* </DialogFooter> */}
           </DialogContent>
         </form>
       </Form>

@@ -1,16 +1,18 @@
 import { z } from "zod";
-import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
-import { zCurrency } from "@/constants/zod/curency";
+import {
+  createTRPCRouter,
+  protectedProcedure,
+  publicProcedure,
+} from "@/server/api/trpc";
+import { zCurrency } from "vst-utils";
 import { WhereToFind } from "vst-database";
 import { modelIntMap } from "vst-database/consts";
 
 export const whereToFindRouter = createTRPCRouter({
-  submit: publicProcedure
+  submit: protectedProcedure
     .input(
       z.object({
-        // vendorName: z.string(),
         vstId: z.number().min(0),
-        // price: z.number().min(0).optional(),
         url: z.string(),
         currency: zCurrency,
       }),
@@ -39,13 +41,13 @@ export const whereToFindRouter = createTRPCRouter({
           vendorName: "",
           url: input.url,
           vstId: input.vstId,
-          // price: input.price,
+
           currency: input.currency as string,
         },
       });
     }),
 
-  submitNew: publicProcedure
+  submitNew: protectedProcedure
     .input(
       z.object({
         vstId: z.number().min(0),
@@ -60,6 +62,21 @@ export const whereToFindRouter = createTRPCRouter({
         throw new Error("You must be logged in to submit a link");
       }
 
+      const existing = await ctx.db.ingressEvent.findFirst({
+        where: {
+          submittedByUserId: ctx.session.user.id,
+          model: modelIntMap["whereToFind"],
+          payload: {
+            path: ["vstId"],
+            equals: input.vstId,
+          },
+        },
+      });
+
+      if (existing) {
+        throw new Error("You have already submitted a link for this VST");
+      }
+
       const payload: Partial<WhereToFind> = {
         url: input.url,
         vstId: input.vstId,
@@ -71,6 +88,7 @@ export const whereToFindRouter = createTRPCRouter({
         data: {
           model: modelIntMap["whereToFind"],
           payload,
+          submittedByUserId: ctx.session.user.id,
           url: input.url,
         },
       });

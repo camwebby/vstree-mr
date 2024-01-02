@@ -103,7 +103,6 @@ export class GenericProcessor implements IngressEventProcessor {
       scrapeSchema
     );
 
-    console.log({ data });
 
     // attempt to create record
     const err = await this._createEntityFromEvent(ingressEvent, data);

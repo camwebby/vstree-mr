@@ -58,7 +58,7 @@ export const createProcessor = (
           const vendorName = nameDomainMap[domain];
 
           // Parse money
-          const { price, currency: scrapedCurr, name } = data;
+          const { price, name } = data;
 
           if (!price) {
             return {
@@ -91,7 +91,7 @@ export const createProcessor = (
           });
 
           // Fuzzy name match
-          if (fuzzy(name, vst?.name || "") < 0.7) {
+          if (fuzzy(name, vst?.name || "") < 0.33) {
             return {
               errMessage: "Event vst name does not match scraped name",
               handleAction: "discard",
@@ -101,16 +101,17 @@ export const createProcessor = (
           try {
             const upsert = await db.whereToFind.upsert({
               where: {
-                vstId_vendorName: {
+                vstId_vendorName_currency: {
                   vstId,
                   vendorName,
+                  currency: parsedPrice.currency || currency,
                 },
               },
               create: {
                 vstId,
                 price: parsedPrice.value * 100,
                 url: ingressEvent.url,
-                currency: scrapedCurr || currency,
+                currency: parsedPrice.currency || currency,
                 vendorName,
               },
               update: {
@@ -123,6 +124,7 @@ export const createProcessor = (
               timestamp: new Date().toISOString(),
               body: upsert,
             });
+
             return;
           } catch (error) {
             console.error({ error });

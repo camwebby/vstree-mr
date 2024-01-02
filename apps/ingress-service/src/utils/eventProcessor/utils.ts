@@ -17,24 +17,16 @@ export const markIngressEventAsChecked = async (ingressEvent: IngressEvent) => {
 };
 
 export const markIngressEventAsSuccess = async (ingressEvent: IngressEvent) => {
-  // await db.ingressEvent.update({
-  //   where: {
-  //     id: ingressEvent.id,
-  //   },
-  //   data: {
-  //     lastCheckedAt: new Date(),
-  //     checkCount: {
-  //       increment: 1,
-  //     },
-  //     // successCount: {
-  //     //   increment: 1,
-  //     // },
-  //   },
-  // });
-
-  await db.ingressEvent.delete({
+  await db.ingressEvent.update({
     where: {
       id: ingressEvent.id,
+    },
+    data: {
+      lastCheckedAt: new Date(),
+      checkCount: {
+        increment: 1,
+      },
+      lastSuccessAt: new Date(),
     },
   });
 };
@@ -61,4 +53,24 @@ export const validatePayloadHasAllKeys = (ingressEvent: IngressEvent) => {
   }
 
   return payload;
+};
+
+export const getEventsToProcess = async () => {
+  const events = await db.ingressEvent.findMany({
+    where: {
+      // later than a day ago or never checked
+      OR: [
+        {
+          lastCheckedAt: {
+            lt: new Date(new Date().getTime() - 1000 * 60 * 60 * 24),
+          },
+        },
+        {
+          lastCheckedAt: null,
+        },
+      ],
+    },
+  });
+
+  return events;
 };

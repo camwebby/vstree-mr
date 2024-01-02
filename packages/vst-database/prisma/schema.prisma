@@ -299,7 +299,7 @@ model WhereToFind {
     Vendor    Vendor?   @relation(fields: [vendorId], references: [id])
     Vst       Vst       @relation(fields: [vstId], references: [id], onDelete: Cascade)
 
-    @@unique([vstId, vendorName])
+    @@unique([vstId, vendorName, currency])
     @@index([vstId], type: Hash)
 }
 
@@ -387,13 +387,16 @@ model IngressEvent {
     url     String
 
     lastCheckedAt DateTime?
+    lastSuccessAt DateTime?
 
-    checkCount   Int @default(0)
-    successCount Int @default(0)
+    submittedByUserId String?
+
+    checkCount Int @default(0)
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
     @@index([lastCheckedAt], map: "lastCheckedAt")
     @@index([model], map: "model")
+    @@index([submittedByUserId], map: "submittedByUserId")
 }
