@@ -2,6 +2,7 @@ import AWS from "aws-sdk";
 import { NextApiRequest, NextApiResponse } from "next";
 import crypto from "crypto";
 import { BLOB_FOLDERS, BUCKET_NAME } from "vst-utils";
+import { H } from "@highlight-run/next/server";
 
 export const FileUploadApiRoute = async (
   req: NextApiRequest,
@@ -10,11 +11,14 @@ export const FileUploadApiRoute = async (
     error?: string;
   }>,
 ) => {
-  console.log({
-    message: "Received request to upload file",
-    timestamp: new Date().toISOString(),
-    body: req.body,
-  });
+  H.log(
+    {
+      message: "Received request to upload file",
+      timestamp: new Date().toISOString(),
+      body: req.body,
+    },
+    "info",
+  );
 
   if (req.method === "POST") {
     //----------------------------------
@@ -64,7 +68,6 @@ export const FileUploadApiRoute = async (
     //----------------------------------
     // PREPARE UPLOAD
     //----------------------------------
-
     // convert file to base64
     const buffer = Buffer.from(file, "base64");
 
@@ -82,10 +85,13 @@ export const FileUploadApiRoute = async (
     };
 
     try {
-      console.log({
-        message: "Attempting to upload file to s3",
-        timestamp: new Date().toISOString(),
-      });
+      H.log(
+        {
+          message: "Attempting to upload file to s3",
+          timestamp: new Date().toISOString(),
+        },
+        "info",
+      );
 
       const s3 = new AWS.S3({
         accessKeyId: process.env.AWS_ACCESS_KEY_S3,
@@ -99,11 +105,14 @@ export const FileUploadApiRoute = async (
 
       const uploadedFile = await s3.upload(params).promise();
 
-      console.log({
-        message: "Successfully uploaded file to s3",
-        timestamp: new Date().toISOString(),
-        body: uploadedFile,
-      });
+      H.log(
+        {
+          message: "Successfully uploaded file to s3",
+          timestamp: new Date().toISOString(),
+          body: uploadedFile,
+        },
+        "info",
+      );
 
       const uploadedFileRes = {
         Location: uploadedFile.Location,
@@ -112,7 +121,7 @@ export const FileUploadApiRoute = async (
       res.status(200).json({ uploadedFileRes });
       return;
     } catch (error) {
-      console.error({ error, timestamp: new Date().toISOString() });
+      H.log({ error, timestamp: new Date().toISOString() }, "error");
       res.status(500).json({ error: "There was an error uploading" });
       return;
     }
