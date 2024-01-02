@@ -1,5 +1,6 @@
 import { PrismaClient, Vst } from "@prisma/client";
 import * as fs from "fs";
+import { BUCKET_NAME } from "vst-utils/src/blob/index.js";
 import { generateSlug } from "vst-utils/src/slug.js";
 
 const readJSONFile = async (filePath: string) => {
@@ -11,7 +12,7 @@ const readJSONFile = async (filePath: string) => {
 };
 
 const mapJSONVstToPrismaVst = (vst: any): Partial<Vst> => {
-  const iconUrl = `https://vst-assets.s3.eu-west-1.amazonaws.com/vst-icon/${vst.display_name.replace(
+  const iconUrl = `https://${BUCKET_NAME}.s3.eu-west-1.amazonaws.com/vst-icon/${vst.display_name.replace(
     " ",
     "_"
   )}`;

@@ -1,7 +1,7 @@
 import AWS from "aws-sdk";
 import { NextApiRequest, NextApiResponse } from "next";
 import crypto from "crypto";
-import { BLOB_FOLDERS } from "vst-utils";
+import { BLOB_FOLDERS, BUCKET_NAME } from "vst-utils";
 
 export const FileUploadApiRoute = async (
   req: NextApiRequest,
@@ -72,7 +72,7 @@ export const FileUploadApiRoute = async (
     const guid = crypto.randomUUID();
 
     const params = {
-      Bucket: "vst-assets",
+      Bucket: BUCKET_NAME,
       Folder: folder,
       Key: `${folder}/${guid}.${fileType}`,
       Body: buffer,

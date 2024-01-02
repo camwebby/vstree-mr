@@ -4,6 +4,7 @@
  */
 await import("./src/env.mjs");
 import million from "million/compiler";
+import { BUCKET_NAME } from "vst-utils";
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -23,8 +24,8 @@ const config = {
 
   images: {
     domains: [
-      "vst-assets.s3.eu-west-1.amazonaws.com",
-      "vst-assets.s3.amazonaws.com",
+      `${BUCKET_NAME}.s3.eu-west-1.amazonaws.com`,
+      `${BUCKET_NAME}.s3.amazonaws.com`,
     ],
   },
 
