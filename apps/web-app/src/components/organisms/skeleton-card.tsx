@@ -8,7 +8,7 @@ export const SkeletonCard = () => {
         <CardHeader className="grid grid-cols-[1fr_110px] items-start gap-3 space-y-0">
           <Skeleton className="h-12 w-12 rounded-full bg-muted-foreground" />
           <div className=" space-y-2">
-            <Skeleton className="h-4 w-[220px] bg-muted-foreground" />
+            <Skeleton className="h-4 w-full bg-muted-foreground" />
             <Skeleton className="h-4 w-[180px] bg-muted-foreground" />
           </div>
         </CardHeader>
