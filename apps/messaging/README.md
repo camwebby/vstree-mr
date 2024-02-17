@@ -1,4 +1,6 @@
-# messaging
+# Messaging
+
+This project contains lambda functions that broker messages from the app via SNS and lambdas
 
 To install dependencies:
 

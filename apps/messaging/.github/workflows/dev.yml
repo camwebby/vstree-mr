@@ -1,0 +1,109 @@
+name: Deploy staging
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag_version:
+        description: "Tag version"
+        required: false
+
+env:
+  tf-directory: ./terraform
+  enviorment: staging
+
+jobs:
+  provision:
+    name: Provision infrastructure
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@master
+        with:
+          ref: ${{ github.event.inputs.tag_version || 'refs/head/main' }}
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.1.8
+          terraform_wrapper: false
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+        working-directory: ${{env.tf-directory}}
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate
+        working-directory: ${{env.tf-directory}}
+
+      - name: Terraform Plan
+        id: plan
+        working-directory: ${{env.tf-directory}}
+          -var="docker_image_tag=mrdeploy-${{ github.sha }}" \
+        run: |
+          terraform plan \
+          -var="env=${{env.enviorment}}" \
+          -out ./ca.out
+
+      - name: Terraform Apply
+        id: apply
+        working-directory: ${{env.tf-directory}}
+        run: |
+          terraform apply ./ca.out
+
+  deployment:
+    needs: provision
+    name: Deploy app
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@master
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Build, tag, and push image to Amazon ECR
+        working-directory: ./where-to-find
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: vst-messaging-repo-${{ env.environment }}-wtf
+          TAG_PREFIX: vst-messaging-wtf-
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          echo "Building Docker image..."
+          docker buildx create --use
+          docker buildx build \
+            --push \
+            --tag $ECR_REGISTRY/$ECR_REPOSITORY:$TAG_PREFIX$IMAGE_TAG \
+            --cache-from=type=local,src=/tmp/.buildx-cache \
+            --cache-to=type=local,dest=/tmp/.buildx-cache \
+            --build-arg GHUB_TOKEN=$GHUB_TOKEN \
+            --build-arg JIRA_TOKEN=$JIRA_TOKEN \
+            .

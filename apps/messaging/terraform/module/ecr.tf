@@ -1,24 +1,25 @@
 
-resource "aws_ecr_repository" "vst_ecr_repo" {
-    name = "${var.app_name}-repo-${var.env}"
-    tags = {
-        Environment = var.env
-        Project     = var.app_name
-    }
-    image_tag_mutability = "MUTABLE"
-    force_delete = true
+resource "aws_ecr_repository" "wtf_vst_ecr_repo" {
+  name = "${var.app_name}-repo-${var.env}-wtf"
+  tags = {
+    Environment = var.env
+    Project     = var.app_name
+  }
+  image_tag_mutability = "MUTABLE"
+  force_delete         = true
 
-    provisioner "local-exec" {
+  // Setup dummy container
+  provisioner "local-exec" {
     command = <<-EOT
         docker pull alpine
         docker tag alpine dummy_container
         docker push dummy_container
-    EOT
-    }
+        EOT
+  }
 }
 
-resource "aws_ecr_lifecycle_policy" "mrdeploy_ecr_repo_policy" {
-  repository = aws_ecr_repository.vst_ecr_repo.name
+resource "aws_ecr_lifecycle_policy" "wtf_lambda_ecr_repo_policy" {
+  repository = aws_ecr_repository.wtf_vst_ecr_repo.name
   policy     = <<EOF
 {
     "rules": [

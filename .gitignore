@@ -200,3 +200,4 @@ chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Con
 chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/vi.lproj/InfoPlist.strings
 chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/zh_CN.lproj/InfoPlist.strings
 chrome/mac_arm-120.0.6099.109/chrome-mac-arm64/Google Chrome for Testing.app/Contents/Resources/zh_TW.lproj/InfoPlist.strings
+apps/messaging/terraform/.terraform.lock.hcl
