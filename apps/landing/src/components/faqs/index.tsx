@@ -9,10 +9,10 @@ export const FAQItem = ({ ...props }) => {
 
   return (
     <button onClick={() => setOpen(!open)} key={props.index}>
-      <div className="accordion -mt-[1px] py-[2rem] border-y border-border/10 hover:border-b-background duration-200">
+      <div className="accordion -mt-[1px] py-[2rem] border-y border-border/10 hover:border-b-foreground duration-200">
         <div className="accordion-title-wrapper">
           <div className="accordion-title-grid grid gap-4 items-center grid-cols-[1fr_30px]">
-            <h3 className="text-[0.95rem] lg:text-lg text-left text-background">
+            <h3 className="text-[0.95rem] lg:text-lg text-left text-foreground">
               {props.faq.question}
             </h3>
             <div
@@ -45,8 +45,8 @@ export const FAQItem = ({ ...props }) => {
           }}
           style={{ width: "100%" }}
         >
-          <div className="accordion-content pt-[1.5rem]">
-            <p className="text-muted-foreground text-sm text-left">
+          <div className="accordion-content pt-[1.5rem] w-full">
+            <p className="text-muted-foreground text-sm text-left w-full">
               {props.faq.answer}
               <br />
             </p>
@@ -61,7 +61,7 @@ const FAQs = () => {
   return (
     <section
       id="faqs"
-      className="bg-white text-background py-16 lg:py-32 relative"
+      className="bg-background text-foreground py-16 lg:py-32 relative"
     >
       <div className="container relative z-20">
         <div className="grid grid-cols-1 gap-y-5 md:grid-cols-2 ">
@@ -73,7 +73,7 @@ const FAQs = () => {
           >
             <div className="top-10 h-fit">
               <div className="margin-bottom margin-large">
-                <h2 className="text-3xl lg:text-5xl font-semibold">
+                <h2 className="text-3xl lg:text-5xl font-medium">
                   Frequently
                   <br /> asked questions
                 </h2>

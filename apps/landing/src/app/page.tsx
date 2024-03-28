@@ -12,21 +12,27 @@ import { vstActionsContent } from "@/content/vst-actions";
 import ShoppingIcon from "vst-ui/src/assets/icons/shopping";
 import CollectionIcon from "vst-ui/src/assets/icons/collection";
 
+import { Instrument_Sans } from "next/font/google";
+
+const sans = Instrument_Sans({
+  weight: ["400", "500", "600","700"],
+  subsets: ['latin'],
+});
+
 export default function Home() {
   return (
     <main
-      className={`overflow-x-hidden max-w-screen bg-background ${givonic.className}`}
+      className={`overflow-x-hidden max-w-screen bg-background ${sans.className}`}
     >
       <Header />
       <Hero />
 
-      <div
-        id="features"
-        className="bg-foreground pt-24 flex lg:justify-center items-center"
-      >
+      <div id="features" className=" pt-24 flex lg:justify-center items-center">
         <div className="container ">
-          <p className="text-primary text-left lg:text-center">Features</p>
-          <h2 className="text-3xl lg:text-5xl font-bold text-background/90  text-left lg:text-center text-balance">
+          <p className="text-foreground/70 text-left lg:text-center">
+            Features
+          </p>
+          <h2 className="text-3xl lg:text-5xl font-medium text-foreground  text-left lg:text-center text-balance">
             So what can it do?
           </h2>
         </div>

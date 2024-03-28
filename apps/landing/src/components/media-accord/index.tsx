@@ -91,12 +91,12 @@ const MediaAccord = ({
   return (
     <section
       id={id}
-      className="py-16  lg:py-32 relative z-20 overflow-hidden text-background bg-foreground border-y border-muted-foreground/20"
+      className="py-16  lg:py-32 relative z-20 overflow-hidden text-foreground bg-background border-y border-muted-foreground/20"
     >
       <div className="container my-12 flex lg:justify-center items-center">
         <div>
-          <p className="text-primary text-left lg:text-center">Features</p>
-          <h2 className="text-3xl  lg:max-w-sm lg:text-5xl font-bold text-background/90  text-left lg:text-center text-balance">
+          <p className="text-white/60 mb-3 text-left lg:text-center">Features</p>
+          <h2 className="text-3xl  lg:text-5xl font-medium text-foreground/90  text-left lg:text-center text-balance">
             VST quick actions
           </h2>
         </div>
@@ -113,7 +113,7 @@ const MediaAccord = ({
                   selected === i ? setSelected(-1) : setSelected(i)
                 }
                 className={`block w-full cursor-pointer border-b
-                border-background/20 ${i === selected ? "" : ""}`}
+                border-foreground/20 ${i === selected ? "" : ""}`}
                 layoutId={`item-${i}`}
                 transition={{ duration: 0.5, ease: [0.5, 0, 0.24, 1] }}
               >
@@ -172,7 +172,7 @@ const MediaAccord = ({
                         duration: 0.5,
                         ease: [0.5, 0, 0.24, 1],
                       }}
-                      className={` text-left lg:mt-3 pointer-events-none text-background/60
+                      className={` text-left lg:mt-3 pointer-events-none text-foreground/70
                     `}
                     >
                       {item.copy}

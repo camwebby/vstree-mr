@@ -1,6 +1,4 @@
-import Link from "next/link";
 import React from "react";
-import { APP_URL } from "@/consts/envs";
 import Button from "../button";
 
 const Widget = () => (

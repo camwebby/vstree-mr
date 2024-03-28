@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <header
       className={` shadow-sm w-screen backdrop-blur-lg border-b border-foreground/10 py-5 lg:p-5 left-0 top-0 fixed z-[999] duration-300 ease-in-out
-    ${isAtTopOfPage ? "bg-foreground/5 " : "bg-foreground/90"}
+    ${true ? "bg-foreground/5 " : "bg-foreground/90"}
     `}
     >
       <div className="container px-5 flex items-center justify-between">
@@ -33,7 +33,7 @@ const Header = () => {
           font-semibold uppercase tracking-widest
           duration-500 hover:bg-secondary
           ${
-            isAtTopOfPage
+            true
               ? "text-foreground"
               : "text-black/90 hover:text-foreground"
           }
@@ -45,19 +45,19 @@ const Header = () => {
 
         <div className="items-center gap-x-12 justify-center text-sm text-background/70 hidden lg:flex">
           <Link
-            className="text-zinc-500 hover:text-zinc-400 underline-offset-1 hover:underline hover:underline-offset-4 duration-300 ease-in-out"
+            className="text-zinc-300 hover:text-zinc-100 underline-offset-1 hover:underline hover:underline-offset-4 duration-300 ease-in-out"
             href="#features"
           >
             Features
           </Link>
           <Link
-            className="text-zinc-500 hover:text-zinc-400 underline-offset-1 hover:underline hover:underline-offset-4 duration-300 ease-in-out"
+            className="text-zinc-300 hover:text-zinc-100 underline-offset-1 hover:underline hover:underline-offset-4 duration-300 ease-in-out"
             href="#faqs"
           >
             FAQs
           </Link>
           <Link
-            className="text-zinc-500 hover:text-zinc-400 underline-offset-1 hover:underline hover:underline-offset-4 duration-300 ease-in-out"
+            className="text-zinc-300 hover:text-zinc-100 underline-offset-1 hover:underline hover:underline-offset-4 duration-300 ease-in-out"
             href="mailto:contact@vstree.app"
           >
             Contact

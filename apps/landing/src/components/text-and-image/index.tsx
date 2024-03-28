@@ -10,7 +10,7 @@ const TextAndImage: React.FC<{
   id?: string;
 }> = ({ ...props }) => {
   return (
-    <section id={props.id} className="bg-foreground py-16 lg:py-32">
+    <section id={props.id} className="bg-background py-16 lg:py-32">
       <div className=" container gap-5 grid grid-cols-1 lg:grid-cols-2 place-items-center lg:gap-20">
         <div
           className={
@@ -20,7 +20,7 @@ const TextAndImage: React.FC<{
         >
           <div className="hidden lg:block">{props.icon}</div>
           <div className="col-span-8 lg:col-span-7">
-            <h2 className="text-3xl max-w-[250px] lg:max-w-sm lg:text-5xl font-bold text-background/90 mb-4 lg:mb-6">
+            <h2 className="text-3xl max-w-[250px] lg:max-w-sm lg:text-5xl font-medium text-foreground mb-4 lg:mb-6">
               {props.title}
             </h2>
             <p className="text-base lg:text-xl max-w-md text-muted-foreground mb-6">
