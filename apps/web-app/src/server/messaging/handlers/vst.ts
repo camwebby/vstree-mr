@@ -1,4 +1,4 @@
-import type { UserVstAssociation } from "@prisma/client";
+import type { UserVstAssociation } from "vst-database";
 import { z } from "zod";
 import { zUserVstCountStats } from "@/constants/zod/vstCountStats";
 import { db } from "@/server/db";

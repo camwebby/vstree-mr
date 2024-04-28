@@ -19,7 +19,7 @@ import { useContext } from "react";
 import { NewCollectionContext } from "@/contexts/new-collection";
 import { Button } from "vst-ui";
 import { useVstToggle } from "@/utils/useVstToggle";
-import { User, Vst } from "@prisma/client";
+import { User, Vst } from "vst-database";
 import { TNewCollectionVstItem } from "@/contexts/new-collection/types";
 import { Badge } from "vst-ui";
 import {

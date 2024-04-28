@@ -1,4 +1,4 @@
-import { Vst } from "@prisma/client";
+import { Vst } from "vst-database";
 import { z } from "zod";
 
 export const vstCreateZod: z.ZodType<

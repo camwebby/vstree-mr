@@ -12,7 +12,7 @@ import {
   collectionToggleToCount,
   collectionUserAction,
 } from "@/constants/collectionUserAction";
-import { Collection } from "@prisma/client";
+import { Collection } from "vst-database";
 import React from "react";
 import {
   AlertDialog,

@@ -1,6 +1,4 @@
-import localFont from "next/font/local";
-
-export const givonic = localFont({
+export const givonicFiles = {
   src: [
     {
       path: "./Givonic-Regular.otf",
@@ -18,4 +16,4 @@ export const givonic = localFont({
       style: "normal",
     },
   ],
-});
+};

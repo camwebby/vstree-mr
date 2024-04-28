@@ -1,6 +1,5 @@
 //@ts-nocheck
-
-import { Button } from "vst-ui";
+import { Button, CardTitle } from "vst-ui";
 import {
   Dialog,
   DialogContent,
@@ -32,7 +31,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "vst-ui";
-import { Separator } from "@radix-ui/react-separator";
+import { Separator } from "vst-ui";
 import { api } from "@/utils/api";
 import { Loader2 } from "lucide-react";
 import {
@@ -51,8 +50,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "vst-ui";
-import { AccordionHeader } from "@radix-ui/react-accordion";
-import { User } from "@prisma/client";
+// import { CardTitle } from "vst-ui/src/components/accordion";
+import { User } from "vst-database";
 
 export default function CompatibilityRateDialog(
   props: ComponentProps<typeof Dialog> & {
@@ -153,7 +152,7 @@ export default function CompatibilityRateDialog(
             <Accordion defaultValue={["daw_spec"]} type="multiple">
               <AccordionItem className=" border-none" value="daw_spec">
                 <AccordionTrigger>
-                  <AccordionHeader>Your DAW</AccordionHeader>
+                  <CardTitle>Your DAW</CardTitle>
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="grid grid-cols-2 gap-5">
@@ -219,7 +218,7 @@ export default function CompatibilityRateDialog(
 
               <AccordionItem className=" border-none" value="os_spec">
                 <AccordionTrigger>
-                  <AccordionHeader>Your OS (optional)</AccordionHeader>
+                  <CardTitle>Your OS (optional)</CardTitle>
                 </AccordionTrigger>
 
                 <AccordionContent>
@@ -291,7 +290,7 @@ export default function CompatibilityRateDialog(
 
               <AccordionItem className=" border-none" value="system_spec">
                 <AccordionTrigger>
-                  <AccordionHeader>Your system spec (optional)</AccordionHeader>
+                  <CardTitle>Your system spec (optional)</CardTitle>
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className={`grid grid-cols-2 gap-5`}>

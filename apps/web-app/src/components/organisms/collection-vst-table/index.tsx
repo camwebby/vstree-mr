@@ -1,6 +1,6 @@
 import { Table, TableCell, TableHeader, TableRow } from "vst-ui";
 import { useEffect, useMemo, useState } from "react";
-import { CollectionVst, Vst, UserVstAssociation } from "@prisma/client";
+import { CollectionVst, Vst, UserVstAssociation } from "vst-database";
 import { api } from "@/utils/api";
 import { Button } from "vst-ui";
 import { VstSearchDialog } from "../vst-search-dialog";

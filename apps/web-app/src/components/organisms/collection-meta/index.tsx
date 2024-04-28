@@ -22,7 +22,7 @@ import {
   TooltipTrigger,
 } from "vst-ui";
 import Link from "next/link";
-import { Collection } from "@prisma/client";
+import { Collection } from "vst-database";
 import { api } from "@/utils/api";
 import { useDebouncedValue } from "@mantine/hooks";
 import { toast } from "vst-ui";

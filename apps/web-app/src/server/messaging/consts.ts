@@ -5,7 +5,7 @@ import {
   UserCollectionAssociation,
   UserVstAssociation,
   VstComment,
-} from "@prisma/client";
+} from "vst-database";
 
 export const messageTypeCallbackMap = {
   likesAt: (data: UserVstAssociation) => {

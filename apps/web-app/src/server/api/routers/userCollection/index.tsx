@@ -2,7 +2,7 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
 import { sendMessage } from "@/server/messaging/send";
-import { UserCollectionAssociation } from "@prisma/client";
+import { UserCollectionAssociation } from "vst-database";
 
 export const userCollectionRouter = createTRPCRouter({
   getByCollectionId: protectedProcedure

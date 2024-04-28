@@ -3,7 +3,7 @@ import { TableCell } from "vst-ui";
 import { Input } from "vst-ui";
 import VSTAvatar from "../../vst-avatar";
 import Link from "next/link";
-import { CollectionVst, Vst, UserVstAssociation } from "@prisma/client";
+import { CollectionVst, Vst, UserVstAssociation } from "vst-database";
 import { api } from "@/utils/api";
 import { LibraryIcon, Trash } from "lucide-react";
 import { toast } from "vst-ui";

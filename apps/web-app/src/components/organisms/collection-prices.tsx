@@ -1,4 +1,4 @@
-import { CollectionVst, Vst, WhereToFind } from "@prisma/client";
+import { CollectionVst, Vst, WhereToFind } from "vst-database";
 import React, { useCallback, useState } from "react";
 import {
   Button,
@@ -21,7 +21,7 @@ import { useRouter } from "next/router";
 import { currencyFormatter } from "./where-to-find";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "vst-ui";
 import Link from "next/link";
-import { OpenInNewWindowIcon } from "@radix-ui/react-icons";
+import { OpenInNewWindowIcon } from "vst-ui";
 import { ChevronDown, Loader2 } from "lucide-react";
 
 const FormattedPrice = ({

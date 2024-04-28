@@ -1,4 +1,4 @@
-import { Collection, Vst } from "@prisma/client";
+import { Collection, Vst } from "vst-database";
 
 interface Activity<T extends Vst | Collection> {
   type: string;

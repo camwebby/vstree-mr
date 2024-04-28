@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { UserCollectionAssociation } from "@prisma/client";
+import type { UserCollectionAssociation } from "vst-database";
 import { zUserCollectionCountStats } from "@/constants/zod/collectionCountStats";
 import { db } from "@/server/db";
 

@@ -1,5 +1,5 @@
 import { api } from "@/utils/api";
-import { Vst } from "@prisma/client";
+import { Vst } from "vst-database";
 import { useMemo, useState } from "react";
 import {
   Badge,
@@ -8,7 +8,6 @@ import {
   DialogHeader,
   DialogTitle,
   Input,
-  Separator,
   Table,
   TableBody,
   TableCell,

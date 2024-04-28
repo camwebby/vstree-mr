@@ -6,9 +6,12 @@ import { NewCollectionContext } from "@/contexts/new-collection";
 import { useContext, useEffect, useState } from "react";
 import { Loader2, PencilIcon, PlusIcon } from "lucide-react";
 import { cn } from "vst-ui/src/lib/utils";
-import { givonic } from "vst-ui/src/fonts";
+import { givonicFiles } from "vst-ui/src/fonts";
 import { useSession } from "next-auth/react";
 import { H } from "@highlight-run/next/client";
+import localFont from "next/font/local";
+
+export const givonic = localFont(givonicFiles);
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const {

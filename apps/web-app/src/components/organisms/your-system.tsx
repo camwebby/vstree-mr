@@ -34,7 +34,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { api } from "@/utils/api";
 import { toast } from "vst-ui";
-import { User } from "@prisma/client";
+import { User } from "vst-database";
 import { useDebouncedValue } from "@mantine/hooks";
 import useDeepCompareEffect from "use-deep-compare-effect";
 import { useSession } from "next-auth/react";

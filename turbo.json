@@ -11,7 +11,7 @@
     "build": {
       "dependsOn": ["db:generate", "^build"],
       "outputs": [".next/**", "!.next/cache/**"],
-      "cache": true
+      "cache": false
     },
     "lint": {
       "dependsOn": ["^lint"]
