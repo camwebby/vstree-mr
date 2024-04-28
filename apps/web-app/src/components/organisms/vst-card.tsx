@@ -162,7 +162,7 @@ export const VstCard: React.FC<{ vst: Vst }> = ({ vst }) => {
                   <p>{vst.countLikes}</p>
                 </div>
                 <div className="flex flex-row items-center gap-x-1">
-                  <p className="text-xs text-muted-foreground">Likes</p>
+                  <p className="text-xs text-muted-foreground">Owns</p>
                   <p>{vst.countOwns}</p>
                 </div>
               </div>
