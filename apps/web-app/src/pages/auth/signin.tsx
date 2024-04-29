@@ -35,9 +35,6 @@ export default function Auth({
     options: Record<string, string>;
   }[];
 }) {
-  const { data, error: fetchErr } = api.vsts.getById.useQuery({ id: 1 });
-  console.log({ data, fetchErr });
-
   const router = useRouter();
   const { error } = router.query;
 
