@@ -49,6 +49,7 @@ const VSTApp: AppType<{ session: Session | null }> = ({
         <HighlightInit
           projectId={"lgxjrz4d"}
           environment={env.NEXT_PUBLIC_VERCEL_ENV || "development"}
+          version={env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA || "development"}
           serviceName="vstree-web-app"
           tracingOrigins={[
             "dash.vstree.app",
