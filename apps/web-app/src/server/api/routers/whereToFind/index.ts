@@ -5,8 +5,8 @@ import {
   publicProcedure,
 } from "@/server/api/trpc";
 import { zCurrency } from "vst-utils";
-import { WhereToFind } from "vst-database";
-import { modelIntMap } from "vst-database/consts";
+import { modelIntMap } from "vst-database";
+import type { WhereToFind } from "vst-database";
 
 export const whereToFindRouter = createTRPCRouter({
   submit: protectedProcedure
