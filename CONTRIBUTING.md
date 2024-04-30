@@ -19,7 +19,7 @@ This repository is structured as follows:
 apps
 └── docs
 └── ingress-services
-└── marketing
+└── landing
 └── web-app
 
 packages
@@ -76,38 +76,6 @@ turbo dev --filter=vst-webapp
 ```bash
 turbo dev --filter=landing
 ```
-
-## Documentation
-
-The documentation for this project is located in the `docs` workspace. You can run the documentation locally by running the following command:
-
-```bash
-turbo dev --filter=docs
-```
-
-Documentation is written using [MDX](https://mdxjs.com). You can find the documentation files in the `apps/docs` directory.
-
-## Components
-
-We use a registry system for developing components. You can find the source code for the components under `apps/www/registry`. The components are organized by styles.
-
-```bash
-apps
-└── www
-    └── registry
-        ├── default
-        │   ├── example
-        │   └── ui
-        └── new-york
-            ├── example
-            └── ui
-```
-
-When adding or modifying components, please ensure that:
-
-1. You make the changes for every style.
-2. You update the documentation.
-3. You run `pnpm build:registry` to update the registry.
 
 ## Commit Convention
 
