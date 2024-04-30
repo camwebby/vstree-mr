@@ -16,7 +16,7 @@ import { Loader2 } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { VstSearchDialog } from "../vst-search-dialog";
 import { api } from "@/utils/api";
-import { Collection } from "@prisma/client";
+import { Collection } from "vst-database";
 import { toast } from "vst-ui";
 import { cn } from "vst-ui/src/lib/utils";
 import { Reorder } from "framer-motion";

@@ -6,7 +6,7 @@
 //   // sqs,
 // } from "./consts";
 
-import { Vst } from "@prisma/client";
+import { Vst } from "vst-database";
 import { messageTypeCallbackMap } from "./consts";
 
 // export const sendMessagePostMVP = async <TMessage>(

@@ -4,7 +4,7 @@ import { Table, TableCell, TableHeader, TableRow } from "vst-ui";
 import { vstUserAction } from "@/constants/vstUserAction";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "vst-ui";
 import { useSession } from "next-auth/react";
-import { User } from "@prisma/client";
+import { User } from "vst-database";
 import { api } from "@/utils/api";
 import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";

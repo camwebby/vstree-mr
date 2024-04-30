@@ -16,7 +16,7 @@ import {
   HoverCardTrigger,
 } from "vst-ui";
 import Link from "next/link";
-import { Vst } from "@prisma/client";
+import { Vst } from "vst-database";
 import React from "react";
 import {
   Sheet,

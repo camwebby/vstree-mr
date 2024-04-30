@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader } from "vst-ui";
-import { Vst } from "@prisma/client";
+import { Vst } from "vst-database";
 import Link from "next/link";
 import { useContext, useState } from "react";
 import { NewCollectionContext } from "@/contexts/new-collection";

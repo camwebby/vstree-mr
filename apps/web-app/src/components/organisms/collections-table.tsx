@@ -14,7 +14,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "vst-ui";
 import { useContext } from "react";
 import { NewCollectionContext } from "@/contexts/new-collection";
 import { api } from "@/utils/api";
-import { User } from "@prisma/client";
+import { User } from "vst-database";
 
 const CollectionsTable: React.FC<{
   userData: User;

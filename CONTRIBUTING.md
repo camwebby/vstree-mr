@@ -8,7 +8,7 @@ Please take a moment to review this document before submitting your first pull r
 
 This repository is a turborepo monorepo.
 
-- We use [bun](https://bun.sh) and [`workspaces`](https://bun.sh/docs/install/workspaces) for development.
+- We use [pnpm](https://pnpm.io) and [`workspaces`](https://pnpm.io/workspaces) for development.
 - We use [Turborepo](https://turbo.build/repo) as our build system.
 
 ## Structure
@@ -56,58 +56,26 @@ git checkout -b my-new-branch
 ### Install dependencies
 
 ```bash
-bun install
+pnpm install
 ```
 
 ### Run a workspace
 
-You can use the `bun run [cmd] --filter=[WORKSPACE]` command to start the development process for a workspace.
+You can use the `pnpm run [cmd] --filter=[WORKSPACE]` command to start the development process for a workspace.
 
 #### Examples
 
-1. To run the `new.vstree.app` website:
+1. To run the `dash.vstree.app` website:
 
 ```bash
-bun run dev --filter=vst-webapp
+turbo dev --filter=vst-webapp
 ```
 
-2. To run the `vstree` marketing site:
+2. To run the `vstree` landing site:
 
 ```bash
-bun run dev --filter=landing
+turbo dev --filter=landing
 ```
-
-## Documentation
-
-The documentation for this project is located in the `docs` workspace. You can run the documentation locally by running the following command:
-
-```bash
-bun run dev --filter=docs
-```
-
-Documentation is written using [MDX](https://mdxjs.com). You can find the documentation files in the `apps/docs` directory.
-
-## Components
-
-We use a registry system for developing components. You can find the source code for the components under `apps/www/registry`. The components are organized by styles.
-
-```bash
-apps
-└── www
-    └── registry
-        ├── default
-        │   ├── example
-        │   └── ui
-        └── new-york
-            ├── example
-            └── ui
-```
-
-When adding or modifying components, please ensure that:
-
-1. You make the changes for every style.
-2. You update the documentation.
-3. You run `pnpm build:registry` to update the registry.
 
 ## Commit Convention
 
@@ -118,7 +86,7 @@ When you create a commit we kindly ask you to follow the convention
 `category(scope or module): message` in your commit message while using one of
 the following categories:
 
-- `feat / feature`: all changes that introduce completely new code or new
+- `ft / feature`: all changes that introduce completely new code or new
   features
 - `fix`: changes that fix a bug (ideally you will additionally reference an
   issue if present)
@@ -143,13 +111,3 @@ https://www.conventionalcommits.org/ or check out the
 ## Requests for new features
 
 If you have a request for a new feature, please open a discussion on GitHub. We'll be happy to help you out.
-
-## Testing
-
-Tests are written using [Vitest](https://vitest.dev). You can run all the tests from the root of the repository.
-
-```bash
-bun test
-```
-
-Please ensure that the tests are passing when submitting a pull request. If you're adding new features, please include tests.

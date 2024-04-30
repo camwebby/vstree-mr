@@ -1,4 +1,4 @@
-import { IngressEvent } from "vst-database";
+import { IngressEvent, modelIntMap } from "vst-database";
 import { IngressEventProcessor } from "./types";
 import { GenericProcessor } from "./generic";
 import { generateSlug } from "vst-utils";
@@ -6,7 +6,6 @@ import { db } from "../../lib/db";
 import { parseMoney } from "../parseMoney";
 import { getRootDomain } from "../getRootDomain";
 import { nameDomainMap } from "../../consts/nameDomainMap";
-import { modelIntMap } from "vst-database/consts";
 import { fuzzy } from "fast-fuzzy";
 
 export const createProcessor = (

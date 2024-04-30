@@ -13,7 +13,7 @@ import {
 import VSTAvatar from "../organisms/vst-avatar";
 import { VstComments } from "../organisms/comments";
 import NewColWarnDialog from "../organisms/new-col-warn-dialog";
-import { Vst } from "@prisma/client";
+import { Vst } from "vst-database";
 import { Badge } from "vst-ui";
 import Link from "next/link";
 import dynamic from "next/dynamic";

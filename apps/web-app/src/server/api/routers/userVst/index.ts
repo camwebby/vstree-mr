@@ -2,7 +2,7 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { zUserVstCountStats } from "@/constants/zod/vstCountStats";
 import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
-import { UserVstAssociation } from "@prisma/client";
+import { UserVstAssociation } from "vst-database";
 import { sendMessage } from "@/server/messaging/send";
 // import { messageTypeCallbackMap } from "@/server/messaging/consts";
 // import { messageTypeCallbackMap } from "@/server/messaging/consts";

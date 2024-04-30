@@ -3,7 +3,6 @@ import Hero from "@/components/hero";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Button from "@/components/button";
-import { givonic } from "vst-ui/src/fonts";
 import MediaAccord from "@/components/media-accord";
 import TextAndImage from "@/components/text-and-image";
 import FilterIcon from "vst-ui/src/assets/icons/filter";
@@ -15,9 +14,10 @@ import CollectionIcon from "vst-ui/src/assets/icons/collection";
 import { Instrument_Sans } from "next/font/google";
 
 const sans = Instrument_Sans({
-  weight: ["400", "500", "600","700"],
-  subsets: ['latin'],
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
 });
+
 
 export default function Home() {
   return (

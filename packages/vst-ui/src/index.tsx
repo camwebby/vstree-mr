@@ -30,3 +30,4 @@ export * from "./components/tabs";
 export * from "./components/tooltip";
 export * from "./components/toaster";
 export * from "./components/toggle-group";
+export * from '@radix-ui/react-icons'

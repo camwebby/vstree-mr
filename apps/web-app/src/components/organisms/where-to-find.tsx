@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from "vst-ui";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "vst-ui";
-import type { WhereToFind } from "@prisma/client";
+import type { WhereToFind } from "vst-database";
 import Link from "next/link";
 import { useCallback } from "react";
 import {
@@ -16,7 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from "vst-ui";
-import { OpenInNewWindowIcon } from "@radix-ui/react-icons";
+import { OpenInNewWindowIcon } from "vst-ui";
 import dynamic from "next/dynamic";
 const WTFSuggest = dynamic(() => import("./wtf-suggest"));
 

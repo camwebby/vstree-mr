@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@types/winston": "^2.4.4",
-    "winston": "^3.11.0"
+    "winston": "^3.11.0",
+    "zod": "^3.22.2"
   }
 }

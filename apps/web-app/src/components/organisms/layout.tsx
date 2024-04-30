@@ -6,9 +6,14 @@ import { NewCollectionContext } from "@/contexts/new-collection";
 import { useContext, useEffect, useState } from "react";
 import { Loader2, PencilIcon, PlusIcon } from "lucide-react";
 import { cn } from "vst-ui/src/lib/utils";
-import { givonic } from "vst-ui/src/fonts";
 import { useSession } from "next-auth/react";
 import { H } from "@highlight-run/next/client";
+import { Instrument_Sans } from "next/font/google";
+
+const sans = Instrument_Sans({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+});
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const {
@@ -51,10 +56,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <main
             className={cn(
               "min-w-screen relative min-h-screen bg-muted",
-              givonic.className,
+              sans.className,
             )}
           >
-            <Header className={givonic.className} />
+            <Header className={sans.className} />
 
             <div className="relative grid grid-cols-5">
               <div

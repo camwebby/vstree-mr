@@ -9,7 +9,7 @@ import { collectionCreateZod, updateCollectionZod } from "./types";
 import { TRPCError } from "@trpc/server";
 import { db } from "@/server/db";
 import { zCurrency } from "vst-utils";
-import { WhereToFind } from "@prisma/client";
+import { WhereToFind } from "vst-database";
 
 export const collectionRouter = createTRPCRouter({
   getActiveSlugs: publicProcedure

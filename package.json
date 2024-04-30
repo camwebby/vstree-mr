@@ -17,10 +17,5 @@
   "engines": {
     "node": ">=18.17.0"
   },
-  "packageManager": "pnpm@8.9.0",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "dependencies": {}
+  "packageManager": "pnpm@8.9.0"
 }

@@ -8,7 +8,7 @@ import {
   TwoColSecond,
 } from "../organisms/two-col-layout";
 import { Separator } from "vst-ui";
-import { User } from "@prisma/client";
+import { User } from "vst-database";
 import dynamic from "next/dynamic";
 import { SkeletonCard } from "../organisms/skeleton-card";
 import Head from "next/head";

@@ -1,6 +1,6 @@
 import { api } from "./api";
 import { toast } from "vst-ui";
-import { Vst } from "@prisma/client";
+import { Vst } from "vst-database";
 import { signIn } from "next-auth/react";
 
 export const useVstToggle = ({ vst }: { vst: Vst }) => {

@@ -1,9 +1,9 @@
 import { Card, CardContent, CardHeader } from "vst-ui";
 
-import { Collection } from "@prisma/client";
+import { Collection } from "vst-database";
 import Link from "next/link";
 import Image from "next/image";
-import { Separator } from "@radix-ui/react-separator";
+import { Separator } from "vst-ui";
 import CollectionHoverCard from "./collection-hover-card";
 
 export function CollectionCard({ ...collection }: Collection) {
