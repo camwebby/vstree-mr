@@ -1,4 +1,14 @@
+import { api } from "@/utils/api";
+import { Code2Icon, Loader2 } from "lucide-react";
+import { ComponentProps, useMemo, useState } from "react";
 import { HeatMapGrid } from "react-grid-heatmap";
+import {
+  Button, Dialog, DialogContent, DialogTrigger, Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "vst-ui";
 import {
   cpuArchitectures,
   daws,
@@ -6,18 +16,6 @@ import {
   memoryOptions,
   operatingSystems,
 } from "./compatibility-rate/consts";
-import { ComponentProps, useMemo, useState } from "react";
-import { Dialog, DialogContent, DialogTrigger } from "vst-ui";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "vst-ui";
-import { api } from "@/utils/api";
-import { Button } from "vst-ui";
-import { Code2Icon, Loader2 } from "lucide-react";
 
 const axisOpts = [
   "daw",
@@ -28,13 +26,7 @@ const axisOpts = [
   // "osVersion",
 ] as const;
 
-const labelMap = ({
-  selectedOS,
-  selectedDAW,
-}: {
-  selectedOS?: keyof typeof operatingSystems;
-  selectedDAW?: keyof typeof daws;
-}) => ({
+const labelMap = () => ({
   daw: daws,
   systemOS: operatingSystems,
   cpuArchitecture: cpuArchitectures,
@@ -180,10 +172,10 @@ const CompatibilityHeatmap: React.FC<
               data={transformedData}
               xLabels={xLabels as string[]}
               yLabels={yLabels as string[]}
-              xLabelsStyle={(index) => ({
+              xLabelsStyle={() => ({
                 fontSize: "11px",
               })}
-              yLabelsStyle={(index) => ({
+              yLabelsStyle={() => ({
                 fontSize: "11px",
               })}
               cellHeight="2rem"

@@ -1,16 +1,12 @@
-import { Card, CardContent, CardHeader } from "vst-ui";
-import { Vst } from "vst-database";
+import { NewCollectionContext } from "@/contexts/new-collection";
+import { TNewCollectionVstItem } from "@/contexts/new-collection/types";
+import { PlusCircle } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useContext, useState } from "react";
-import { NewCollectionContext } from "@/contexts/new-collection";
+import { Vst } from "vst-database";
+import { Badge, Button, Card, CardContent, CardHeader, Separator, toast } from "vst-ui";
 import NewColWarnDialog from "./new-col-warn-dialog";
-import { Badge } from "vst-ui";
-import { Separator } from "vst-ui";
-import { PlusCircle } from "lucide-react";
-import { Button } from "vst-ui";
-import { TNewCollectionVstItem } from "@/contexts/new-collection/types";
-import { toast } from "vst-ui";
-import dynamic from "next/dynamic";
 import { SkeletonCard } from "./skeleton-card";
 
 const VSTHoverCard = dynamic(() => import("./vst-hover-card"), {
@@ -18,7 +14,7 @@ const VSTHoverCard = dynamic(() => import("./vst-hover-card"), {
   loading: () => <SkeletonCard />,
 });
 
-export const EffectIcon = ({ className }: { className?: string }) => (
+export const EffectIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -34,7 +30,7 @@ export const EffectIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export const InstrumentIcon = ({ className }: { className?: string }) => (
+export const InstrumentIcon = () => (
   <svg
     width="37"
     height="37"

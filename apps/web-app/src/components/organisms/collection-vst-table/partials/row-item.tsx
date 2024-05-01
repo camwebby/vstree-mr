@@ -1,17 +1,15 @@
-import { Fragment, useEffect, useMemo, useState } from "react";
-import { TableCell } from "vst-ui";
-import { Input } from "vst-ui";
-import VSTAvatar from "../../vst-avatar";
-import Link from "next/link";
-import { CollectionVst, Vst, UserVstAssociation } from "vst-database";
+import { vstStatIconMap, vstUserAction } from "@/constants/vst-user-action";
 import { api } from "@/utils/api";
-import { LibraryIcon, Trash } from "lucide-react";
-import { toast } from "vst-ui";
 import { useDebouncedValue } from "@mantine/hooks";
-import { cn } from "vst-ui/src/lib/utils";
+import { Trash } from "lucide-react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
+import { Fragment, useEffect, useState } from "react";
+import { CollectionVst, UserVstAssociation, Vst } from "vst-database";
+import { Input, TableCell, toast } from "vst-ui";
+import { cn } from "vst-ui/src/lib/utils";
 import { SkeletonCard } from "../../skeleton-card";
-import { vstStatIconMap, vstUserAction } from "@/constants/vstUserAction";
+import VSTAvatar from "../../vst-avatar";
 
 const VSTHoverCard = dynamic(() => import("../../vst-hover-card"), {
   ssr: false,

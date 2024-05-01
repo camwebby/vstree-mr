@@ -1,14 +1,16 @@
 //@ts-nocheck
+import { api } from "@/utils/api";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useDebouncedValue } from "@mantine/hooks";
+import { useSession } from "next-auth/react";
+import { useForm } from "react-hook-form";
+import useDeepCompareEffect from "use-deep-compare-effect";
+import { User } from "vst-database";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
   Card,
   CardContent,
   CardDescription,
@@ -20,7 +22,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  toast,
 } from "vst-ui";
+import { z } from "zod";
 import {
   cpuArchitectures,
   daws,
@@ -29,15 +38,6 @@ import {
   supportedDawVersions,
   supportedOsVersions,
 } from "./compatibility-rate/consts";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { api } from "@/utils/api";
-import { toast } from "vst-ui";
-import { User } from "vst-database";
-import { useDebouncedValue } from "@mantine/hooks";
-import useDeepCompareEffect from "use-deep-compare-effect";
-import { useSession } from "next-auth/react";
 
 export const userSetupSchema = z.object({
   daw: z.enum(daws).optional(),

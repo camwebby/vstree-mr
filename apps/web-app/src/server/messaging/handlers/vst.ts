@@ -1,8 +1,8 @@
 import type { UserVstAssociation } from "vst-database";
 import { z } from "zod";
-import { zUserVstCountStats } from "@/constants/zod/vstCountStats";
+import { zUserVstCountStats } from "@/constants/zod/vst-count-stats";
 import { db } from "@/server/db";
-import { vstToggleToCount } from "@/constants/vstUserAction";
+import { vstToggleToCount } from "@/constants/vst-user-action";
 
 export const vstCountIncrement = async (
   payload: UserVstAssociation,

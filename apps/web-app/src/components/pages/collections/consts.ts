@@ -1,4 +1,4 @@
-export const sortOptions = [
+export const collectionSortOptions = [
     {
       label: "Newest",
       value: "createdAt",

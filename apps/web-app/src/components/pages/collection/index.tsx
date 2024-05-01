@@ -17,7 +17,7 @@ import { cn } from "vst-ui/src/lib/utils";
 import CollectionMetaCard from "../../organisms/collection-meta";
 import CollectionActions from "../../organisms/collection-actions";
 import dynamic from "next/dynamic";
-import { vstStatIconMap, vstUserAction } from "@/constants/vstUserAction";
+import { vstStatIconMap, vstUserAction } from "@/constants/vst-user-action";
 import Head from "next/head";
 
 // #region dynamic imports

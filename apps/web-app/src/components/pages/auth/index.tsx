@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { UserAuthForm } from "../organisms/user-auth-form";
 import Head from "next/head";
+import { UserAuthForm } from "../../organisms/user-auth-form";
 
 export default function AuthenticationPage({ providers, error }) {
   return (

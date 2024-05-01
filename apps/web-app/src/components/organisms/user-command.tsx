@@ -1,29 +1,20 @@
+import { NewCollectionContext } from "@/contexts/new-collection";
+import { LogInIcon, LogOutIcon, PencilIcon, PlusIcon } from "lucide-react";
+import { signIn, signOut, useSession } from "next-auth/react";
+import { useTheme } from "next-themes";
+import Link from "next/link";
 import * as React from "react";
-import { cn } from "vst-ui/src/lib/utils";
-import { Button } from "vst-ui";
 import {
-  Command,
+  Avatar, AvatarFallback, AvatarImage, Button, Command,
   CommandGroup,
   CommandItem,
   CommandList,
-  CommandSeparator,
-} from "vst-ui";
-import { Dialog } from "vst-ui";
-import { Label } from "vst-ui";
-import { Popover, PopoverContent, PopoverTrigger } from "vst-ui";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { Avatar, AvatarFallback, AvatarImage } from "vst-ui";
-import { LogInIcon, LogOutIcon, PencilIcon, PlusIcon } from "lucide-react";
-import Link from "next/link";
-import { toast } from "vst-ui";
-import { useTheme } from "next-themes";
-import {
-  DropdownMenu,
+  CommandSeparator, Dialog, DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger, Label, Popover, PopoverContent, PopoverTrigger, toast
 } from "vst-ui";
-import { NewCollectionContext } from "@/contexts/new-collection";
+import { cn } from "vst-ui/src/lib/utils";
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<
   typeof PopoverTrigger

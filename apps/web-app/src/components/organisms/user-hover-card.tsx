@@ -1,13 +1,13 @@
 import { api } from "@/utils/api";
 import React from "react";
 import {
+  Badge,
+  CardTitle,
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
+  Separator,
 } from "vst-ui";
-import { Separator } from "vst-ui";
-import { Badge } from "vst-ui";
-import { CardTitle } from "vst-ui";
 
 const UserHoverCard = ({
   userId,

@@ -3,9 +3,8 @@ import { api } from "@/utils/api";
 import { SkeletonCard } from "../../organisms/skeleton-card";
 import { useEffect, useState } from "react";
 import { tags } from "@/constants/tags";
-import { Badge, Button } from "vst-ui";
-import { Loader2Icon, XCircle } from "lucide-react";
-import { cn } from "vst-ui/src/lib/utils";
+import { Button } from "vst-ui";
+import { Loader2Icon } from "lucide-react";
 import { toast } from "vst-ui";
 import { creators } from "@/constants/creators";
 import { useRouter } from "next/router";
@@ -74,8 +73,7 @@ export function Vsts({
           selectedCreators,
           setSelectedCreators,
           types,
-          setTypes,
-          orderBy,
+          setTypes
         }}
       />
 

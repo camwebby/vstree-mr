@@ -1,6 +1,6 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { zUserVstCountStats } from "@/constants/zod/vstCountStats";
+import { zUserVstCountStats } from "@/constants/zod/vst-count-stats";
 import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
 import { UserVstAssociation } from "vst-database";
 import { sendMessage } from "@/server/messaging/send";

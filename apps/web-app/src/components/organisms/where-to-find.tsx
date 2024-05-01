@@ -1,23 +1,23 @@
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { useCallback } from "react";
+import type { WhereToFind } from "vst-database";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "vst-ui";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "vst-ui";
-import type { WhereToFind } from "vst-database";
-import Link from "next/link";
-import { useCallback } from "react";
-import {
+  OpenInNewWindowIcon,
   Table,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
+  Tabs, TabsContent, TabsList, TabsTrigger,
 } from "vst-ui";
-import { OpenInNewWindowIcon } from "vst-ui";
-import dynamic from "next/dynamic";
+
+
 const WTFSuggest = dynamic(() => import("./wtf-suggest"));
 
 export const currencyFormatter = (currency: string) =>

@@ -1,7 +1,11 @@
 import { api } from "@/utils/api";
-import { Vst } from "vst-database";
+import { useDebouncedValue } from "@mantine/hooks";
+import { search } from "fast-fuzzy";
+import { Loader2 } from "lucide-react";
 import { useMemo, useState } from "react";
+import { Vst } from "vst-database";
 import {
+  Avatar, AvatarFallback, AvatarImage,
   Badge,
   Dialog,
   DialogContent,
@@ -13,10 +17,6 @@ import {
   TableCell,
   TableRow,
 } from "vst-ui";
-import { Avatar, AvatarFallback, AvatarImage } from "vst-ui";
-import { search } from "fast-fuzzy";
-import { Loader2 } from "lucide-react";
-import { useDebouncedValue } from "@mantine/hooks";
 
 export const VstSearchDialog = ({
   open,

@@ -1,8 +1,7 @@
 import { Card, CardContent, CardHeader } from "vst-ui";
-
-import { Collection } from "vst-database";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { Collection } from "vst-database";
 import { Separator } from "vst-ui";
 import CollectionHoverCard from "./collection-hover-card";
 
@@ -11,9 +10,7 @@ export function CollectionCard({ ...collection }: Collection) {
     <Link href={"/collections/" + collection.slug}>
       <CollectionHoverCard collectionSlug={collection.slug}>
         <Card
-          className="
-     h-full w-full
-hover:ring hover:ring-ring"
+          className="h-full w-full hover:ring hover:ring-ring"
         >
           <CardHeader className="flex flex-row items-center gap-x-3">
             {collection.iconUrl ? (

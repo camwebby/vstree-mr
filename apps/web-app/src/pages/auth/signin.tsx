@@ -1,10 +1,8 @@
-import AuthenticationPage from "@/components/pages/auth";
-import { authOptions } from "@/server/auth";
-import { GetServerSidePropsContext } from "next";
-import { getServerSession } from "next-auth";
 import { useRouter } from "next/router";
-import { H } from "highlight.run";
-import { api } from "@/utils/api";
+import { authOptions } from "@/server/auth";
+import { getServerSession } from "next-auth";
+import { GetServerSidePropsContext } from "next";
+import AuthenticationPage from "@/components/pages/auth";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getServerSession(context.req, context.res, authOptions);

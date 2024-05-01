@@ -1,16 +1,13 @@
-import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "vst-ui";
-import { Table, TableCell, TableHeader, TableRow } from "vst-ui";
-import { vstUserAction } from "@/constants/vstUserAction";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "vst-ui";
-import { useSession } from "next-auth/react";
-import { User } from "vst-database";
+import { vstUserAction } from "@/constants/vst-user-action";
 import { api } from "@/utils/api";
-import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
-import VSTAvatar from "./vst-avatar";
+import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
+import { User } from "vst-database";
+import { Card, CardContent, CardHeader, CardTitle, Table, TableCell, TableHeader, TableRow, Tabs, TabsContent, TabsList, TabsTrigger } from "vst-ui";
 import { SkeletonCard } from "./skeleton-card";
+import VSTAvatar from "./vst-avatar";
 
 const VSTHoverCard = dynamic(() => import("./vst-hover-card"), {
   ssr: false,
@@ -22,7 +19,7 @@ const UserVsts = ({ user }: { user?: User }) => {
 
   const refersToUser = userData?.user.id === user?.id;
 
-  const { data: userVst, isLoading: isLoadingUserVst } =
+  const { data: userVst } =
     api.userVst.getByUserId.useQuery(
       {
         userId: refersToUser ? userData?.user.id : user?.id,

@@ -1,34 +1,23 @@
-import { Card, CardHeader, CardTitle } from "vst-ui";
-import { Separator } from "vst-ui";
-import { Button } from "vst-ui";
-import VSTAvatar from "./vst-avatar";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHeader,
-  TableRow,
-} from "vst-ui";
-import { Badge } from "vst-ui";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "vst-ui";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Vst } from "vst-database";
-import React from "react";
 import {
-  Sheet,
+  Badge, Button, Card, CardHeader, CardTitle, HoverCard,
+  HoverCardContent,
+  HoverCardTrigger, Separator, Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
+  SheetTrigger, Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableRow
 } from "vst-ui";
-import { VstCard } from "./vst-card";
-import dynamic from "next/dynamic";
 import { SkeletonCard } from "./skeleton-card";
+import VSTAvatar from "./vst-avatar";
+import { VstCard } from "./vst-card";
 
 const VSTHoverCard = dynamic(() => import("./vst-hover-card"), {
   ssr: false,

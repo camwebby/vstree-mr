@@ -1,33 +1,40 @@
 import ComboBoxSelect from "@/components/organisms/combo-select";
 import { creators } from "@/constants/creators";
+import { tags } from "@/constants/tags";
 import React from "react";
 import { Checkbox } from "vst-ui";
 import { cn } from "vst-ui/src/lib/utils";
 
 const FilterBar: React.FC<{
     showTabBar: boolean;
-}> = () => {
+    selectedCreators: string[];
+    setSelectedCreators: (values: string[]) => void;
+    selectedTags: string[];
+    setSelectedTags: (values: string[]) => void;
+    types: boolean[];
+    setTypes: (values: boolean[]) => void;
+}> = ({...props}) => {
   return (
     <>
       <div
         className={cn(
           "max-w-screen sticky top-0 z-10 flex items-center gap-5 overflow-x-auto border-l border-border bg-background/60 p-3 backdrop-blur-sm lg:border-b",
-          !showTabBar ? "mb-5" : "mb-0",
+          !props.showTabBar ? "mb-5" : "mb-0",
         )}
       >
         <ComboBoxSelect
-          values={selectedCreators}
+          values={props.selectedCreators}
           setValues={(values) => {
-            setSelectedCreators(values);
+            props.setSelectedCreators(values);
           }}
           allOptions={creators.sort((a, b) => a.localeCompare(b))}
           optionLabel="creator"
         />
 
         <ComboBoxSelect
-          values={selectedTags}
+          values={props.selectedTags}
           setValues={(values) => {
-            setSelectedTags(values);
+            props.setSelectedTags(values);
           }}
           allOptions={tags.sort((a, b) => a.localeCompare(b))}
           optionLabel="tag"
@@ -35,10 +42,10 @@ const FilterBar: React.FC<{
 
         <div className="flex items-center space-x-2 rounded border border-border p-2">
           <Checkbox
-            disabled={types[0] && !types[1]}
-            checked={types[0]}
+            disabled={props.types[0] && !props.types[1]}
+            checked={props.types[0]}
             onCheckedChange={(v) => {
-              setTypes([true, !types.every(Boolean)]);
+              props.setTypes([true, !props.types.every(Boolean)]);
             }}
             id="effects"
           />
@@ -49,10 +56,10 @@ const FilterBar: React.FC<{
             Effects
           </label>
           <Checkbox
-            disabled={types[1] && !types[0]}
-            checked={types[1]}
+            disabled={props.types[1] && !props.types[0]}
+            checked={props.types[1]}
             onCheckedChange={(v) => {
-              setTypes([!types.every(Boolean), true]);
+              props.setTypes([!props.types.every(Boolean), true]);
             }}
             id="instruments"
           />
