@@ -2,9 +2,7 @@ import { api } from "@/utils/api";
 import { Code2Icon, Loader2 } from "lucide-react";
 import { ComponentProps, useMemo, useState } from "react";
 import { Button, Dialog, DialogContent, DialogTrigger } from "vst-ui";
-import {
-  experienceRateOptions
-} from "../compatibility-rate/consts";
+import { experienceRateOptions } from "../compatibility-rate/consts";
 import { heatmapAxisOpts } from "./consts";
 import HeatmapFeatureSelect from "./partials/heatmap-feature-select";
 import HeatmapGrid from "./partials/heatmap-grid";
@@ -26,14 +24,15 @@ const CompatibilityHeatmap: React.FC<
     },
   );
 
+  // Axis state
   const [xAxis, setXAxis] = useState<
     (typeof heatmapAxisOpts)[number] | undefined
   >(heatmapAxisOpts[0]);
-
   const [yAxis, setYAxis] = useState<
     (typeof heatmapAxisOpts)[number] | undefined
   >(heatmapAxisOpts[1]);
 
+  // Labels & data
   const xLabels = useMemo(() => {
     return !!xAxis ? heatmapLabelMap[xAxis] : [];
   }, [xAxis]);
@@ -51,8 +50,6 @@ const CompatibilityHeatmap: React.FC<
       yAxis: yAxis as string,
     });
   }, [data, xAxis, yAxis, xLabels, yLabels]);
-
-  if (!xLabels || !yLabels) return null;
 
   return (
     <Dialog {...props}>
@@ -72,10 +69,15 @@ const CompatibilityHeatmap: React.FC<
         </Button>
       </DialogTrigger>
       <DialogContent>
-        <HeatmapFeatureSelect {...{ xAxis, yAxis, setXAxis, setYAxis }} />
+        <HeatmapFeatureSelect
+          xAxis={xAxis}
+          yAxis={yAxis}
+          setXAxis={setXAxis}
+          setYAxis={setYAxis}
+        />
 
         <div className=" w-full">
-          {isLoading ? (
+          {isLoading || !(!!xLabels && !!yLabels) ? (
             <Loader2 className="h-5 w-5 animate-spin text-primary" />
           ) : (
             <HeatmapGrid

@@ -1,4 +1,25 @@
+import { NewCollectionContext } from "@/contexts/new-collection";
 import {
+  defaultFormValues,
+  formSchema,
+} from "@/contexts/new-collection/consts";
+import { api } from "@/utils/api";
+import { Reorder } from "framer-motion";
+import { Loader2 } from "lucide-react";
+import { signIn, useSession } from "next-auth/react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useContext, useEffect, useState } from "react";
+import { Collection } from "vst-database";
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DropzoneUpload,
   Form,
   FormControl,
   FormDescription,
@@ -6,40 +27,18 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  Input,
+  Sheet,
+  SheetContent,
+  Switch,
+  Textarea,
+  toast,
 } from "vst-ui";
-import { z } from "zod";
-import { Button } from "vst-ui";
-import { Input } from "vst-ui";
-import { Textarea } from "vst-ui";
-import { Switch } from "vst-ui";
-import { Loader2 } from "lucide-react";
-import { useContext, useEffect, useState } from "react";
-import { VstSearchDialog } from "../vst-search-dialog";
-import { api } from "@/utils/api";
-import { Collection } from "vst-database";
-import { toast } from "vst-ui";
 import { cn } from "vst-ui/src/lib/utils";
-import { Reorder } from "framer-motion";
-import { NewCollectionContext } from "@/contexts/new-collection";
-import {
-  defaultFormValues,
-  formSchema,
-} from "@/contexts/new-collection/consts";
-import { useRouter } from "next/router";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "vst-ui";
-import { DropzoneUpload } from "vst-ui";
 import { BLOB_FOLDERS } from "vst-utils";
-import Image from "next/image";
-import { signIn, useSession } from "next-auth/react";
-import { Sheet, SheetContent } from "vst-ui";
-import TableItem from "./partials/tableItem";
+import { z } from "zod";
+import { VstSearchDialog } from "../vst-search-dialog";
+import TableItem from "./partials/table-item";
 
 export function NewCollection() {
   const router = useRouter();

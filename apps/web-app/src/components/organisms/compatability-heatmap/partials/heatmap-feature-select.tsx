@@ -12,13 +12,13 @@ import { heatmapAxisOpts } from "../consts";
  * Responsible for managing the selection of the heatmap's x and y axis.
  */
 const HeatmapFeatureSelect: React.FC<{
-  xAxis: (typeof heatmapAxisOpts)[number];
-  yAxis: (typeof heatmapAxisOpts)[number];
+  xAxis?: (typeof heatmapAxisOpts)[number];
+  yAxis?: (typeof heatmapAxisOpts)[number];
   setYAxis: React.Dispatch<
-    React.SetStateAction<(typeof heatmapAxisOpts)[number]>
+    React.SetStateAction<(typeof heatmapAxisOpts)[number] | undefined>
   >;
   setXAxis: React.Dispatch<
-    React.SetStateAction<(typeof heatmapAxisOpts)[number]>
+    React.SetStateAction<(typeof heatmapAxisOpts)[number] | undefined>
   >;
 }> = ({ ...props }) => {
   return (

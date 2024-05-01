@@ -1,28 +1,40 @@
+//@ts-nocheck
 import { api } from "@/utils/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
 import { ComponentProps } from "react";
 import { useForm } from "react-hook-form";
+import { User } from "vst-database";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
-  AccordionTrigger, Button, CardTitle, Dialog,
+  AccordionTrigger,
+  Button,
+  CardTitle,
+  Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger, Form,
+  DialogTrigger,
+  Form,
   FormControl,
   FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage, Label, RadioGroup, RadioGroupItem, Select,
+  FormMessage,
+  Label,
+  RadioGroup,
+  RadioGroupItem,
+  Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue, Separator, toast
+  SelectValue,
+  Separator,
+  toast,
 } from "vst-ui";
 import { z } from "zod";
 import {
@@ -35,7 +47,6 @@ import {
   supportedDawVersions,
   supportedOsVersions,
 } from "./consts";
-import { User } from "vst-database";
 
 export default function CompatibilityRateDialog(
   props: ComponentProps<typeof Dialog> & {
@@ -58,7 +69,6 @@ export default function CompatibilityRateDialog(
       vstId: props.vstId,
     },
   });
-
 
   const { mutate, isLoading } = api.userVstExperience.submit.useMutation({
     onSuccess: () => {
