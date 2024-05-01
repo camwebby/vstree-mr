@@ -1,10 +1,10 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useLocalStorage } from "@mantine/hooks";
 import { createContext, useCallback, useEffect, useState } from "react";
-import type { TNewCollectionContext } from "./types";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { defaultFormValues, formSchema } from "./consts";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useLocalStorage } from "@mantine/hooks";
+import type { TNewCollectionContext } from "./types";
 
 export const NewCollectionContext = createContext<TNewCollectionContext>(
   {} as TNewCollectionContext,

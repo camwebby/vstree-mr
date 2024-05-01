@@ -1,9 +1,8 @@
-import { createNextApiHandler } from "@trpc/server/adapters/next";
+import { env } from "@/env.mjs";
 import { appRouter } from "@/server/api/root";
 import { createTRPCContext } from "@/server/api/trpc";
-import { Handlers } from "@highlight-run/node";
-import { env } from "@/env.mjs";
-import { H } from "@highlight-run/node";
+import { H, Handlers } from "@highlight-run/node";
+import { createNextApiHandler } from "@trpc/server/adapters/next";
 
 H.init({
   projectID: "lgxjrz4d",

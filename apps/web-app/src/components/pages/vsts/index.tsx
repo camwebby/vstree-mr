@@ -1,19 +1,17 @@
 import { VstCard } from "@/components/organisms/vst-card";
-import { api } from "@/utils/api";
-import { SkeletonCard } from "../../organisms/skeleton-card";
-import { useEffect, useState } from "react";
-import { tags } from "@/constants/tags";
-import { Button } from "vst-ui";
-import { Loader2Icon } from "lucide-react";
-import { toast } from "vst-ui";
 import { creators } from "@/constants/creators";
-import { useRouter } from "next/router";
+import { tags } from "@/constants/tags";
+import { api } from "@/utils/api";
+import { Loader2Icon } from "lucide-react";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { Button, toast } from "vst-ui";
+import { SkeletonCard } from "../../organisms/skeleton-card";
 import FilterBar from "./partials/filter-bar";
 import FilterTabBar from "./partials/filter-tab-bar";
 
 export function Vsts({
-  initialData,
 }: {
   initialData?: ReturnType<typeof api.vsts.getAllPaginated.useInfiniteQuery>;
 }) {
