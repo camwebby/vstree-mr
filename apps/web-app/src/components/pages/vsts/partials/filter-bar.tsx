@@ -1,19 +1,19 @@
 import ComboBoxSelect from "@/components/organisms/combo-select";
 import { creators } from "@/constants/creators";
 import { tags } from "@/constants/tags";
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Checkbox } from "vst-ui";
 import { cn } from "vst-ui/src/lib/utils";
 
 const FilterBar: React.FC<{
-    showTabBar: boolean;
-    selectedCreators: string[];
-    setSelectedCreators: (values: string[]) => void;
-    selectedTags: string[];
-    setSelectedTags: (values: string[]) => void;
-    types: boolean[];
-    setTypes: (values: boolean[]) => void;
-}> = ({...props}) => {
+  showTabBar: boolean;
+  selectedCreators: string[];
+  setSelectedCreators: Dispatch<SetStateAction<string[]>>;
+  selectedTags: string[];
+  setSelectedTags: Dispatch<SetStateAction<string[]>>;
+  selectedVstTypes: [boolean, boolean];
+  setSelectedVstTypes: Dispatch<SetStateAction<[boolean, boolean]>>;
+}> = ({ ...props }) => {
   return (
     <>
       <div
@@ -42,10 +42,13 @@ const FilterBar: React.FC<{
 
         <div className="flex items-center space-x-2 rounded border border-border p-2">
           <Checkbox
-            disabled={props.types[0] && !props.types[1]}
-            checked={props.types[0]}
+            disabled={props.selectedVstTypes[0] && !props.selectedVstTypes[1]}
+            checked={props.setSelectedVstTypes[0]}
             onCheckedChange={(v) => {
-              props.setTypes([true, !props.types.every(Boolean)]);
+              props.setSelectedVstTypes([
+                true,
+                !props.selectedVstTypes.every(Boolean),
+              ]);
             }}
             id="effects"
           />
@@ -56,10 +59,13 @@ const FilterBar: React.FC<{
             Effects
           </label>
           <Checkbox
-            disabled={props.types[1] && !props.types[0]}
-            checked={props.types[1]}
+            disabled={props.selectedVstTypes[1] && !props.selectedVstTypes[0]}
+            checked={props.selectedVstTypes[1]}
             onCheckedChange={(v) => {
-              props.setTypes([!props.types.every(Boolean), true]);
+              props.setSelectedVstTypes([
+                !props.selectedVstTypes.every(Boolean),
+                true,
+              ]);
             }}
             id="instruments"
           />

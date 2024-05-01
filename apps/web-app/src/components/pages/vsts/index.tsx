@@ -11,8 +11,7 @@ import { SkeletonCard } from "../../organisms/skeleton-card";
 import FilterBar from "./partials/filter-bar";
 import FilterTabBar from "./partials/filter-tab-bar";
 
-export function Vsts({
-}: {
+export function Vsts({}: {
   initialData?: ReturnType<typeof api.vsts.getAllPaginated.useInfiniteQuery>;
 }) {
   const {
@@ -24,8 +23,10 @@ export function Vsts({
     (typeof creators)[number][]
   >(!!creatorsFilter ? creatorsFilter.toString().split(",") : []);
 
-  const [types, setTypes] = useState<[boolean, boolean]>([true, true]);
-
+  const [selectedVstTypes, setSelectedVstTypes] = useState<[boolean, boolean]>([
+    true,
+    true,
+  ]);
   const [_, setPage] = useState(0);
   const [orderBy, setOrderBy] = useState<
     "createdAt" | "updatedAt" | "countLikes"
@@ -48,7 +49,7 @@ export function Vsts({
         orderBy,
         tags: selectedTags,
         creators: selectedCreators,
-        types,
+        types: selectedVstTypes,
       },
       {
         getNextPageParam: (lastPage) => lastPage.nextCursor,
@@ -70,8 +71,8 @@ export function Vsts({
           setSelectedTags,
           selectedCreators,
           setSelectedCreators,
-          types,
-          setTypes
+          selectedVstTypes,
+          setSelectedVstTypes,
         }}
       />
 
