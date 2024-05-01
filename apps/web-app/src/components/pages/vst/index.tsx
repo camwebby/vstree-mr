@@ -1,7 +1,7 @@
 import { api } from "@/utils/api";
-import { SkeletonCard } from "../organisms/skeleton-card";
+import { SkeletonCard } from "../../organisms/skeleton-card";
 import { Card, CardContent, CardFooter, Skeleton } from "vst-ui";
-import Layout from "../organisms/layout";
+import Layout from "../../organisms/layout";
 import { Separator } from "vst-ui";
 import { FactoryIcon } from "lucide-react";
 import { useState } from "react";
@@ -9,35 +9,34 @@ import {
   TwoColContainer,
   TwoColFirst,
   TwoColSecond,
-} from "../organisms/two-col-layout";
-import VSTAvatar from "../organisms/vst-avatar";
-import { VstComments } from "../organisms/comments";
-import NewColWarnDialog from "../organisms/new-col-warn-dialog";
+} from "../../organisms/two-col-layout";
+import VSTAvatar from "../../organisms/vst-avatar";
+import { VstComments } from "../../organisms/comments";
+import NewColWarnDialog from "../../organisms/new-col-warn-dialog";
 import { Vst } from "vst-database";
 import { Badge } from "vst-ui";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 
-// Dynamic imports
-const VSTActions = dynamic(() => import("../organisms/vst-actions"), {
+// #region Dynamic Imports
+const VSTActions = dynamic(() => import("../../organisms/vst-actions"), {
   loading: () => <SkeletonCard />,
   ssr: false,
 });
-const WhereToFinds = dynamic(() => import("../organisms/where-to-find"), {
+const WhereToFinds = dynamic(() => import("../../organisms/where-to-find"), {
   loading: () => <SkeletonCard />,
   ssr: false,
 });
-const VSTTable = dynamic(() => import("../organisms/vst-table"), {
+const VSTTable = dynamic(() => import("../../organisms/vst-table"), {
   loading: () => <SkeletonCard />,
   ssr: false,
 });
-
 const CompatibilityHeatmap = dynamic(
-  () => import("../organisms/compatibility-heatmap"),
+  () => import("../../organisms/compatibility-heatmap"),
 );
+// #endregion
 
-// Component
 export function VstPage({ slug }: { slug: string }) {
   const { data: vst, isLoading } = api.vsts.getBySlug.useQuery({
     slug,

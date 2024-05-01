@@ -9,7 +9,7 @@ export default function AuthenticationPage({ providers, error }) {
         <title>Login | vstree</title>
       </Head>
       <div className="container relative min-h-screen flex-col items-center justify-center pt-40 md:grid md:pt-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
-        <div className="relative hidden h-full flex-col bg-muted p-10 lg:flex dark:border-r">
+        <div className="relative hidden h-full flex-col bg-muted p-10 dark:border-r lg:flex">
           <div className="absolute inset-0 " />
           <Link
             className="

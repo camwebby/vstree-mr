@@ -1,32 +1,32 @@
 import { Card, CardContent, CardHeader, CardTitle } from "vst-ui";
-import Layout from "../organisms/layout";
+import Layout from "../../organisms/layout";
 import { api } from "@/utils/api";
 import { Avatar, AvatarFallback, AvatarImage } from "vst-ui";
 import {
   TwoColContainer,
   TwoColFirst,
   TwoColSecond,
-} from "../organisms/two-col-layout";
+} from "../../organisms/two-col-layout";
 import { Separator } from "vst-ui";
 import { User } from "vst-database";
 import dynamic from "next/dynamic";
-import { SkeletonCard } from "../organisms/skeleton-card";
+import { SkeletonCard } from "../../organisms/skeleton-card";
 import Head from "next/head";
 
-const UserVsts = dynamic(() => import("../organisms/user-vsts"), {
+const UserVsts = dynamic(() => import("../../organisms/user-vsts"), {
   loading: () => <SkeletonCard />,
   ssr: false,
 });
 
 const CollectionsTable = dynamic(
-  () => import("../organisms/collections-table"),
+  () => import("../../organisms/collections-table"),
   {
     loading: () => <SkeletonCard />,
     ssr: false,
   },
 );
 
-const YourSystem = dynamic(() => import("../organisms/your-system"), {
+const YourSystem = dynamic(() => import("../../organisms/your-system"), {
   loading: () => <SkeletonCard />,
   ssr: false,
 });
