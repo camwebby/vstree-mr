@@ -1,16 +1,16 @@
-import "vst-ui/src/styles/globals.css";
-import { type Session } from "next-auth";
-import { SessionProvider } from "next-auth/react";
-import { type AppType } from "next/app";
-import { api } from "@/utils/api";
-import { Toaster } from "vst-ui";
-import { NewCollection } from "@/components/organisms/new-collection";
+import NewCollection from "@/components/organisms/new-collection";
 import NewCollectionProvider from "@/contexts/new-collection";
 import { ThemeProvider } from "@/contexts/theme";
 import { env } from "@/env.mjs";
+import { api } from "@/utils/api";
 import { HighlightInit } from "@highlight-run/next/client";
 import { ErrorBoundary } from "@highlight-run/react";
+import { type Session } from "next-auth";
+import { SessionProvider } from "next-auth/react";
+import { type AppType } from "next/app";
 import Head from "next/head";
+import { Toaster } from "vst-ui";
+import "vst-ui/src/styles/globals.css";
 
 const VSTApp: AppType<{ session: Session | null }> = ({
   Component,

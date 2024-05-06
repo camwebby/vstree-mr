@@ -4,21 +4,13 @@ import {
   formSchema,
 } from "@/contexts/new-collection/consts";
 import { api } from "@/utils/api";
-import { Reorder } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
-import { Collection } from "vst-database";
+import { memo, useCallback, useContext, useEffect, useState } from "react";
 import {
   Button,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
   DropzoneUpload,
   Form,
   FormControl,
@@ -38,9 +30,11 @@ import { cn } from "vst-ui/src/lib/utils";
 import { BLOB_FOLDERS } from "vst-utils";
 import { z } from "zod";
 import { VstSearchDialog } from "../vst-search-dialog";
-import TableItem from "./partials/table-item";
+import { useCollectionCreate } from "./hooks";
+import NewColCancelDialog from "./partials/cancel-dialog";
+import VstDndList from "./partials/vst-dnd-list";
 
-export function NewCollection() {
+const NewCollection = () => {
   const router = useRouter();
 
   const apiContext = api.useContext();
@@ -58,57 +52,17 @@ export function NewCollection() {
     api.collectionVst.create.useMutation({});
 
   const { mutate: collectionCreate, isLoading: isCreatingCol } =
-    api.collection.create.useMutation({
-      onSuccess: async (collection: Collection) => {
-        // Invalidate caches
-        await apiContext.collection.getByUserId.invalidate({
-          userId: collection.userId,
-        });
-
-        await apiContext.collection.getAll.invalidate();
-
-        // Create the child collection vsts
-        const idList = form.getValues("vsts")?.map((vst) => vst.tempId);
-
-        form.getValues("vsts")?.forEach((vst) => {
-          const order = idList?.indexOf(vst.tempId);
-
-          vstCollectionCreate({
-            collectionId: collection.id,
-            vstId: vst.id,
-            order,
-            note: vst.note,
-          });
-
-          form.reset(defaultFormValues, { keepValues: false });
-        });
-
-        clearLocalStorage();
-
-        await router
-          .push(`/collections/${collection.slug}`)
-          .catch(() =>
-            toast({
-              variant: "destructive",
-              description:
-                "There was an error redirecting you to the collection.",
-            }),
-          )
-          .then(() => {
-            setShowNewCollectionForm(false);
-            setMinimized(true);
-          });
-      },
-      onMutate: () => {},
-      onError: (error) => {
-        toast({
-          variant: "destructive",
-          description: error.message,
-        });
-      },
+    useCollectionCreate({
+      apiContext,
+      form,
+      setShowNewCollectionForm,
+      setMinimized,
+      vstCollectionCreate,
+      clearLocalStorage,
+      router,
     });
 
-  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+  const onSubmit = useCallback(async (data: z.infer<typeof formSchema>) => {
     // parse the form data
     const parsedData = formSchema.safeParse(data);
 
@@ -127,13 +81,14 @@ export function NewCollection() {
       iconUrl: data.iconUrl || "",
       hasOrder: false,
     });
-  };
+  }, []);
 
   const { status } = useSession();
 
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
   const [showWarnDialog, setShowWarnDialog] = useState(false);
 
+  // Redirect to sign in if the user is not authenticated
   useEffect(() => {
     if (status === "unauthenticated" && showNewCollectionForm) {
       signIn().catch(() =>
@@ -151,41 +106,15 @@ export function NewCollection() {
 
   return (
     <>
-      <Dialog
-        open={showWarnDialog}
-        onOpenChange={(open) => {
-          setShowWarnDialog(open);
+      <NewColCancelDialog
+        {...{
+          showWarnDialog,
+          setShowWarnDialog,
+          setShowNewCollectionForm,
+          form,
+          defaultFormValues,
         }}
-      >
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Are you sure absolutely sure?</DialogTitle>
-          </DialogHeader>
-          <DialogDescription>
-            This will reset all the changes you made to the form.
-          </DialogDescription>
-          <DialogFooter>
-            <Button
-              variant="secondary"
-              onClick={() => {
-                setShowWarnDialog(false);
-              }}
-            >
-              Cancel
-            </Button>
-            <Button
-              variant="destructive"
-              onClick={() => {
-                form.reset(defaultFormValues, { keepValues: false });
-                setShowNewCollectionForm(false);
-                setShowWarnDialog(false);
-              }}
-            >
-              Reset
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      />
 
       {showNewCollectionForm && (
         <>
@@ -255,57 +184,7 @@ export function NewCollection() {
                       >
                         Add VST
                       </Button>
-                      <Reorder.Group
-                        axis="y"
-                        className="flex flex-col gap-2"
-                        as="div"
-                        values={form.watch("vsts")}
-                        onReorder={(items) => {
-                          form.setValue("vsts", items);
-                        }}
-                      >
-                        {form.watch("vsts")?.map((vst, indexInTable) => (
-                          <Reorder.Item
-                            drag={"y"}
-                            as="tr"
-                            className="flex w-full flex-wrap gap-3 rounded-md border bg-muted-foreground/5 p-5 backdrop-blur-md"
-                            key={vst.tempId}
-                            value={vst}
-                          >
-                            <TableItem
-                              vst={vst}
-                              indexInTable={indexInTable}
-                              onNoteChange={(note) => {
-                                const vsts = form.getValues("vsts");
-
-                                if (!vsts?.length) return;
-
-                                const index = vsts?.findIndex(
-                                  (v) => v.tempId === vst.tempId,
-                                );
-
-                                //@ts-expect-error - possible undefined
-                                vsts[index].note = note;
-
-                                form.setValue("vsts", vsts);
-                              }}
-                              onDelete={() => {
-                                const vsts = form.getValues("vsts") ?? [];
-
-                                const index = vsts?.findIndex(
-                                  (v) => v.tempId === vst.tempId,
-                                );
-
-                                if (index === -1) return;
-
-                                vsts.splice(index, 1);
-
-                                form.setValue("vsts", vsts);
-                              }}
-                            />
-                          </Reorder.Item>
-                        ))}
-                      </Reorder.Group>
+                      <VstDndList form={form} />
                     </div>
 
                     <div
@@ -472,4 +351,6 @@ export function NewCollection() {
       )}
     </>
   );
-}
+};
+
+export default memo(NewCollection);
