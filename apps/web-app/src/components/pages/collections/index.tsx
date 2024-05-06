@@ -2,8 +2,8 @@ import { api } from "@/utils/api";
 import Head from "next/head";
 import { useState } from "react";
 import { CollectionCard } from "../../organisms/collection-card";
-import { collectionSortOptions } from "./consts";
 import CollectionActionBar from "./partials/action-bar";
+import { collectionSortOptions } from "@/constants/collection";
 
 export function Collections() {
   const [orderBy, setOrderBy] = useState<
