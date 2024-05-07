@@ -5,7 +5,7 @@ import { Reorder } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import { CollectionVst, UserVstAssociation, Vst } from "vst-database";
 import { Button, Table, TableCell, TableHeader, TableRow, toast } from "vst-ui";
-import { VstSearchDialog } from "../vst-search-dialog";
+import VstSearchDialog from "../vst-search-dialog";
 import { ColVstRowItem } from "./partials/row-item";
 
 const CollectionVstTable = ({
@@ -43,7 +43,7 @@ const CollectionVstTable = ({
 
   const { mutate: rearrange, isLoading: isRearranging } =
     api.collectionVst.rearrangeCollectionVstOrder.useMutation({
-      onSuccess: async (data) => {
+      onSuccess: async () => {
         const colId = collectionVsts[0]?.collectionId || -1;
 
         await apiContext.collectionVst.getByCollectionId.invalidate({

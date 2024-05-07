@@ -29,7 +29,7 @@ import {
 import { cn } from "vst-ui/src/lib/utils";
 import { BLOB_FOLDERS } from "vst-utils";
 import { z } from "zod";
-import { VstSearchDialog } from "../vst-search-dialog";
+import VstSearchDialog from "../vst-search-dialog";
 import { useCollectionCreate } from "./hooks";
 import NewColCancelDialog from "./partials/cancel-dialog";
 import VstDndList from "./partials/vst-dnd-list";

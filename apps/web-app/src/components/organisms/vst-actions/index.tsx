@@ -27,7 +27,7 @@ import {
   TooltipTrigger,
   toast,
 } from "vst-ui";
-import ExperienceRateDialog from "./compatibility-rate";
+import ExperienceRateDialog from "../compatibility-rate";
 
 const VSTActions = ({
   vst,

@@ -38,4 +38,4 @@ const SearchIcon: React.FC<VstUiIconProps> = ({ ...props }) => {
   );
 };
 
-export default SearchIcon;
+export { SearchIcon };

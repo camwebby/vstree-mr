@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CollectionCard } from "../../organisms/collection-card";
 import CollectionActionBar from "./partials/action-bar";
 import { collectionSortOptions } from "@/constants/collection";
+import Layout from "@/components/layout/primary";
 
 export function Collections() {
   const [orderBy, setOrderBy] = useState<
@@ -21,7 +22,7 @@ export function Collections() {
   );
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>Collections | vstree</title>
       </Head>
@@ -35,6 +36,6 @@ export function Collections() {
             return <CollectionCard key={collection.id} {...collection} />;
           })}
       </div>
-    </>
+    </Layout>
   );
 }

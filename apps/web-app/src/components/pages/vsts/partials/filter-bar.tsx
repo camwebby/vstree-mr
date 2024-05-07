@@ -1,4 +1,4 @@
-import ComboBoxSelect from "@/components/organisms/combo-select";
+import ComboBoxSelect from "@/components/molecules/combo-select";
 import { creators } from "@/constants/creators";
 import { tags } from "@/constants/tags";
 import React, { Dispatch, SetStateAction, memo } from "react";

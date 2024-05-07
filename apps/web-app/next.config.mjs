@@ -3,7 +3,7 @@
  * for Docker builds.
  */
 await import("./src/env.mjs");
-import million from "million/compiler";
+// import million from "million/compiler";
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -38,6 +38,4 @@ const config = {
   },
 };
 
-export default million.next(config, {
-  auto: true,
-});
+export default config;

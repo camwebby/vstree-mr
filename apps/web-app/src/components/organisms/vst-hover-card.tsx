@@ -1,8 +1,15 @@
 import { api } from "@/utils/api";
 import { Loader2Icon } from "lucide-react";
 import { useSession } from "next-auth/react";
-import React, { useMemo } from "react";
-import { Badge, CardTitle, HoverCard, HoverCardContent, HoverCardTrigger, Separator } from "vst-ui";
+import React, { memo, useMemo } from "react";
+import {
+  Badge,
+  CardTitle,
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+  Separator,
+} from "vst-ui";
 import { experienceRateOptions } from "./compatibility-rate/consts";
 
 const useExperienceByUserSetup = ({ vstId }: { vstId: number }) => {
@@ -125,4 +132,4 @@ const VSTHoverCard = ({
   );
 };
 
-export default VSTHoverCard;
+export default memo(VSTHoverCard);

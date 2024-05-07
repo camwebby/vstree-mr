@@ -3,7 +3,7 @@ import UserCommand from "../organisms/user-command";
 import Link from "next/link";
 import { useState } from "react";
 import { cn } from "vst-ui/src/lib/utils";
-import { VstSearchDialog } from "../organisms/vst-search-dialog";
+import VstSearchDialog from "../organisms/vst-search-dialog";
 import { useRouter } from "next/router";
 import { Vst } from "vst-database";
 
@@ -28,7 +28,6 @@ export function Header({ className }: { className?: string }) {
       >
         VSTREE
       </Link>
-
       <div className="grow" />
       <Input
         onClick={() => setShowSiteSearch(true)}

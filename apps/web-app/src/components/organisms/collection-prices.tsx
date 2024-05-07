@@ -1,11 +1,22 @@
+import { api } from "@/utils/api";
+import { ChevronDown, Loader2 } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { memo, useCallback, useState } from "react";
 import { CollectionVst, Vst, WhereToFind } from "vst-database";
-import React, { useCallback, useState } from "react";
 import {
-  Button,
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Card,
+  CardContent,
   CardDescription,
+  CardHeader,
+  CardTitle,
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
+  OpenInNewWindowIcon,
   Table,
   TableBody,
   TableCaption,
@@ -13,16 +24,12 @@ import {
   TableFooter,
   TableHeader,
   TableRow,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
 } from "vst-ui";
-import { Card, CardContent, CardHeader, CardTitle } from "vst-ui";
-import { Avatar, AvatarFallback, AvatarImage } from "vst-ui";
-import { api } from "@/utils/api";
-import { useRouter } from "next/router";
 import { currencyFormatter } from "./where-to-find";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "vst-ui";
-import Link from "next/link";
-import { OpenInNewWindowIcon } from "vst-ui";
-import { ChevronDown, Loader2 } from "lucide-react";
 
 const FormattedPrice = ({
   wtfs,
@@ -216,4 +223,4 @@ const CollectionPrices = ({
   );
 };
 
-export default CollectionPrices;
+export default memo(CollectionPrices);

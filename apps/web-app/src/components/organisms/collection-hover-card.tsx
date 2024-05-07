@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "vst-ui";
 import { CardTitle } from "vst-ui";
 import { Separator } from "vst-ui";
@@ -61,4 +61,4 @@ const CollectionHoverCard = ({
   );
 };
 
-export default CollectionHoverCard;
+export default memo(CollectionHoverCard);
