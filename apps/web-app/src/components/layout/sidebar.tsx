@@ -1,5 +1,6 @@
 import { NewCollectionContext } from "@/contexts/new-collection";
-import { Link, PencilIcon, PlusIcon } from "lucide-react";
+import { PencilIcon, PlusIcon } from "lucide-react";
+import Link from "next/link";
 import router from "next/router";
 import React, { useContext } from "react";
 import { Button } from "vst-ui";
