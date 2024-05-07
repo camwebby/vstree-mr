@@ -1,4 +1,3 @@
-import { Link } from "lucide-react";
 import React, { memo } from "react";
 import {
   TableRow,
@@ -11,6 +10,7 @@ import {
 import VSTAvatar from "../../vst-avatar";
 import dynamic from "next/dynamic";
 import { SkeletonCard } from "@/components/molecules/skeleton-card";
+import Link from "next/link";
 
 const VSTHoverCard = dynamic(() => import("../../vst-hover-card"), {
   ssr: false,

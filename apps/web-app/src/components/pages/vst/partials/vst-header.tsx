@@ -1,5 +1,6 @@
 import VSTAvatar from "@/components/organisms/vst-avatar";
-import { FactoryIcon, Link } from "lucide-react";
+import { FactoryIcon } from "lucide-react";
+import Link from "next/link";
 import { memo } from "react";
 import { Vst } from "vst-database";
 import { Skeleton } from "vst-ui";

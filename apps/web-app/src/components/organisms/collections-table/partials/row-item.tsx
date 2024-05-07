@@ -1,5 +1,5 @@
 import { formatDistanceToNow } from "date-fns";
-import { Link } from "lucide-react";
+
 import React, { memo } from "react";
 import {
   TableRow,
@@ -10,6 +10,7 @@ import {
 } from "vst-ui";
 import CollectionHoverCard from "../../collection-hover-card";
 import { Collection } from "vst-database";
+import Link from "next/link";
 
 const CollectionsTableRowItem = ({
   collection,
