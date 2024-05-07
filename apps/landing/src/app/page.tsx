@@ -5,11 +5,14 @@ import Header from "@/components/header";
 import Button from "@/components/button";
 import MediaAccord from "@/components/media-accord";
 import TextAndImage from "@/components/text-and-image";
-import FilterIcon from "vst-ui/src/assets/icons/filter";
-import SearchIcon from "vst-ui/src/assets/icons/search";
+import {
+  CollectionIcon,
+  FilterIcon,
+  SearchIcon,
+  ShoppingIcon,
+} from "vst-ui/src/assets";
+
 import { vstActionsContent } from "@/content/vst-actions";
-import ShoppingIcon from "vst-ui/src/assets/icons/shopping";
-import CollectionIcon from "vst-ui/src/assets/icons/collection";
 
 import { Instrument_Sans } from "next/font/google";
 
@@ -17,7 +20,6 @@ const sans = Instrument_Sans({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
-
 
 export default function Home() {
   return (
@@ -76,7 +78,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* <MediaAccord id="features" data={featuresContent} /> */}
         <Footer />
       </div>
     </main>
