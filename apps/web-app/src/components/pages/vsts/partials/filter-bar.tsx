@@ -1,7 +1,7 @@
 import ComboBoxSelect from "@/components/organisms/combo-select";
 import { creators } from "@/constants/creators";
 import { tags } from "@/constants/tags";
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, memo } from "react";
 import { Checkbox } from "vst-ui";
 import { cn } from "vst-ui/src/lib/utils";
 
@@ -81,4 +81,4 @@ const FilterBar: React.FC<{
   );
 };
 
-export default FilterBar;
+export default memo(FilterBar);

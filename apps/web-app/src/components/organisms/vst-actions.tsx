@@ -9,7 +9,7 @@ import { api } from "@/utils/api";
 import { useVstToggle } from "@/utils/useVstToggle";
 import { Loader2, PlusIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
-import React, { useContext } from "react";
+import React, { memo, useContext } from "react";
 import { User, Vst } from "vst-database";
 import {
   Badge,
@@ -132,9 +132,8 @@ const VSTActions = ({
         )}
         <Separator />
 
-        <CardFooter className="mt-5 flex-wrap flex flex-row items-center gap-2 whitespace-nowrap">
+        <CardFooter className="mt-5 flex flex-row flex-wrap items-center gap-2 whitespace-nowrap">
           <Button
-
             onClick={() => {
               // If form is open, show warn dialog
               if (showNewCollectionForm) {
@@ -217,4 +216,4 @@ const VSTActions = ({
   );
 };
 
-export default VSTActions;
+export default memo(VSTActions);

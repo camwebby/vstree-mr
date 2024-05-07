@@ -117,9 +117,7 @@ const YourSetup: React.FC<{
         <Form {...form}>
           <Accordion defaultValue={["daw_spec"]} type="multiple">
             <AccordionItem className=" border-none" value="daw_spec">
-              <AccordionTrigger>
-                DAW
-              </AccordionTrigger>
+              <AccordionTrigger>DAW</AccordionTrigger>
               <AccordionContent>
                 <div className="grid grid-cols-2 gap-5">
                   <FormField
@@ -191,9 +189,7 @@ const YourSetup: React.FC<{
             </AccordionItem>
 
             <AccordionItem className=" border-none" value="os_spec">
-              <AccordionTrigger>
-                OS
-              </AccordionTrigger>
+              <AccordionTrigger>OS</AccordionTrigger>
 
               <AccordionContent>
                 <div className="grid grid-cols-2 gap-5">
@@ -264,9 +260,7 @@ const YourSetup: React.FC<{
             </AccordionItem>
 
             <AccordionItem className=" border-none" value="system_spec">
-              <AccordionTrigger>
-                System spec
-              </AccordionTrigger>
+              <AccordionTrigger>System spec</AccordionTrigger>
               <AccordionContent>
                 <div className={`grid grid-cols-2 gap-5`}>
                   <FormField

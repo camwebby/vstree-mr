@@ -5,11 +5,12 @@ import { api } from "@/utils/api";
 import { Loader2Icon } from "lucide-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button, toast } from "vst-ui";
-import { SkeletonCard } from "../../organisms/skeleton-card";
+import { SkeletonCard } from "../../molecules/skeleton-card";
 import FilterBar from "./partials/filter-bar";
 import FilterTabBar from "./partials/filter-tab-bar";
+import Layout from "@/components/layout/primary";
 
 export function Vsts({}: {
   initialData?: ReturnType<typeof api.vsts.getAllPaginated.useInfiniteQuery>;
@@ -28,9 +29,9 @@ export function Vsts({}: {
     true,
   ]);
   const [_, setPage] = useState(0);
-  const [orderBy, setOrderBy] = useState<
-    "createdAt" | "updatedAt" | "countLikes"
-  >("countLikes");
+  const [orderBy] = useState<"createdAt" | "updatedAt" | "countLikes">(
+    "countLikes",
+  );
 
   useEffect(() => {
     if (!creatorsFilter) return;
@@ -56,73 +57,78 @@ export function Vsts({}: {
       },
     );
 
-  const showTabBar = !!selectedCreators?.length || !!selectedTags?.length;
+  const showTabBar = useMemo(
+    () => !!selectedCreators?.length || !!selectedTags?.length,
+    [selectedCreators, selectedTags],
+  );
 
   return (
-    <div className="relative">
-      <Head>
-        <title>vsts | vstree</title>
-      </Head>
+    <Layout>
+      <div className="relative">
+        <Head>
+          <title>vsts | vstree</title>
+        </Head>
 
-      <FilterBar
-        {...{
-          showTabBar,
-          selectedTags,
-          setSelectedTags,
-          selectedCreators,
-          setSelectedCreators,
-          selectedVstTypes,
-          setSelectedVstTypes,
-        }}
-      />
-
-      {showTabBar && (
-        <FilterTabBar
+        <FilterBar
           {...{
-            selectedCreators,
-            setSelectedCreators,
+            showTabBar,
             selectedTags,
             setSelectedTags,
+            selectedCreators,
+            setSelectedCreators,
+            selectedVstTypes,
+            setSelectedVstTypes,
           }}
         />
-      )}
 
-      <div className="grid grid-cols-1 gap-5 px-4 md:grid-cols-2 lg:px-7 2xl:grid-cols-3">
-        {isLoading && (
-          <>
-            {Array.from({ length: 6 }).map((_, i) => (
-              <SkeletonCard />
-            ))}
-          </>
+        {showTabBar && (
+          <FilterTabBar
+            {...{
+              selectedCreators,
+              setSelectedCreators,
+              selectedTags,
+              setSelectedTags,
+            }}
+          />
         )}
-        {data?.pages
-          .flatMap((page) => page.items)
-          .map((vst) => <VstCard key={vst.id} vst={vst} />)}
-      </div>
 
-      {hasNextPage && (
-        <div className="my-10 flex w-full items-center justify-center">
-          {!isFetching ? (
-            <Button
-              className="bg-primary"
-              disabled={isFetching}
-              onClick={async () => {
-                await fetchNextPage().catch((e) =>
-                  toast({
-                    title: "Error",
-                    variant: "destructive",
-                  }),
-                );
-                setPage((prev) => prev + 1);
-              }}
-            >
-              Load more
-            </Button>
-          ) : (
-            <Loader2Icon className="h-10 w-10 animate-spin text-primary/40" />
+        <div className="grid grid-cols-1 gap-5 px-4 md:grid-cols-2 lg:px-7 2xl:grid-cols-3">
+          {isLoading && (
+            <>
+              {Array.from({ length: 6 }).map((_, i) => (
+                <SkeletonCard />
+              ))}
+            </>
           )}
+          {data?.pages
+            .flatMap((page) => page.items)
+            .map((vst) => <VstCard key={vst.id} vst={vst} />)}
         </div>
-      )}
-    </div>
+
+        {hasNextPage && (
+          <div className="my-10 flex w-full items-center justify-center">
+            {!isFetching ? (
+              <Button
+                className="bg-primary"
+                disabled={isFetching}
+                onClick={async () => {
+                  await fetchNextPage().catch((e) =>
+                    toast({
+                      title: "Error",
+                      variant: "destructive",
+                    }),
+                  );
+                  setPage((prev) => prev + 1);
+                }}
+              >
+                Load more
+              </Button>
+            ) : (
+              <Loader2Icon className="h-10 w-10 animate-spin text-primary/40" />
+            )}
+          </div>
+        )}
+      </div>
+    </Layout>
   );
 }

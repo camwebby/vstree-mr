@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
 import type { WhereToFind } from "vst-database";
 import {
   Card,
@@ -14,9 +14,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-  Tabs, TabsContent, TabsList, TabsTrigger,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
 } from "vst-ui";
-
 
 const WTFSuggest = dynamic(() => import("./wtf-suggest"));
 
@@ -126,4 +128,4 @@ const WhereToFinds = ({
   );
 };
 
-export default WhereToFinds;
+export default memo(WhereToFinds);

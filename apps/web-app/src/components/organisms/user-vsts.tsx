@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { User } from "vst-database";
 import { Card, CardContent, CardHeader, CardTitle, Table, TableCell, TableHeader, TableRow, Tabs, TabsContent, TabsList, TabsTrigger } from "vst-ui";
-import { SkeletonCard } from "./skeleton-card";
+import { SkeletonCard } from "../molecules/skeleton-card";
 import VSTAvatar from "./vst-avatar";
 
 const VSTHoverCard = dynamic(() => import("./vst-hover-card"), {

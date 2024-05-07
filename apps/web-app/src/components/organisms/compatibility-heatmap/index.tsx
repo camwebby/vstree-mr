@@ -1,6 +1,6 @@
 import { api } from "@/utils/api";
 import { Code2Icon, Loader2 } from "lucide-react";
-import { ComponentProps, useMemo, useState } from "react";
+import { ComponentProps, memo, useMemo, useState } from "react";
 import { Button, Dialog, DialogContent, DialogTrigger } from "vst-ui";
 import { experienceRateOptions } from "../compatibility-rate/consts";
 import { heatmapAxisOpts } from "./consts";
@@ -115,4 +115,4 @@ const CompatibilityHeatmap: React.FC<
   );
 };
 
-export default CompatibilityHeatmap;
+export default memo(CompatibilityHeatmap);

@@ -1,16 +1,16 @@
 import { Card, CardContent, CardHeader, CardTitle } from "vst-ui";
-import Layout from "../../organisms/layout";
+import Layout from "@/components/layout/primary";
 import { api } from "@/utils/api";
 import { Avatar, AvatarFallback, AvatarImage } from "vst-ui";
 import {
   TwoColContainer,
   TwoColFirst,
   TwoColSecond,
-} from "../../organisms/two-col-layout";
+} from "../../layout/two-col-layout";
 import { Separator } from "vst-ui";
 import { User } from "vst-database";
 import dynamic from "next/dynamic";
-import { SkeletonCard } from "../../organisms/skeleton-card";
+import { SkeletonCard } from "../../molecules/skeleton-card";
 import Head from "next/head";
 
 const UserVsts = dynamic(() => import("../../organisms/user-vsts"), {
@@ -80,7 +80,6 @@ const UserProfilePage = ({ id }: { id?: string }) => {
 
         <TwoColSecond>
           {userData && <YourSystem user={userData} />}
-
           <UserVsts user={userData as unknown as User} />
         </TwoColSecond>
       </TwoColContainer>

@@ -1,9 +1,9 @@
 import { Input } from "vst-ui";
-import UserCommand from "./user-command";
+import UserCommand from "../organisms/user-command";
 import Link from "next/link";
 import { useState } from "react";
 import { cn } from "vst-ui/src/lib/utils";
-import { VstSearchDialog } from "./vst-search-dialog";
+import { VstSearchDialog } from "../organisms/vst-search-dialog";
 import { useRouter } from "next/router";
 import { Vst } from "vst-database";
 

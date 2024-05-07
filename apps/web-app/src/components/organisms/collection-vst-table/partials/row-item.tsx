@@ -8,7 +8,7 @@ import { Fragment, useEffect, useState } from "react";
 import { CollectionVst, UserVstAssociation, Vst } from "vst-database";
 import { Input, TableCell, toast } from "vst-ui";
 import { cn } from "vst-ui/src/lib/utils";
-import { SkeletonCard } from "../../skeleton-card";
+import { SkeletonCard } from "../../../molecules/skeleton-card";
 import VSTAvatar from "../../vst-avatar";
 
 const VSTHoverCard = dynamic(() => import("../../vst-hover-card"), {

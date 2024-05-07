@@ -1,27 +1,27 @@
 import { api } from "@/utils/api";
-import React, { useMemo } from "react";
+import { signIn, useSession } from "next-auth/react";
+import Link from "next/link";
+import React, { memo, useMemo } from "react";
+import { CollectionComment, VstComment } from "vst-database";
 import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Button,
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "vst-ui";
-import { Button } from "vst-ui";
-import { VstComment, CollectionComment } from "vst-database";
-import { cn } from "vst-ui/src/lib/utils";
-import { toast } from "vst-ui";
-import { Avatar, AvatarFallback, AvatarImage } from "vst-ui";
-import Link from "next/link";
-import {
   Sheet,
   SheetContent,
   SheetFooter,
   SheetHeader,
   SheetTitle,
+  Textarea,
+  toast,
 } from "vst-ui";
-import { Textarea } from "vst-ui";
-import { signIn, useSession } from "next-auth/react";
+import { cn } from "vst-ui/src/lib/utils";
 import UserHoverCard from "./user-hover-card";
 
 const UserComment = ({
@@ -274,7 +274,11 @@ const CommentsCard = ({
   );
 };
 
-const CollectionComments = ({ collectionId }: { collectionId?: number }) => {
+const CollectionCommentsComponent = ({
+  collectionId,
+}: {
+  collectionId?: number;
+}) => {
   const apiContext = api.useContext();
 
   const { data } = api.collection.getCommentsByCollectionId.useQuery(
@@ -357,7 +361,7 @@ const CollectionComments = ({ collectionId }: { collectionId?: number }) => {
   );
 };
 
-const VstComments = ({ vstId }: { vstId?: number }) => {
+const VstCommentsComponent = ({ vstId }: { vstId?: number }) => {
   const apiContext = api.useContext();
 
   const { data } = api.vsts.getCommentsByVstId.useQuery(
@@ -440,4 +444,5 @@ const VstComments = ({ vstId }: { vstId?: number }) => {
   );
 };
 
-export { CollectionComments, VstComments };
+export const CollectionComments = memo(CollectionCommentsComponent);
+export const VstComments = memo(VstCommentsComponent);

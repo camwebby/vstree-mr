@@ -2,22 +2,31 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Vst } from "vst-database";
 import {
-  Badge, Button, Card, CardHeader, CardTitle, HoverCard,
+  Badge,
+  Button,
+  Card,
+  CardHeader,
+  CardTitle,
+  HoverCard,
   HoverCardContent,
-  HoverCardTrigger, Separator, Sheet,
+  HoverCardTrigger,
+  Separator,
+  Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger, Table,
+  SheetTrigger,
+  Table,
   TableBody,
   TableCell,
   TableHeader,
-  TableRow
+  TableRow,
 } from "vst-ui";
-import { SkeletonCard } from "./skeleton-card";
+import { SkeletonCard } from "../molecules/skeleton-card";
 import VSTAvatar from "./vst-avatar";
 import { VstCard } from "./vst-card";
+import { memo } from "react";
 
 const VSTHoverCard = dynamic(() => import("./vst-hover-card"), {
   ssr: false,
@@ -116,4 +125,4 @@ const VSTTable = ({ data, title }: { data: Vst[]; title: string }) => {
   );
 };
 
-export default VSTTable;
+export default memo(VSTTable);

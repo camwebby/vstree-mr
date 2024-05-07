@@ -1,5 +1,5 @@
 import { XCircle } from "lucide-react";
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, memo } from "react";
 import { Badge } from "vst-ui";
 import { cn } from "vst-ui/src/lib/utils";
 
@@ -72,4 +72,4 @@ const FilterTabBar: React.FC<{
   );
 };
 
-export default FilterTabBar;
+export default memo(FilterTabBar);

@@ -2,7 +2,7 @@
 import { api } from "@/utils/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
-import { ComponentProps } from "react";
+import { ComponentProps, memo } from "react";
 import { useForm } from "react-hook-form";
 import { User } from "vst-database";
 import {
@@ -48,7 +48,7 @@ import {
   supportedOsVersions,
 } from "./consts";
 
-export default function CompatibilityRateDialog(
+function CompatibilityRateDialog(
   props: ComponentProps<typeof Dialog> & {
     vstId: number;
     userData: User;
@@ -391,3 +391,5 @@ export default function CompatibilityRateDialog(
     </Dialog>
   );
 }
+
+export default memo(CompatibilityRateDialog);

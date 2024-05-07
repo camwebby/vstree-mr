@@ -1,14 +1,14 @@
 import { api } from "@/utils/api";
-import { SkeletonCard } from "../../organisms/skeleton-card";
+import { SkeletonCard } from "../../molecules/skeleton-card";
 import { Card, CardFooter, ToggleGroup, ToggleGroupItem } from "vst-ui";
-import Layout from "../../organisms/layout";
+import Layout from "@/components/layout/primary";
 import { useMemo, useState } from "react";
 import { useSession } from "next-auth/react";
 import {
   TwoColContainer,
   TwoColFirst,
   TwoColSecond,
-} from "../../organisms/two-col-layout";
+} from "../../layout/two-col-layout";
 import { Label } from "vst-ui";
 import { Switch } from "vst-ui";
 import { Separator } from "vst-ui";
@@ -77,7 +77,7 @@ export function CollectionPage({ slug }: { slug: string }) {
   return (
     <Layout>
       <Head>
-        <title>{collection?.name || 'Collection'} | vstree</title>
+        <title>{collection?.name || "Collection"} | vstree</title>
       </Head>
       <TwoColContainer>
         <TwoColFirst>

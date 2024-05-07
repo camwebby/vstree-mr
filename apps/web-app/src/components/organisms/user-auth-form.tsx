@@ -4,7 +4,7 @@ import * as React from "react";
 import { Button } from "vst-ui";
 import { cn } from "vst-ui/src/lib/utils";
 
-export function UserAuthForm({
+function UserAuthForm({
   className,
   providers,
   ...props
@@ -33,3 +33,5 @@ export function UserAuthForm({
     </div>
   );
 }
+
+export default React.memo(UserAuthForm);

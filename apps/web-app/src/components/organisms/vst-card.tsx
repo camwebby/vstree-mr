@@ -6,8 +6,8 @@ import Link from "next/link";
 import { useContext, useState } from "react";
 import { Vst } from "vst-database";
 import { Badge, Button, Card, CardContent, CardHeader, Separator, toast } from "vst-ui";
-import NewColWarnDialog from "./new-col-warn-dialog";
-import { SkeletonCard } from "./skeleton-card";
+import NewColWarnDialog from "../molecules/new-col-warn-dialog";
+import { SkeletonCard } from "../molecules/skeleton-card";
 
 const VSTHoverCard = dynamic(() => import("./vst-hover-card"), {
   ssr: false,
