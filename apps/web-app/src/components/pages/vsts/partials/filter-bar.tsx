@@ -14,7 +14,6 @@ const FilterBar: React.FC<{
   selectedVstTypes: [boolean, boolean];
   setSelectedVstTypes: Dispatch<SetStateAction<[boolean, boolean]>>;
 }> = ({ ...props }) => {
-  console.log({ props });
   return (
     <>
       <div
@@ -41,7 +40,7 @@ const FilterBar: React.FC<{
           optionLabel="tag"
         />
 
-        <div className="flex items-center space-x-2 rounded border border-border p-2">
+        <div className="flex items-center gap-x-2 rounded border border-border p-2">
           <Checkbox
             disabled={props.selectedVstTypes[0] && !props.selectedVstTypes[1]}
             checked={props.selectedVstTypes[0]}
