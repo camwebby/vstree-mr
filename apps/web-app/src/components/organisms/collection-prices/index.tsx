@@ -32,6 +32,7 @@ import { zCurrency } from "vst-utils";
 import { FormattedPrice } from "./partials/formatted-price";
 import { getLowestWtfByGroup } from "./utils";
 import { currencyFormatter } from "@/utils/currentFormatter";
+import { z } from "zod";
 
 const CollectionPrices = ({
   collectionVsts,
@@ -42,11 +43,20 @@ const CollectionPrices = ({
 }) => {
   const uniqueCurrencies = Object.values(zCurrency.Values);
 
+  const [selectedCurrency, setSelectedCurrency] = useState<
+    z.infer<typeof zCurrency>
+  >(
+    //@ts-ignore
+    uniqueCurrencies[0],
+  );
+
   const [cardOpen, setCardOpen] = useState(false);
-  const { data: prices, isFetching } = api.collection.findPrices.useQuery(
+
+  const { data: prices, isLoading } = api.collection.findPrices.useQuery(
     {
       vstIds: collectionVsts?.map((vst) => vst.vstId) || [],
       mode: "lowest",
+      currency: selectedCurrency,
     },
     {
       enabled: !!collectionVsts?.length && !!cardOpen,
@@ -57,8 +67,8 @@ const CollectionPrices = ({
 
   return (
     <Collapsible onOpenChange={(v) => setCardOpen(v)}>
-      <Card className="">
-        <CollapsibleTrigger>
+      <Card>
+        <CollapsibleTrigger className="w-full">
           <CardHeader className="flex w-full flex-row items-center justify-between gap-x-2">
             <div className="text-left">
               <CardTitle className="mb-2">Price compare</CardTitle>
@@ -80,14 +90,20 @@ const CollectionPrices = ({
             <Tabs defaultValue={uniqueCurrencies[0]} className="">
               <TabsList className="">
                 {uniqueCurrencies.map((currency) => (
-                  <TabsTrigger key={currency + "_trigger"} value={currency}>
+                  <TabsTrigger
+                    onClick={() => {
+                      setSelectedCurrency(currency);
+                    }}
+                    key={currency + "_trigger"}
+                    value={currency}
+                  >
                     {currency}
                   </TabsTrigger>
                 ))}
               </TabsList>
               {uniqueCurrencies.map((currency) => (
                 <TabsContent key={currency} value={currency}>
-                  {!!collectionVsts?.length || !!isFetching ? (
+                  {!!collectionVsts?.length || !!isLoading ? (
                     <Table>
                       <TableCaption>
                         *Prices are not guaranteed to be accurate
@@ -156,10 +172,18 @@ const CollectionPrices = ({
                         <TableRow>
                           <TableCell>Total</TableCell>
                           <TableCell>
-                            ~&nbsp;
-                            {currencyFormatter(currency).format(
-                              (getLowestWtfByGroup(currency, prices || []) ||
-                                0) / 100,
+                            {!prices?.length ? (
+                              "-"
+                            ) : (
+                              <>
+                                ~&nbsp;
+                                {currencyFormatter(currency).format(
+                                  (getLowestWtfByGroup(
+                                    currency,
+                                    prices || [],
+                                  ) || 0) / 100,
+                                )}
+                              </>
                             )}
                           </TableCell>
                         </TableRow>
