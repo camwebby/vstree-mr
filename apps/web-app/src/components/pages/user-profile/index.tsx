@@ -12,6 +12,7 @@ import { User } from "vst-database";
 import dynamic from "next/dynamic";
 import { SkeletonCard } from "../../molecules/skeleton-card";
 import Head from "next/head";
+import { appConfig } from "@/constants/app-config";
 
 
 // #region dynamic imports
@@ -48,7 +49,7 @@ const UserProfilePage = ({ id }: { id?: string }) => {
   return (
     <Layout>
       <Head>
-        <title>Profile | vstree</title>
+        <title>Profile | {appConfig.appName}</title>
       </Head>
       <TwoColContainer>
         <TwoColFirst>

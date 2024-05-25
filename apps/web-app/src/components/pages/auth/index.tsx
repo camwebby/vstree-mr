@@ -1,3 +1,4 @@
+import { appConfig } from "@/constants/app-config";
 import Head from "next/head";
 import Link from "next/link";
 import UserAuthForm from "../../organisms/user-auth-form";
@@ -6,21 +7,12 @@ export default function AuthenticationPage({ providers, error }) {
   return (
     <>
       <Head>
-        <title>Login | vstree</title>
+        <title>Login | {appConfig.appName}</title>
       </Head>
       <div className="container relative min-h-screen flex-col items-center justify-center pt-40 md:grid md:pt-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
         <div className="relative hidden h-full flex-col bg-muted p-10 dark:border-r lg:flex">
           <div className="absolute inset-0 " />
-          <Link
-            className="
-      w-fit rounded-full border-2 border-muted-foreground/10 p-2 px-3
-      text-xs font-semibold uppercase
-      tracking-widest text-foreground duration-500 hover:bg-secondary
-    "
-            href={"/"}
-          >
-            VSTREE
-          </Link>
+          {appConfig.logo}
           <div className="relative z-20 mt-auto"></div>
         </div>
         <div className="lg:p-8">
@@ -37,7 +29,7 @@ export default function AuthenticationPage({ providers, error }) {
             <p className="px-8 text-center text-sm text-muted-foreground">
               By clicking continue, you agree to our{" "}
               <Link
-                href="https://vstree.app/terms-conditions.pdf"
+                href={appConfig.termsAndConditionsUrl}
                 rel="noopener noreferrer"
                 target="_blank"
                 className="underline underline-offset-4 hover:text-primary"
@@ -46,7 +38,7 @@ export default function AuthenticationPage({ providers, error }) {
               </Link>{" "}
               and{" "}
               <Link
-                href="https://vstree.app/privacy.pdf"
+                href={appConfig.privacyPolicyUrl}
                 rel="noopener noreferrer"
                 target="_blank"
                 className="underline underline-offset-4 hover:text-primary"

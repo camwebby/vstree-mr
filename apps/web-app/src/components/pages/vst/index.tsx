@@ -15,6 +15,7 @@ import {
 } from "../../layout/two-col-layout";
 import VSTHeader from "./partials/vst-header";
 import Link from "next/link";
+import { appConfig } from "@/constants/app-config";
 
 // #region Dynamic Imports
 const VSTActions = dynamic(() => import("../../organisms/vst-actions"), {
@@ -54,7 +55,7 @@ export function VstPage({ slug }: { slug: string }) {
     <Layout>
       <>
         <Head>
-          <title>{vst?.name} | vstree</title>
+          <title>{vst?.name} | {appConfig.appName}</title>
         </Head>
 
         <NewColWarnDialog
