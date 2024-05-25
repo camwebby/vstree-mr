@@ -8,7 +8,6 @@ export const CollectionIcon: React.FC<VstUiIconProps> = ({ ...props }) => {
       height="42"
       viewBox="0 0 42 48"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <path
