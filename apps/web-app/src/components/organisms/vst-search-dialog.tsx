@@ -1,7 +1,13 @@
 import { api } from "@/utils/api";
+import { useDebouncedValue } from "@mantine/hooks";
+import { search } from "fast-fuzzy";
+import { Loader2 } from "lucide-react";
+import { memo, useMemo, useState } from "react";
 import { Vst } from "vst-database";
-import { useMemo, useState } from "react";
 import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
   Badge,
   Dialog,
   DialogContent,
@@ -13,12 +19,8 @@ import {
   TableCell,
   TableRow,
 } from "vst-ui";
-import { Avatar, AvatarFallback, AvatarImage } from "vst-ui";
-import { search } from "fast-fuzzy";
-import { Loader2 } from "lucide-react";
-import { useDebouncedValue } from "@mantine/hooks";
 
-export const VstSearchDialog = ({
+const VstSearchDialog = ({
   open,
   onVstClick,
   onOpenChange,
@@ -30,12 +32,9 @@ export const VstSearchDialog = ({
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [debouncedSearch] = useDebouncedValue(searchTerm, 200);
 
-  const { data, isLoading, isInitialLoading } = api.vsts.getAll.useQuery(
-    undefined,
-    {
-      enabled: debouncedSearch !== "",
-    },
-  );
+  const { data, isInitialLoading } = api.vsts.getAll.useQuery(undefined, {
+    enabled: debouncedSearch !== "",
+  });
 
   const filteredResults = useMemo(() => {
     if (debouncedSearch === "") {
@@ -131,3 +130,5 @@ export const VstSearchDialog = ({
     </Dialog>
   );
 };
+
+export default memo(VstSearchDialog);

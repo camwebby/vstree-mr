@@ -1,4 +1,4 @@
-import UserProfilePage from "@/components/pages/userProfile";
+import UserProfilePage from "@/components/pages/user-profile";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 

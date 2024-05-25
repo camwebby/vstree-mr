@@ -1,22 +1,18 @@
-import * as React from "react";
-import { cn } from "vst-ui/src/lib/utils";
-import { Button } from "vst-ui";
-import { Input } from "vst-ui";
-import { Label } from "vst-ui";
-import { Loader2 } from "lucide-react";
-import { signIn } from "next-auth/react";
 import { Provider } from "next-auth/providers";
+import { signIn } from "next-auth/react";
+import * as React from "react";
+import { Button } from "vst-ui";
+import { cn } from "vst-ui/src/lib/utils";
 
-export function UserAuthForm({
+function UserAuthForm({
   className,
   providers,
   ...props
 }: React.HTMLAttributes<HTMLDivElement> & {
   providers: Provider[];
 }) {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [isLoading] = React.useState<boolean>(false);
 
-  
   return (
     <div className={cn("grid gap-4", className)} {...props}>
       <>
@@ -37,3 +33,5 @@ export function UserAuthForm({
     </div>
   );
 }
+
+export default React.memo(UserAuthForm);

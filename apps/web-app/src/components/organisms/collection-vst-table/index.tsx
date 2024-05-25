@@ -1,14 +1,12 @@
-import { Table, TableCell, TableHeader, TableRow } from "vst-ui";
-import { useEffect, useMemo, useState } from "react";
-import { CollectionVst, Vst, UserVstAssociation } from "vst-database";
+import { vstUserAction } from "@/constants/vst-user-action";
 import { api } from "@/utils/api";
-import { Button } from "vst-ui";
-import { VstSearchDialog } from "../vst-search-dialog";
-import { toast } from "vst-ui";
 import { useDebouncedValue } from "@mantine/hooks";
 import { Reorder } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
+import { CollectionVst, UserVstAssociation, Vst } from "vst-database";
+import { Button, Table, TableCell, TableHeader, TableRow, toast } from "vst-ui";
+import VstSearchDialog from "../vst-search-dialog";
 import { ColVstRowItem } from "./partials/row-item";
-import { vstUserAction } from "@/constants/vstUserAction";
 
 const CollectionVstTable = ({
   collectionVsts,
@@ -45,7 +43,7 @@ const CollectionVstTable = ({
 
   const { mutate: rearrange, isLoading: isRearranging } =
     api.collectionVst.rearrangeCollectionVstOrder.useMutation({
-      onSuccess: async (data) => {
+      onSuccess: async () => {
         const colId = collectionVsts[0]?.collectionId || -1;
 
         await apiContext.collectionVst.getByCollectionId.invalidate({

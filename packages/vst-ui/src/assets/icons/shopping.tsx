@@ -1,7 +1,7 @@
 import React from "react";
 import { VstUiIconProps } from "./types";
 
-const ShoppingIcon: React.FC<VstUiIconProps> = ({ ...props }) => {
+export const ShoppingIcon: React.FC<VstUiIconProps> = ({ ...props }) => {
   return (
     <svg
       width="42"
@@ -33,5 +33,3 @@ const ShoppingIcon: React.FC<VstUiIconProps> = ({ ...props }) => {
     </svg>
   );
 };
-
-export default ShoppingIcon;

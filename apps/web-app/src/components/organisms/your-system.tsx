@@ -1,14 +1,16 @@
 //@ts-nocheck
+import { api } from "@/utils/api";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useDebouncedValue } from "@mantine/hooks";
+import { useSession } from "next-auth/react";
+import { useForm } from "react-hook-form";
+import useDeepCompareEffect from "use-deep-compare-effect";
+import { User } from "vst-database";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
   Card,
   CardContent,
   CardDescription,
@@ -20,7 +22,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  toast,
 } from "vst-ui";
+import { z } from "zod";
 import {
   cpuArchitectures,
   daws,
@@ -29,15 +38,6 @@ import {
   supportedDawVersions,
   supportedOsVersions,
 } from "./compatibility-rate/consts";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { api } from "@/utils/api";
-import { toast } from "vst-ui";
-import { User } from "vst-database";
-import { useDebouncedValue } from "@mantine/hooks";
-import useDeepCompareEffect from "use-deep-compare-effect";
-import { useSession } from "next-auth/react";
 
 export const userSetupSchema = z.object({
   daw: z.enum(daws).optional(),
@@ -117,9 +117,7 @@ const YourSetup: React.FC<{
         <Form {...form}>
           <Accordion defaultValue={["daw_spec"]} type="multiple">
             <AccordionItem className=" border-none" value="daw_spec">
-              <AccordionTrigger>
-                DAW
-              </AccordionTrigger>
+              <AccordionTrigger>DAW</AccordionTrigger>
               <AccordionContent>
                 <div className="grid grid-cols-2 gap-5">
                   <FormField
@@ -191,9 +189,7 @@ const YourSetup: React.FC<{
             </AccordionItem>
 
             <AccordionItem className=" border-none" value="os_spec">
-              <AccordionTrigger>
-                OS
-              </AccordionTrigger>
+              <AccordionTrigger>OS</AccordionTrigger>
 
               <AccordionContent>
                 <div className="grid grid-cols-2 gap-5">
@@ -264,9 +260,7 @@ const YourSetup: React.FC<{
             </AccordionItem>
 
             <AccordionItem className=" border-none" value="system_spec">
-              <AccordionTrigger>
-                System spec
-              </AccordionTrigger>
+              <AccordionTrigger>System spec</AccordionTrigger>
               <AccordionContent>
                 <div className={`grid grid-cols-2 gap-5`}>
                   <FormField

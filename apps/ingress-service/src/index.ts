@@ -7,6 +7,7 @@ import {
   markIngressEventAsSuccess,
 } from "./utils/eventProcessor/utils";
 
+// Uses strategy pattern to process events
 export const main = async () => {
   console.log(`Starting ingress service run`);
 

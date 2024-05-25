@@ -1,30 +1,27 @@
+import { currencyFormatter } from "@/utils/currentFormatter";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { memo, useCallback, useMemo } from "react";
+import type { WhereToFind } from "vst-database";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "vst-ui";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "vst-ui";
-import type { WhereToFind } from "vst-database";
-import Link from "next/link";
-import { useCallback } from "react";
-import {
+  OpenInNewWindowIcon,
   Table,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
 } from "vst-ui";
-import { OpenInNewWindowIcon } from "vst-ui";
-import dynamic from "next/dynamic";
-const WTFSuggest = dynamic(() => import("./wtf-suggest"));
 
-export const currencyFormatter = (currency: string) =>
-  new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency,
-  });
+const WTFSuggest = dynamic(() => import("./wtf-suggest"));
 
 const WhereToFinds = ({
   data,
@@ -33,13 +30,15 @@ const WhereToFinds = ({
   data: WhereToFind[];
   vstId: number;
 }) => {
-  const uniqueCurrencies = data
-    .map((whereToFind) => {
-      return whereToFind.currency;
-    })
-    .filter((value, index, self) => {
-      return self.indexOf(value) === index;
-    });
+  const uniqueCurrencies = useMemo(() => {
+    return data
+      .map((whereToFind) => {
+        return whereToFind.currency;
+      })
+      .filter((value, index, self) => {
+        return self.indexOf(value) === index;
+      });
+  }, [data]);
 
   const itemsByCurrency = useCallback(
     (currency: string) => {
@@ -126,4 +125,4 @@ const WhereToFinds = ({
   );
 };
 
-export default WhereToFinds;
+export default memo(WhereToFinds);

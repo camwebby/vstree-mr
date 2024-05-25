@@ -1,18 +1,23 @@
 //@ts-nocheck
-import { Button, CardTitle } from "vst-ui";
+import { api } from "@/utils/api";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
+import { ComponentProps, memo } from "react";
+import { useForm } from "react-hook-form";
+import { User } from "vst-database";
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  Button,
+  CardTitle,
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "vst-ui";
-import { Label } from "vst-ui";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
   Form,
   FormControl,
   FormDescription,
@@ -20,20 +25,18 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "vst-ui";
-import { ComponentProps } from "react";
-import { RadioGroup, RadioGroupItem } from "vst-ui";
-import { toast } from "vst-ui";
-import {
+  Label,
+  RadioGroup,
+  RadioGroupItem,
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
+  Separator,
+  toast,
 } from "vst-ui";
-import { Separator } from "vst-ui";
-import { api } from "@/utils/api";
-import { Loader2 } from "lucide-react";
+import { z } from "zod";
 import {
   cpuArchitectures,
   daws,
@@ -44,16 +47,8 @@ import {
   supportedDawVersions,
   supportedOsVersions,
 } from "./consts";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "vst-ui";
-// import { CardTitle } from "vst-ui/src/components/accordion";
-import { User } from "vst-database";
 
-export default function CompatibilityRateDialog(
+function CompatibilityRateDialog(
   props: ComponentProps<typeof Dialog> & {
     vstId: number;
     userData: User;
@@ -74,19 +69,6 @@ export default function CompatibilityRateDialog(
       vstId: props.vstId,
     },
   });
-
-  // const form = useForm<z.infer<typeof rateExpSchema>>({
-  //   resolver: zodResolver(rateExpSchema),
-  //   defaultValues: {
-  //     systemOS: userData?.systemOS || undefined,
-  //     osVersion: "",
-  //     cpuArchitecture: undefined,
-  //     systemMemory: 4096,
-  //     daw: undefined,
-  //     dawVersion: "",
-  //     vstId: props.vstId,
-  //   },
-  // });
 
   const { mutate, isLoading } = api.userVstExperience.submit.useMutation({
     onSuccess: () => {
@@ -409,3 +391,5 @@ export default function CompatibilityRateDialog(
     </Dialog>
   );
 }
+
+export default memo(CompatibilityRateDialog);

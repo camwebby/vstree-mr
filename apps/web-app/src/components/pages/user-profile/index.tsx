@@ -1,35 +1,40 @@
 import { Card, CardContent, CardHeader, CardTitle } from "vst-ui";
-import Layout from "../organisms/layout";
+import Layout from "@/components/layout/primary";
 import { api } from "@/utils/api";
 import { Avatar, AvatarFallback, AvatarImage } from "vst-ui";
 import {
   TwoColContainer,
   TwoColFirst,
   TwoColSecond,
-} from "../organisms/two-col-layout";
+} from "../../layout/two-col-layout";
 import { Separator } from "vst-ui";
 import { User } from "vst-database";
 import dynamic from "next/dynamic";
-import { SkeletonCard } from "../organisms/skeleton-card";
+import { SkeletonCard } from "../../molecules/skeleton-card";
 import Head from "next/head";
+import { appConfig } from "@/constants/app-config";
 
-const UserVsts = dynamic(() => import("../organisms/user-vsts"), {
+
+// #region dynamic imports
+const UserVsts = dynamic(() => import("../../organisms/user-vsts"), {
   loading: () => <SkeletonCard />,
   ssr: false,
 });
 
 const CollectionsTable = dynamic(
-  () => import("../organisms/collections-table"),
+  () => import("../../organisms/collections-table"),
   {
     loading: () => <SkeletonCard />,
     ssr: false,
   },
 );
 
-const YourSystem = dynamic(() => import("../organisms/your-system"), {
+const YourSystem = dynamic(() => import("../../organisms/your-system"), {
   loading: () => <SkeletonCard />,
   ssr: false,
 });
+
+// #endregion
 
 const UserProfilePage = ({ id }: { id?: string }) => {
   const { data: userData } = api.user.getUserPublic.useQuery(
@@ -44,7 +49,7 @@ const UserProfilePage = ({ id }: { id?: string }) => {
   return (
     <Layout>
       <Head>
-        <title>Profile | vstree</title>
+        <title>Profile | {appConfig.appName}</title>
       </Head>
       <TwoColContainer>
         <TwoColFirst>
@@ -80,7 +85,6 @@ const UserProfilePage = ({ id }: { id?: string }) => {
 
         <TwoColSecond>
           {userData && <YourSystem user={userData} />}
-
           <UserVsts user={userData as unknown as User} />
         </TwoColSecond>
       </TwoColContainer>

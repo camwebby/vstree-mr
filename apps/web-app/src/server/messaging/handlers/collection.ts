@@ -1,6 +1,6 @@
 import { z } from "zod";
 import type { UserCollectionAssociation } from "vst-database";
-import { zUserCollectionCountStats } from "@/constants/zod/collectionCountStats";
+import { zUserCollectionCountStats } from "@/constants/zod/collection-count-stats";
 import { db } from "@/server/db";
 
 const countToToggle = {

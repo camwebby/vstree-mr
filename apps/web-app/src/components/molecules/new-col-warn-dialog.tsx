@@ -1,5 +1,7 @@
-import React from "react";
+import { NewCollectionContext } from "@/contexts/new-collection";
+import { useContext } from "react";
 import {
+  Button,
   Dialog,
   DialogContent,
   DialogDescription,
@@ -7,9 +9,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "vst-ui";
-import { Button } from "vst-ui";
-import { useContext, useState } from "react";
-import { NewCollectionContext } from "@/contexts/new-collection";
 
 const NewColWarnDialog = ({
   isOpen,

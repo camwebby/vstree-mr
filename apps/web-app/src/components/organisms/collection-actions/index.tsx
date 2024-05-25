@@ -1,19 +1,14 @@
-import { Badge } from "vst-ui";
-import { Button } from "vst-ui";
-import { Card, CardContent, CardHeader, CardTitle } from "vst-ui";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "vst-ui";
 import {
   collectionStatIconMap,
   collectionToggleToCount,
   collectionUserAction,
-} from "@/constants/collectionUserAction";
-import { Collection } from "vst-database";
+} from "@/constants/collection-user-action";
+import { api } from "@/utils/api";
+import { useClipboard } from "@mantine/hooks";
+import { ShareIcon } from "lucide-react";
+import { useRouter } from "next/router";
 import React from "react";
+import { Collection } from "vst-database";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,12 +19,18 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+  toast,
 } from "vst-ui";
-import { api } from "@/utils/api";
-import { useRouter } from "next/router";
-import { toast } from "vst-ui";
-import { useClipboard } from "@mantine/hooks";
-import { ShareIcon } from "lucide-react";
 
 const CollectionActions: React.FC<{
   collection: Collection;
@@ -39,7 +40,7 @@ const CollectionActions: React.FC<{
 
   const router = useRouter();
 
-  const { data: userCollection, isLoading: isLoadingUserVst } =
+  const { data: userCollection } =
     api.userCollection.getByCollectionId.useQuery(
       {
         collectionId: props.collection?.id || -1,

@@ -1,6 +1,6 @@
-import { formSchema, newCollectionVstItem } from "./consts";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { formSchema, newCollectionVstItem } from "./consts";
 
 export type TNewCollectionContext = {
   form: ReturnType<typeof useForm<z.infer<typeof formSchema>>>;

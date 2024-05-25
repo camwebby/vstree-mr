@@ -1,11 +1,11 @@
-import { Input } from "vst-ui";
-import UserCommand from "./user-command";
-import Link from "next/link";
-import { useState } from "react";
-import { cn } from "vst-ui/src/lib/utils";
-import { VstSearchDialog } from "./vst-search-dialog";
+import { appConfig } from "@/constants/app-config";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { Vst } from "vst-database";
+import { Input } from "vst-ui";
+import { cn } from "vst-ui/src/lib/utils";
+import UserCommand from "../organisms/user-command";
+import VstSearchDialog from "../organisms/vst-search-dialog";
 
 export function Header({ className }: { className?: string }) {
   const [showSiteSearch, setShowSiteSearch] = useState(false);
@@ -18,24 +18,12 @@ export function Header({ className }: { className?: string }) {
         className,
       )}
     >
-      <Link
-        className="
-      rounded-full border-2 border-muted-foreground/10 p-2 px-3 text-xs
-      font-semibold uppercase tracking-widest
-      text-foreground duration-500 hover:bg-secondary
-    "
-        href={"/"}
-      >
-        VSTREE
-      </Link>
-
+      {appConfig.logo}
       <div className="grow" />
       <Input
         onClick={() => setShowSiteSearch(true)}
         onChange={(e) => {
           setShowSiteSearch(true);
-
-          // clear input
           e.target.value = "";
         }}
         name="search"

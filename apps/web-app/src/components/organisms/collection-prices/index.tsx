@@ -1,8 +1,18 @@
-import { CollectionVst, Vst, WhereToFind } from "vst-database";
-import React, { useCallback, useState } from "react";
+import { api } from "@/utils/api";
+import { H } from "highlight.run";
+import { ChevronDown, Loader2 } from "lucide-react";
+import { useRouter } from "next/router";
+import { memo, useState } from "react";
+import { CollectionVst, Vst } from "vst-database";
 import {
-  Button,
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Card,
+  CardContent,
   CardDescription,
+  CardHeader,
+  CardTitle,
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
@@ -13,47 +23,16 @@ import {
   TableFooter,
   TableHeader,
   TableRow,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
 } from "vst-ui";
-import { Card, CardContent, CardHeader, CardTitle } from "vst-ui";
-import { Avatar, AvatarFallback, AvatarImage } from "vst-ui";
-import { api } from "@/utils/api";
-import { useRouter } from "next/router";
-import { currencyFormatter } from "./where-to-find";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "vst-ui";
-import Link from "next/link";
-import { OpenInNewWindowIcon } from "vst-ui";
-import { ChevronDown, Loader2 } from "lucide-react";
-
-const FormattedPrice = ({
-  wtfs,
-  vstId,
-}: {
-  wtfs: (WhereToFind | null)[];
-  vstId: number;
-}) => {
-  const wtf = wtfs?.find((wtf) => wtf?.vstId === vstId);
-
-  if (!wtf) {
-    return <>-</>;
-  }
-
-  return (
-    <div
-      className={`flex flex-row items-center gap-x-2 ${
-        !!wtf ? "text-foreground" : "text-muted-foreground"
-      }`}
-    >
-      <span>
-        {!!wtf
-          ? currencyFormatter(wtf.currency).format((wtf?.price || 0) / 100)
-          : "N/A"}
-      </span>
-      <Link rel="noopener noreferrer" target="_blank" href={wtf.url}>
-        <OpenInNewWindowIcon />
-      </Link>
-    </div>
-  );
-};
+import { zCurrency } from "vst-utils";
+import { FormattedPrice } from "./partials/formatted-price";
+import { getLowestWtfByGroup } from "./utils";
+import { currencyFormatter } from "@/utils/currentFormatter";
+import { z } from "zod";
 
 const CollectionPrices = ({
   collectionVsts,
@@ -62,44 +41,34 @@ const CollectionPrices = ({
     vst: Vst;
   })[];
 }) => {
+  const uniqueCurrencies = Object.values(zCurrency.Values);
+
+  const [selectedCurrency, setSelectedCurrency] = useState<
+    z.infer<typeof zCurrency>
+  >(
+    //@ts-ignore
+    uniqueCurrencies[0],
+  );
+
   const [cardOpen, setCardOpen] = useState(false);
 
-  const { data: prices, isFetching } = api.collection.findPrices.useQuery(
+  const { data: prices, isLoading } = api.collection.findPrices.useQuery(
     {
       vstIds: collectionVsts?.map((vst) => vst.vstId) || [],
       mode: "lowest",
+      currency: selectedCurrency,
     },
     {
       enabled: !!collectionVsts?.length && !!cardOpen,
     },
   );
 
-  const uniqueCurrencies = ["USD", "EUR", "GBP"];
-
-  const totalLowestPrice = useCallback(
-    (currency: string, prices: WhereToFind[]): number => {
-      if (!prices?.length) {
-        return 0;
-      }
-
-      return (
-        prices?.reduce((acc: number, curr) => {
-          if (curr.currency === currency) {
-            return acc + (curr.price ?? 0);
-          }
-          return acc;
-        }, 0) ?? 0
-      );
-    },
-    [],
-  );
-
   const router = useRouter();
 
   return (
     <Collapsible onOpenChange={(v) => setCardOpen(v)}>
-      <Card className="">
-        <CollapsibleTrigger>
+      <Card>
+        <CollapsibleTrigger className="w-full">
           <CardHeader className="flex w-full flex-row items-center justify-between gap-x-2">
             <div className="text-left">
               <CardTitle className="mb-2">Price compare</CardTitle>
@@ -121,14 +90,20 @@ const CollectionPrices = ({
             <Tabs defaultValue={uniqueCurrencies[0]} className="">
               <TabsList className="">
                 {uniqueCurrencies.map((currency) => (
-                  <TabsTrigger key={currency + "_trigger"} value={currency}>
+                  <TabsTrigger
+                    onClick={() => {
+                      setSelectedCurrency(currency);
+                    }}
+                    key={currency + "_trigger"}
+                    value={currency}
+                  >
                     {currency}
                   </TabsTrigger>
                 ))}
               </TabsList>
               {uniqueCurrencies.map((currency) => (
                 <TabsContent key={currency} value={currency}>
-                  {!!collectionVsts?.length || !!isFetching ? (
+                  {!!collectionVsts?.length || !!isLoading ? (
                     <Table>
                       <TableCaption>
                         *Prices are not guaranteed to be accurate
@@ -157,7 +132,10 @@ const CollectionPrices = ({
                                     router
                                       .push(`/vsts/${colVst.vst.slug}`)
                                       .catch((err) => {
-                                        // TODO: handle error
+                                        H.consumeError(
+                                          err,
+                                          `Error redirecting from collection prices to VST ${colVst.vst.slug}`,
+                                        );
                                       });
                                   }}
                                   className="cursor-pointer transition-opacity duration-300 hover:opacity-80"
@@ -194,10 +172,18 @@ const CollectionPrices = ({
                         <TableRow>
                           <TableCell>Total</TableCell>
                           <TableCell>
-                            ~&nbsp;
-                            {currencyFormatter(currency).format(
-                              (totalLowestPrice(currency, prices || []) || 0) /
-                                100,
+                            {!prices?.length ? (
+                              "-"
+                            ) : (
+                              <>
+                                ~&nbsp;
+                                {currencyFormatter(currency).format(
+                                  (getLowestWtfByGroup(
+                                    currency,
+                                    prices || [],
+                                  ) || 0) / 100,
+                                )}
+                              </>
                             )}
                           </TableCell>
                         </TableRow>
@@ -216,4 +202,4 @@ const CollectionPrices = ({
   );
 };
 
-export default CollectionPrices;
+export default memo(CollectionPrices);

@@ -1,10 +1,14 @@
-import Layout from "@/components/organisms/layout";
 import { Vsts } from "@/components/pages/vsts";
+import { appConfig } from "@/constants/app-config";
+import Head from "next/head";
 
 export default function VstPage() {
   return (
-    <Layout>
+    <>
+      <Head>
+        <title>vsts | {appConfig.appName}</title>
+      </Head>
       <Vsts />
-    </Layout>
+    </>
   );
 }

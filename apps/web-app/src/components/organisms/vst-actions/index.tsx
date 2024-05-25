@@ -1,36 +1,33 @@
-import React from "react";
-import { api } from "@/utils/api";
 import {
+  vstStatIconMap,
+  vstToggleToCount,
+  vstUserAction,
+} from "@/constants/vst-user-action";
+import { NewCollectionContext } from "@/contexts/new-collection";
+import { TNewCollectionVstItem } from "@/contexts/new-collection/types";
+import { api } from "@/utils/api";
+import { useVstToggle } from "@/utils/useVstToggle";
+import { Loader2, PlusIcon } from "lucide-react";
+import { useSession } from "next-auth/react";
+import React, { memo, useContext } from "react";
+import { User, Vst } from "vst-database";
+import {
+  Badge,
+  Button,
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "vst-ui";
-import { Separator } from "vst-ui";
-import { Skeleton } from "vst-ui";
-import {
-  vstStatIconMap,
-  vstToggleToCount,
-  vstUserAction,
-} from "@/constants/vstUserAction";
-import { Loader2, PlusIcon } from "lucide-react";
-import { useContext } from "react";
-import { NewCollectionContext } from "@/contexts/new-collection";
-import { Button } from "vst-ui";
-import { useVstToggle } from "@/utils/useVstToggle";
-import { User, Vst } from "vst-database";
-import { TNewCollectionVstItem } from "@/contexts/new-collection/types";
-import { Badge } from "vst-ui";
-import {
+  Separator,
+  Skeleton,
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
+  toast,
 } from "vst-ui";
-import { toast } from "vst-ui";
-import ExperienceRateDialog from "./compatibility-rate";
-import { useSession } from "next-auth/react";
+import ExperienceRateDialog from "../compatibility-rate";
 
 const VSTActions = ({
   vst,
@@ -71,7 +68,6 @@ const VSTActions = ({
         <CardHeader>
           <CardTitle>Actions</CardTitle>
         </CardHeader>
-        {/* <Separator /> */}
 
         {!isLoadingUserVst ? (
           <CardContent className="mt-5 flex gap-5">
@@ -136,9 +132,8 @@ const VSTActions = ({
         )}
         <Separator />
 
-        <CardFooter className="mt-5 flex-wrap flex flex-row items-center gap-2 whitespace-nowrap">
+        <CardFooter className="mt-5 flex flex-row flex-wrap items-center gap-2 whitespace-nowrap">
           <Button
-
             onClick={() => {
               // If form is open, show warn dialog
               if (showNewCollectionForm) {
@@ -221,4 +216,4 @@ const VSTActions = ({
   );
 };
 
-export default VSTActions;
+export default memo(VSTActions);

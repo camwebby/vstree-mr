@@ -1,7 +1,7 @@
 import React from "react";
 import { VstUiIconProps } from "./types";
 
-const FilterIcon: React.FC<VstUiIconProps> = ({ ...props }) => {
+export const FilterIcon: React.FC<VstUiIconProps> = ({ ...props }) => {
   return (
     <svg
       width="42"
@@ -31,5 +31,3 @@ const FilterIcon: React.FC<VstUiIconProps> = ({ ...props }) => {
     </svg>
   );
 };
-
-export default FilterIcon;

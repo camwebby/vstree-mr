@@ -1,26 +1,16 @@
+import Layout from "@/components/layout/primary";
+import { collectionSortOptions } from "@/constants/collection";
 import { api } from "@/utils/api";
-import { CollectionCard } from "../../organisms/collection-card";
 import { useState } from "react";
-import { cn } from "vst-ui/src/lib/utils";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "vst-ui";
-import { sortOptions } from "./consts";
-import Head from "next/head";
+import { CollectionCard } from "../../organisms/collection-card";
+import CollectionActionBar from "./partials/action-bar";
 
 export function Collections() {
-  const [orderBy, setOrderBy] = useState<(typeof sortOptions)[number]["value"]>(
-    sortOptions[0].value,
-  );
+  const [orderBy, setOrderBy] = useState<
+    (typeof collectionSortOptions)[number]["value"]
+  >(collectionSortOptions[0].value);
 
-  const {
-    data,
-    // isLoading, fetchNextPage, hasNextPage
-  } = api.collection.getAll.useInfiniteQuery(
+  const { data } = api.collection.getAll.useInfiniteQuery(
     {
       limit: 1000,
       orderBy,
@@ -31,36 +21,8 @@ export function Collections() {
   );
 
   return (
-    <>
-      <Head>
-        <title>Collections | vstree</title>
-      </Head>
-      <div
-        className={cn(
-          "max-w-screen sticky top-0 z-10 mb-5 flex items-center gap-5 overflow-x-auto border-l border-border bg-background/60 p-3 backdrop-blur-sm lg:border-b",
-        )}
-      >
-        <Select
-          onValueChange={(v: (typeof sortOptions)[number]["value"]) => {
-            setOrderBy(v);
-          }}
-        >
-          <SelectTrigger className="max-w-xs">
-            <SelectValue
-              placeholder={sortOptions.find((o) => o.value === orderBy)?.label}
-            />
-          </SelectTrigger>
-          <SelectContent>
-            {sortOptions.map((option) => (
-              <>
-                <SelectItem value={option.value} key={option.value}>
-                  {option.label}
-                </SelectItem>
-              </>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
+    <Layout>
+      <CollectionActionBar orderBy={orderBy} setOrderBy={setOrderBy} />
 
       <div className="grid grid-cols-1 gap-5 p-7 md:grid-cols-2 2xl:grid-cols-3">
         {data?.pages
@@ -69,6 +31,6 @@ export function Collections() {
             return <CollectionCard key={collection.id} {...collection} />;
           })}
       </div>
-    </>
+    </Layout>
   );
 }

@@ -2,14 +2,10 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "vst-ui";
 import TextAndImage from "../text-and-image";
-import CollectionIcon from "vst-ui/src/assets/icons/collection";
 
 const TabbedContentTabs = () => {
   return (
-    <Tabs
-      defaultValue="library"
-      className=" mx-auto w-fit flex flex-col"
-    >
+    <Tabs defaultValue="library" className=" mx-auto w-fit flex flex-col">
       <TabsList className="border border-border/50 bg-foreground rounded-full mx-auto">
         <TabsTrigger className="rounded-full" value="library">
           Add to library
