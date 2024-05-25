@@ -17,7 +17,6 @@ This repository is structured as follows:
 
 ```
 apps
-└── docs
 └── ingress-services
 └── landing
 └── web-app
@@ -42,10 +41,6 @@ git clone https://github.com/your-username/ui.git
 ```
 
 ### Navigate to project directory
-
-```bash
-cd ui
-```
 
 ### Create a new Branch
 
@@ -74,7 +69,7 @@ turbo dev --filter=vst-webapp
 2. To run the `vstree` landing site:
 
 ```bash
-turbo dev --filter=landing
+turbo dev --filter=vst-landing
 ```
 
 ## Commit Convention
