@@ -6,7 +6,7 @@ export const appConfig = {
     <Link
       className="
 rounded-full border-2 border-muted-foreground/10 p-2 px-3 text-xs
-font-semibold uppercase tracking-widest
+font-semibold uppercase tracking-widest w-fit
 text-foreground duration-500 hover:bg-secondary
 "
       href={"/"}
