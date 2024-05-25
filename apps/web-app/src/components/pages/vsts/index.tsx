@@ -9,7 +9,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Button, toast } from "vst-ui";
 import { SkeletonCard } from "../../molecules/skeleton-card";
 import FilterBar from "./partials/filter-bar";
-import FilterTabBar from "./partials/filter-tab-bar";
+import FilterList from "./partials/filters-list";
 import Layout from "@/components/layout/primary";
 
 export function Vsts({}: {
@@ -65,10 +65,6 @@ export function Vsts({}: {
   return (
     <Layout>
       <div className="relative">
-        <Head>
-          <title>vsts | vstree</title>
-        </Head>
-
         <FilterBar
           {...{
             showTabBar,
@@ -82,7 +78,7 @@ export function Vsts({}: {
         />
 
         {showTabBar && (
-          <FilterTabBar
+          <FilterList
             {...{
               selectedCreators,
               setSelectedCreators,
