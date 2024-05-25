@@ -337,21 +337,20 @@ export const collectionRouter = createTRPCRouter({
 
       if (!uniqueVstIds.length) return [];
 
-      const prices = await Promise.all(
+      const pricePromises = Promise.all(
         uniqueVstIds.map(async (vstId) => {
-          const wtf = await ctx.db.whereToFind.findMany({
+          const wtfSearch = await ctx.db.whereToFind.findMany({
             where: {
               vstId,
               price: { not: null },
               currency: input.currency ?? undefined,
-              lastVerifiedAt: { not: null },
             },
           });
 
-          if (!wtf.length) return null;
+          if (!wtfSearch.length) return null;
 
           if (input.mode === "lowest") {
-            const lowest = wtf.reduce((prev, current) => {
+            const lowest = wtfSearch.reduce((prev, current) => {
               if (!prev.price || !current.price) return prev;
               return prev?.price < current?.price ? prev : current;
             });
@@ -363,6 +362,7 @@ export const collectionRouter = createTRPCRouter({
         }),
       );
 
+      const prices = await pricePromises;
       const wtfs = prices.filter((p) => p !== null);
 
       return wtfs as WhereToFind[];
