@@ -40,4 +40,5 @@ const config = {
 
 export default million.next(config, {
   auto: true,
+  mute: true,
 });
