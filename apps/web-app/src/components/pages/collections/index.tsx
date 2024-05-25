@@ -23,10 +23,6 @@ export function Collections() {
 
   return (
     <Layout>
-      <Head>
-        <title>Collections | vstree</title>
-      </Head>
-
       <CollectionActionBar orderBy={orderBy} setOrderBy={setOrderBy} />
 
       <div className="grid grid-cols-1 gap-5 p-7 md:grid-cols-2 2xl:grid-cols-3">

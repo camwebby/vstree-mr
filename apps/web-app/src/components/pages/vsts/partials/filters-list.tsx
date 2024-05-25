@@ -3,7 +3,7 @@ import React, { Dispatch, SetStateAction, memo } from "react";
 import { Badge } from "vst-ui";
 import { cn } from "vst-ui/src/lib/utils";
 
-const FilterTabBar: React.FC<{
+const FilterList: React.FC<{
   selectedCreators: string[];
   setSelectedCreators: Dispatch<SetStateAction<string[]>>;
   selectedTags: string[];
@@ -72,4 +72,4 @@ const FilterTabBar: React.FC<{
   );
 };
 
-export default memo(FilterTabBar);
+export default memo(FilterList);
