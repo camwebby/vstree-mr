@@ -2,9 +2,9 @@ import { NewCollectionContext } from "@/contexts/new-collection";
 import { PencilIcon, PlusIcon } from "lucide-react";
 import Link from "next/link";
 import router from "next/router";
-import React, { memo, useContext } from "react";
+import { memo, useContext } from "react";
 import { Button, StackIcon } from "vst-ui";
-import { CollectionIcon, EffectIcon } from "vst-ui/src/assets";
+import { EffectIcon } from "vst-ui/src/assets";
 
 const Sidebar = () => {
   const {

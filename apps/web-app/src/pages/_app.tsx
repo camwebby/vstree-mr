@@ -1,4 +1,4 @@
-import AppHead from "@/components/layout/next-head";
+import AppHead from "@/components/layout/app-head";
 import NewCollection from "@/components/organisms/new-collection";
 import NewCollectionProvider from "@/contexts/new-collection";
 import { ThemeProvider } from "@/contexts/theme";

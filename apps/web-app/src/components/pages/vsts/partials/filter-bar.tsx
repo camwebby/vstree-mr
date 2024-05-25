@@ -61,7 +61,7 @@ const FilterBar: React.FC<{
           <Checkbox
             disabled={props.selectedVstTypes[1] && !props.selectedVstTypes[0]}
             checked={props.selectedVstTypes[1]}
-            onCheckedChange={(v) => {
+            onCheckedChange={() => {
               props.setSelectedVstTypes([
                 !props.selectedVstTypes.every(Boolean),
                 true,
