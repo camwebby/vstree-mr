@@ -337,13 +337,13 @@ const CollectionCommentsComponent = ({
       }}
       onNewComment={(comment: string, repliesToId?: number) => {
         if (status !== "authenticated") {
-          signIn().catch((e) =>
+          signIn().catch((e) => {
             toast({
               title: "Error",
               description: "Something went wrong",
               variant: "destructive",
-            }),
-          );
+            });
+          });
 
           return false;
         }

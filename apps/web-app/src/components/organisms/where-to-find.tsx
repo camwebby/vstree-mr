@@ -1,6 +1,7 @@
+import { currencyFormatter } from "@/utils/currentFormatter";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { memo, useCallback } from "react";
+import { memo, useCallback, useMemo } from "react";
 import type { WhereToFind } from "vst-database";
 import {
   Card,
@@ -22,12 +23,6 @@ import {
 
 const WTFSuggest = dynamic(() => import("./wtf-suggest"));
 
-export const currencyFormatter = (currency: string) =>
-  new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency,
-  });
-
 const WhereToFinds = ({
   data,
   vstId,
@@ -35,13 +30,15 @@ const WhereToFinds = ({
   data: WhereToFind[];
   vstId: number;
 }) => {
-  const uniqueCurrencies = data
-    .map((whereToFind) => {
-      return whereToFind.currency;
-    })
-    .filter((value, index, self) => {
-      return self.indexOf(value) === index;
-    });
+  const uniqueCurrencies = useMemo(() => {
+    return data
+      .map((whereToFind) => {
+        return whereToFind.currency;
+      })
+      .filter((value, index, self) => {
+        return self.indexOf(value) === index;
+      });
+  }, [data]);
 
   const itemsByCurrency = useCallback(
     (currency: string) => {

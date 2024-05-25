@@ -1,10 +1,9 @@
+import Layout from "@/components/layout/primary";
+import { collectionSortOptions } from "@/constants/collection";
 import { api } from "@/utils/api";
-import Head from "next/head";
 import { useState } from "react";
 import { CollectionCard } from "../../organisms/collection-card";
 import CollectionActionBar from "./partials/action-bar";
-import { collectionSortOptions } from "@/constants/collection";
-import Layout from "@/components/layout/primary";
 
 export function Collections() {
   const [orderBy, setOrderBy] = useState<
