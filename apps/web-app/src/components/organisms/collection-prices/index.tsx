@@ -1,9 +1,9 @@
 import { api } from "@/utils/api";
+import { H } from "highlight.run";
 import { ChevronDown, Loader2 } from "lucide-react";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { memo, useCallback, useState } from "react";
-import { CollectionVst, Vst, WhereToFind } from "vst-database";
+import { memo, useState } from "react";
+import { CollectionVst, Vst } from "vst-database";
 import {
   Avatar,
   AvatarFallback,
@@ -16,7 +16,6 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-  OpenInNewWindowIcon,
   Table,
   TableBody,
   TableCaption,
@@ -29,38 +28,10 @@ import {
   TabsList,
   TabsTrigger,
 } from "vst-ui";
-import { currencyFormatter } from "./where-to-find";
-
-const FormattedPrice = ({
-  wtfs,
-  vstId,
-}: {
-  wtfs: (WhereToFind | null)[];
-  vstId: number;
-}) => {
-  const wtf = wtfs?.find((wtf) => wtf?.vstId === vstId);
-
-  if (!wtf) {
-    return <>-</>;
-  }
-
-  return (
-    <div
-      className={`flex flex-row items-center gap-x-2 ${
-        !!wtf ? "text-foreground" : "text-muted-foreground"
-      }`}
-    >
-      <span>
-        {!!wtf
-          ? currencyFormatter(wtf.currency).format((wtf?.price || 0) / 100)
-          : "N/A"}
-      </span>
-      <Link rel="noopener noreferrer" target="_blank" href={wtf.url}>
-        <OpenInNewWindowIcon />
-      </Link>
-    </div>
-  );
-};
+import { zCurrency } from "vst-utils";
+import { FormattedPrice } from "./partials/formatted-price";
+import { getLowestWtfByGroup } from "./utils";
+import { currencyFormatter } from "@/utils/currentFormatter";
 
 const CollectionPrices = ({
   collectionVsts,
@@ -69,8 +40,9 @@ const CollectionPrices = ({
     vst: Vst;
   })[];
 }) => {
-  const [cardOpen, setCardOpen] = useState(false);
+  const uniqueCurrencies = Object.values(zCurrency.Values);
 
+  const [cardOpen, setCardOpen] = useState(false);
   const { data: prices, isFetching } = api.collection.findPrices.useQuery(
     {
       vstIds: collectionVsts?.map((vst) => vst.vstId) || [],
@@ -79,26 +51,6 @@ const CollectionPrices = ({
     {
       enabled: !!collectionVsts?.length && !!cardOpen,
     },
-  );
-
-  const uniqueCurrencies = ["USD", "EUR", "GBP"];
-
-  const totalLowestPrice = useCallback(
-    (currency: string, prices: WhereToFind[]): number => {
-      if (!prices?.length) {
-        return 0;
-      }
-
-      return (
-        prices?.reduce((acc: number, curr) => {
-          if (curr.currency === currency) {
-            return acc + (curr.price ?? 0);
-          }
-          return acc;
-        }, 0) ?? 0
-      );
-    },
-    [],
   );
 
   const router = useRouter();
@@ -164,7 +116,10 @@ const CollectionPrices = ({
                                     router
                                       .push(`/vsts/${colVst.vst.slug}`)
                                       .catch((err) => {
-                                        // TODO: handle error
+                                        H.consumeError(
+                                          err,
+                                          `Error redirecting from collection prices to VST ${colVst.vst.slug}`,
+                                        );
                                       });
                                   }}
                                   className="cursor-pointer transition-opacity duration-300 hover:opacity-80"
@@ -203,8 +158,8 @@ const CollectionPrices = ({
                           <TableCell>
                             ~&nbsp;
                             {currencyFormatter(currency).format(
-                              (totalLowestPrice(currency, prices || []) || 0) /
-                                100,
+                              (getLowestWtfByGroup(currency, prices || []) ||
+                                0) / 100,
                             )}
                           </TableCell>
                         </TableRow>

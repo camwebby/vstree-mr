@@ -13,6 +13,8 @@ import dynamic from "next/dynamic";
 import { SkeletonCard } from "../../molecules/skeleton-card";
 import Head from "next/head";
 
+
+// #region dynamic imports
 const UserVsts = dynamic(() => import("../../organisms/user-vsts"), {
   loading: () => <SkeletonCard />,
   ssr: false,
@@ -30,6 +32,8 @@ const YourSystem = dynamic(() => import("../../organisms/your-system"), {
   loading: () => <SkeletonCard />,
   ssr: false,
 });
+
+// #endregion
 
 const UserProfilePage = ({ id }: { id?: string }) => {
   const { data: userData } = api.user.getUserPublic.useQuery(

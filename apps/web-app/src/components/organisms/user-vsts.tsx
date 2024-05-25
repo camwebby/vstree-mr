@@ -5,7 +5,20 @@ import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { User } from "vst-database";
-import { Card, CardContent, CardHeader, CardTitle, Table, TableCell, TableHeader, TableRow, Tabs, TabsContent, TabsList, TabsTrigger } from "vst-ui";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Table,
+  TableCell,
+  TableHeader,
+  TableRow,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "vst-ui";
 import { SkeletonCard } from "../molecules/skeleton-card";
 import VSTAvatar from "./vst-avatar";
 
@@ -17,23 +30,22 @@ const VSTHoverCard = dynamic(() => import("./vst-hover-card"), {
 const UserVsts = ({ user }: { user?: User }) => {
   const { data: userData } = useSession();
 
-  const refersToUser = userData?.user.id === user?.id;
+  const refersToSessionUser = userData?.user.id === user?.id;
 
-  const { data: userVst } =
-    api.userVst.getByUserId.useQuery(
-      {
-        userId: refersToUser ? userData?.user.id : user?.id,
-      },
-      {
-        enabled: !!userData?.user.id || !!user?.id,
-      },
-    );
+  const { data: userVst } = api.userVst.getByUserId.useQuery(
+    {
+      userId: refersToSessionUser ? userData?.user.id : user?.id,
+    },
+    {
+      enabled: !!userData?.user.id || !!user?.id,
+    },
+  );
 
   return (
     <Card>
       <CardHeader>
         <CardTitle>
-          {refersToUser ? "Your" : user?.name + "'s"}&nbsp; VSTs
+          {refersToSessionUser ? "Your" : user?.name + "'s"}&nbsp; VSTs
         </CardTitle>
       </CardHeader>
       <CardContent>

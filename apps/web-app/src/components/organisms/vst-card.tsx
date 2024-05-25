@@ -14,9 +14,9 @@ import {
   Separator,
   toast,
 } from "vst-ui";
+import { EffectIcon, InstrumentIcon } from "vst-ui/src/assets";
 import NewColWarnDialog from "../molecules/new-col-warn-dialog";
 import { SkeletonCard } from "../molecules/skeleton-card";
-import { InstrumentIcon, EffectIcon } from "vst-ui/src/assets";
 
 const VSTHoverCard = dynamic(() => import("./vst-hover-card"), {
   ssr: false,
