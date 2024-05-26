@@ -94,12 +94,12 @@ const VSTActions = ({
                           size="icon"
                           variant={"outline"}
                           key={key + vst.id}
-                          className="relative flex flex-row items-center gap-2 border-2"
+                          className="relative flex flex-row items-center gap-2 border-2 group"
                         >
                           <>
                             <Badge
                               variant={"secondary"}
-                              className="absolute -right-4 -top-3 border-2"
+                              className="absolute -right-4 -top-3 border-2 "
                             >
                               {vst[stat]}
                             </Badge>
@@ -132,7 +132,7 @@ const VSTActions = ({
         )}
         <Separator />
 
-        <CardFooter className="mt-5 flex flex-row flex-wrap items-center gap-2 whitespace-nowrap">
+        <CardFooter className="mt-5 flex flex-row flex-wrap group items-center gap-2 whitespace-nowrap">
           <Button
             onClick={() => {
               // If form is open, show warn dialog
@@ -166,7 +166,7 @@ const VSTActions = ({
               }
             }}
           >
-            <PlusIcon className="mr-2 h-4 w-4 " /> Create collection
+            <PlusIcon className="mr-2 h-4 w-4" /> Create collection
           </Button>
 
           {showNewCollectionForm && vst && (

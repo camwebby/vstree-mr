@@ -48,6 +48,8 @@ const NewCollection = () => {
     clearLocalStorage,
   } = useContext(NewCollectionContext);
 
+  console.log({ form });
+
   const { mutate: vstCollectionCreate, isLoading: isCreatingVstCol } =
     api.collectionVst.create.useMutation({});
 

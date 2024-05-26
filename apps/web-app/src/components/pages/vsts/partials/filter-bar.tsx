@@ -40,7 +40,7 @@ const FilterBar: React.FC<{
           optionLabel="tag"
         />
 
-        <div className="flex items-center gap-x-2 rounded border border-border p-2">
+        <div className="flex items-center gap-x-2 rounded border border-border bg-card p-2 text-card-foreground">
           <Checkbox
             disabled={props.selectedVstTypes[0] && !props.selectedVstTypes[1]}
             checked={props.selectedVstTypes[0]}

@@ -33,7 +33,7 @@ export default function ComboBoxSelect({
           variant="outline"
           role="combobox"
           size="sm"
-          className="w-[200px] justify-between whitespace-nowrap text-sm"
+          className="w-[200px] justify-between whitespace-nowrap text-sm bg-card text-card-foreground"
         >
           {!!values?.length
             ? `${values.length} ${optionLabel}${

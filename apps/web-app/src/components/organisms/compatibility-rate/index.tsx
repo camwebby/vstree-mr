@@ -149,7 +149,7 @@ function CompatibilityRateDialog(
                             defaultValue={field.value}
                           >
                             <FormControl>
-                              <SelectTrigger>
+                              <SelectTrigger className="bg-card text-card-foreground">
                                 <SelectValue placeholder="Select the DAW" />
                               </SelectTrigger>
                             </FormControl>
@@ -176,7 +176,7 @@ function CompatibilityRateDialog(
                             defaultValue={field.value}
                           >
                             <FormControl>
-                              <SelectTrigger>
+                              <SelectTrigger className="bg-card text-card-foreground">
                                 <SelectValue placeholder="Select the OS" />
                               </SelectTrigger>
                             </FormControl>
@@ -216,7 +216,7 @@ function CompatibilityRateDialog(
                             defaultValue={field.value}
                           >
                             <FormControl>
-                              <SelectTrigger>
+                              <SelectTrigger className="bg-card text-card-foreground">
                                 <SelectValue placeholder="Select the OS" />
                               </SelectTrigger>
                             </FormControl>
@@ -243,7 +243,7 @@ function CompatibilityRateDialog(
                             defaultValue={field.value}
                           >
                             <FormControl>
-                              <SelectTrigger>
+                              <SelectTrigger className="bg-card text-card-foreground">
                                 <SelectValue placeholder="Select the OS" />
                               </SelectTrigger>
                             </FormControl>
@@ -287,7 +287,7 @@ function CompatibilityRateDialog(
                             defaultValue={field.value}
                           >
                             <FormControl>
-                              <SelectTrigger>
+                              <SelectTrigger className="bg-card text-card-foreground">
                                 <SelectValue placeholder="meow" />
                               </SelectTrigger>
                             </FormControl>
@@ -315,7 +315,7 @@ function CompatibilityRateDialog(
                             defaultValue={field.value}
                           >
                             <FormControl>
-                              <SelectTrigger>
+                              <SelectTrigger className="bg-card text-card-foreground">
                                 <SelectValue placeholder={memoryOptions[0]} />
                               </SelectTrigger>
                             </FormControl>

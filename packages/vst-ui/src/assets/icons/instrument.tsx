@@ -2,19 +2,12 @@ import { VstUiIconProps } from "./types";
 
 export const InstrumentIcon: React.FC<VstUiIconProps> = ({ ...props }) => (
   <svg
-    width="37"
-    height="37"
-    viewBox="0 0 35 36"
-    fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    className="size-8"
     {...props}
   >
-    <path
-      d="M33.625 10.0811L17.625 1L1.625 10.0811M33.625 10.0811L17.625 19.1622M33.625 10.0811V25.6486L17.625 34.7297M1.625 10.0811L17.625 19.1622M1.625 10.0811V25.6486L17.625 34.7297M17.625 19.1622V34.7297"
-      className="stroke-foreground"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M10.362 1.093a.75.75 0 0 0-.724 0L2.523 5.018 10 9.143l7.477-4.125-7.115-3.925ZM18 6.443l-7.25 4v8.25l6.862-3.786A.75.75 0 0 0 18 14.25V6.443ZM9.25 18.693v-8.25l-7.25-4v7.807a.75.75 0 0 0 .388.657l6.862 3.786Z" />
   </svg>
 );
