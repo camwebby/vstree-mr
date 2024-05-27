@@ -33,7 +33,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
             <div className="relative grid grid-cols-5">
               <Sidebar />
-              <div className="col-span-5 bg-background/30 lg:col-span-4">
+              <div className="col-span-5 bg-background/80 lg:col-span-4">
                 {memoizedChildren}
               </div>
             </div>

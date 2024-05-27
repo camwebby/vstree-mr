@@ -28,7 +28,7 @@ export function Header({ className }: { className?: string }) {
         }}
         name="search"
         placeholder="Search"
-        className="hidden max-w-sm md:block"
+        className="hidden bg-card text-card-foreground max-w-sm md:block"
       />
       <VstSearchDialog
         open={showSiteSearch}

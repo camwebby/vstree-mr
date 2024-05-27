@@ -1,4 +1,4 @@
-import { FolderCheck, HeartIcon, LibraryIcon, ShoppingBag } from "lucide-react";
+import { HeartIcon } from "lucide-react";
 
 export const vstUserAction = {
   Like: "likesAt",
@@ -54,29 +54,29 @@ export const vstStatIconMap: Record<
   Like: {
     checked: <HeartIcon className="fill-primary text-primary" />,
     unchecked: (
-      <HeartIcon className="fill-muted-foreground/50 text-muted-foreground/40" />
+      <HeartIcon className="fill-muted-foreground/50 text-muted-foreground/40 group-hover:fill-card" />
     ),
   },
   likesAt: {
     checked: <HeartIcon className="fill-primary text-primary" />,
     unchecked: (
-      <HeartIcon className="fill-muted-foreground/50 text-muted-foreground/40" />
+      <HeartIcon className="fill-muted-foreground/50 text-muted-foreground/40 group-hover:fill-card" />
     ),
   },
   Want: {
     checked: <Shopping className="h-6 w-6 text-primary" />,
-    unchecked: <Shopping className="h-6 w-6 text-muted-foreground/40" />,
+    unchecked: <Shopping className="h-6 w-6 text-muted-foreground/40 group-hover:fill-card" />,
   },
   wantsAt: {
     checked: <Shopping className="h-6 w-6 text-primary" />,
-    unchecked: <Shopping className="h-6 w-6 text-muted-foreground/40" />,
+    unchecked: <Shopping className="h-6 w-6 text-muted-foreground/40 group-hover:fill-card" />,
   },
   Own: {
     checked: <Folder className="h-6 w-6 text-primary" />,
-    unchecked: <Folder className="h-6 w-6 text-muted-foreground/40" />,
+    unchecked: <Folder className="h-6 w-6 text-muted-foreground/40 group-hover:fill-card" />,
   },
   ownsAt: {
     checked: <Folder className="h-6 w-6 text-primary" />,
-    unchecked: <Folder className="h-6 w-6 text-muted-foreground/40" />,
+    unchecked: <Folder className="h-6 w-6 text-muted-foreground/40 group-hover:fill-card" />,
   },
 };

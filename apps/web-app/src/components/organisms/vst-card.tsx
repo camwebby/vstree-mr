@@ -53,11 +53,11 @@ export const VstCard: React.FC<{ vst: Vst }> = ({ vst }) => {
                 {vst.isInstrument ? <InstrumentIcon /> : <EffectIcon />}
                 <div>
                   <div className="flex items-center gap-x-2 text-xs text-muted-foreground">
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-xs text-card-foreground/70">
                       {vst.creatorName}
                     </p>
                   </div>
-                  <p className="text-xl text-foreground">{vst?.name}</p>
+                  <p className="text-xl text-card-foreground">{vst?.name}</p>
                 </div>
               </>
 

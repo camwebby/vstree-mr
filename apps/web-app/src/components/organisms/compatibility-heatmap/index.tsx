@@ -90,13 +90,13 @@ const CompatibilityHeatmap: React.FC<
           )}
         </div>
 
-        <div className="mt-3 w-full border-t border-border bg-secondary">
+        <div className="mt-3 w-full border-t border-border bg-card">
           {experienceRateOptions.map((opt, index) => (
             <div
               key={opt}
               className="flex flex-row items-center justify-between px-3 py-1"
             >
-              <p className="text-xs text-muted-foreground">{opt}</p>
+              <p className="text-xs text-foreground">{opt}</p>
               <div className="flex flex-row items-center gap-x-2">
                 <div
                   className="h-3 w-3 rounded-full"
@@ -105,7 +105,7 @@ const CompatibilityHeatmap: React.FC<
                     opacity: (index + 1) / 3,
                   }}
                 />
-                <p className="text-xs text-muted-foreground">{index}</p>
+                <p className="text-xs text-foreground">{index}</p>
               </div>
             </div>
           ))}

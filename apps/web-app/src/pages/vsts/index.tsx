@@ -6,7 +6,7 @@ export default function VstPage() {
   return (
     <>
       <Head>
-        <title>vsts | {appConfig.appName}</title>
+        <title>vsts | {appConfig?.appName}</title>
       </Head>
       <Vsts />
     </>

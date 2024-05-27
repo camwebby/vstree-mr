@@ -59,7 +59,6 @@ const VstSearchDialog = ({
         <DialogHeader className="sticky top-0 z-20 border-b bg-background/70 p-6 backdrop-blur-md">
           <DialogTitle className="mb-2">Search</DialogTitle>
           <Input
-            className=""
             placeholder="Search for VSTs..."
             value={searchTerm}
             onInput={(event) => setSearchTerm(event.currentTarget.value)}
