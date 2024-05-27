@@ -1,16 +1,15 @@
+import Layout from "@/components/layout/primary";
 import { VstCard } from "@/components/organisms/vst-card";
 import { creators } from "@/constants/creators";
 import { tags } from "@/constants/tags";
 import { api } from "@/utils/api";
 import { Loader2Icon } from "lucide-react";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
 import { Button, toast } from "vst-ui";
 import { SkeletonCard } from "../../molecules/skeleton-card";
-import FilterBar from "./partials/filter-bar";
-import FilterList from "./partials/filters-list";
-import Layout from "@/components/layout/primary";
+import VstFilterBar from "./partials/filter-bar";
+import VstFilterList from "./partials/filters-list";
 
 export function Vsts({}: {
   initialData?: ReturnType<typeof api.vsts.getAllPaginated.useInfiniteQuery>;
@@ -65,7 +64,7 @@ export function Vsts({}: {
   return (
     <Layout>
       <div className="relative">
-        <FilterBar
+        <VstFilterBar
           {...{
             showTabBar,
             selectedTags,
@@ -78,7 +77,7 @@ export function Vsts({}: {
         />
 
         {showTabBar && (
-          <FilterList
+          <VstFilterList
             {...{
               selectedCreators,
               setSelectedCreators,

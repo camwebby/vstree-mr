@@ -5,7 +5,7 @@ import React, { Dispatch, SetStateAction, memo } from "react";
 import { Checkbox } from "vst-ui";
 import { cn } from "vst-ui/src/lib/utils";
 
-const FilterBar: React.FC<{
+const VstFilterBar: React.FC<{
   showTabBar: boolean;
   selectedCreators: string[];
   setSelectedCreators: Dispatch<SetStateAction<string[]>>;
@@ -81,4 +81,4 @@ const FilterBar: React.FC<{
   );
 };
 
-export default memo(FilterBar);
+export default memo(VstFilterBar);

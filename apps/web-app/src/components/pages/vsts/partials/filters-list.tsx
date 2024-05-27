@@ -3,7 +3,7 @@ import React, { Dispatch, SetStateAction, memo } from "react";
 import { Badge } from "vst-ui";
 import { cn } from "vst-ui/src/lib/utils";
 
-const FilterList: React.FC<{
+const VstFilterList: React.FC<{
   selectedCreators: string[];
   setSelectedCreators: Dispatch<SetStateAction<string[]>>;
   selectedTags: string[];
@@ -72,4 +72,4 @@ const FilterList: React.FC<{
   );
 };
 
-export default memo(FilterList);
+export default memo(VstFilterList);
