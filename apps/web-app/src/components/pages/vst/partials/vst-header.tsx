@@ -7,7 +7,7 @@ import { Skeleton } from "vst-ui";
 
 const VSTHeader = ({ vst, isLoading }) => {
   return (
-    <section className="w-full border-b border-l border-border bg-background px-8 py-20">
+    <section className="w-full border-b border-border bg-background px-8 py-20">
       <div className="mx-auto flex items-center gap-5 text-primary">
         <VSTAvatar className="h-20 w-20 rounded-md" item={vst as Vst} />
         <div>
