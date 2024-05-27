@@ -5,8 +5,8 @@ export const appConfig = {
   logo: (
     <Link
       className="
-rounded-full border-2 border-muted-foreground/10 p-2 px-3 text-xs
-font-semibold uppercase tracking-widest w-fit
+w-fit rounded-full border-2 border-muted-foreground/10 p-2 px-3
+text-xs font-semibold uppercase tracking-widest
 text-foreground duration-500 hover:bg-secondary
 "
       href={"/"}
@@ -16,4 +16,4 @@ text-foreground duration-500 hover:bg-secondary
   ),
   privacyPolicyUrl: "https://vstree.app/terms-conditions.pdf",
   termsAndConditionsUrl: "https://vstree.app/privacy.pdf",
-};
+} as const;

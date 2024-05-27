@@ -147,21 +147,38 @@ export default function UserCommand({ className }: PopoverTriggerProps) {
                   </CommandItem>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={() => setTheme("light")}>
-                    Light
+                  <DropdownMenuItem
+                    onClick={() => {
+                      setTheme("default");
+                      location.reload();
+                    }}
+                  >
+                    Live (dark)
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("dark")}>
-                    Dark
+                  <DropdownMenuItem
+                    onClick={() => {
+                      setTheme("twitter");
+                      location.reload();
+                    }}
+                  >
+                    Tweeter (light)
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("twitter")}>
-                    Bird
+                  <DropdownMenuItem
+                    onClick={() => {
+                      setTheme("teriyaki");
+                      location.reload();
+                    }}
+                  >
+                    Teriyaki (light)
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("live-dark")}>
-                    Dark live
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("system")}>
+                  {/* <DropdownMenuItem
+                    onClick={() => {
+                      setTheme("system");
+                      location.reload();
+                    }}
+                  >
                     System
-                  </DropdownMenuItem>
+                  </DropdownMenuItem> */}
                 </DropdownMenuContent>
               </DropdownMenu>
             </CommandGroup>

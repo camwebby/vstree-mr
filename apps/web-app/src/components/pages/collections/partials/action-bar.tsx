@@ -12,7 +12,7 @@ const CollectionActionBar = ({ ...props }) => {
   return (
     <div
       className={cn(
-        `max-w-screen sticky top-0 z-10 mb-5 flex items-center gap-5 overflow-x-auto border-l border-border bg-card p-3 text-card-foreground
+        `max-w-screen sticky top-0 z-10 mb-5 flex items-center gap-5 overflow-x-auto p-3
         backdrop-blur-sm lg:border-b
         `,
       )}
@@ -22,7 +22,7 @@ const CollectionActionBar = ({ ...props }) => {
           props.setOrderBy(v);
         }}
       >
-        <SelectTrigger className="max-w-xs">
+        <SelectTrigger className="max-w-xs text-card-foreground bg-card">
           <SelectValue
             placeholder={
               collectionSortOptions.find((o) => o.value === props.orderBy)
