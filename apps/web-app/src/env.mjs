@@ -2,24 +2,9 @@ import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
 export const env = createEnv({
-  /**
-   * Specify your server-side environment variables schema here. This way you can ensure the app
-   * isn't built with invalid env vars.
-   */
   server: {
-    // DATABASE_URL: z
-    //   .string()
-    //   .url()
-    //   .refine(
-    //     (str) => !str.includes("YOUR_MYSQL_URL_HERE"),
-    //     "You forgot to change the default URL",
-    //   ),
     POSTGRES_PRISMA_URL: z.string(),
     POSTGRES_URL_NON_POOLING: z.string(),
-    // POSTGRES_USER: z.string(),
-    // POSTGRES_HOST: z.string(),
-    // POSTGRES_PASSWORD: z.string(),
-    // POSTGRES_DATABASE: z.string(),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
@@ -46,14 +31,12 @@ export const env = createEnv({
   },
 
   /**
-   * Specify your client-side environment variables schema here. This way you can ensure the app
-   * isn't built with invalid env vars. To expose them to the client, prefix them with
+   * To expose them to the client, prefix them with
    * `NEXT_PUBLIC_`.
    */
   client: {
     NEXT_PUBLIC_VERCEL_ENV: z.string().optional(),
     NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA: z.string().optional(),
-    // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
   },
 
   /**
@@ -61,8 +44,6 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
-    // DATABASE_URL: process.env.DATABASE_URL,
-
     POSTGRES_PRISMA_URL: process.env.POSTGRES_PRISMA_URL,
     POSTGRES_URL_NON_POOLING: process.env.POSTGRES_URL_NON_POOLING,
     NODE_ENV: process.env.NODE_ENV,

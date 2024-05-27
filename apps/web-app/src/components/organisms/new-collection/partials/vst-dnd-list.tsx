@@ -55,4 +55,4 @@ const VstDndList = ({ form }) => {
   );
 };
 
-export default memo(VstDndList);
+export default VstDndList;
