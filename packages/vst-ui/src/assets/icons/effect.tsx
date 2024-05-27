@@ -5,8 +5,7 @@ export const EffectIcon: React.FC<VstUiIconProps> = ({ ...props }) => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     fill="currentColor"
-    width="37"
-    height="37"
+    className="size-8"
     {...props}
   >
     <path

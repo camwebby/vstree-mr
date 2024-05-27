@@ -1,5 +1,4 @@
 import { Reorder } from "framer-motion";
-import React, { memo } from "react";
 import TableItem from "./table-item";
 
 const VstDndList = ({ form }) => {

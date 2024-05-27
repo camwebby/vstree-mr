@@ -48,7 +48,7 @@ const VSTTable = ({ data, title }: { data: Vst[]; title: string }) => {
       </CardHeader>
       <Separator />
       <Table className="relative ">
-        <TableHeader className="sticky top-0 z-10 bg-background">
+        <TableHeader className="sticky top-0 z-10">
           <TableRow>
             <TableCell>Name</TableCell>
             <TableCell>Tags</TableCell>

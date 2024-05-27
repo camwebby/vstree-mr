@@ -141,6 +141,7 @@ const NewCollection = () => {
                       name: vst.name,
                       note: "",
                       tempId: guid,
+                      isInstrument: !!vst?.isInstrument,
                     },
                   ]);
 
@@ -312,8 +313,6 @@ const NewCollection = () => {
                           )
                         }
                       />
-
-                      {/* <Separator className="my-5" /> */}
 
                       <div className="flex items-center justify-between gap-x-2">
                         <Button

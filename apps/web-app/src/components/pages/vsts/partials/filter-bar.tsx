@@ -18,7 +18,7 @@ const FilterBar: React.FC<{
     <>
       <div
         className={cn(
-          "max-w-screen sticky top-0 z-10 flex items-center gap-5 overflow-x-auto border-l border-border bg-background/60 p-3 backdrop-blur-sm lg:border-b",
+          "max-w-screen sticky top-0 z-10 flex items-center gap-5 overflow-x-auto border-border bg-background/60 p-3 backdrop-blur-sm lg:border-b",
           !props.showTabBar ? "mb-5" : "mb-0",
         )}
       >
@@ -40,7 +40,7 @@ const FilterBar: React.FC<{
           optionLabel="tag"
         />
 
-        <div className="flex items-center gap-x-2 rounded border border-border p-2">
+        <div className="flex items-center gap-x-2 rounded-md border border-border bg-card p-2 text-card-foreground">
           <Checkbox
             disabled={props.selectedVstTypes[0] && !props.selectedVstTypes[1]}
             checked={props.selectedVstTypes[0]}

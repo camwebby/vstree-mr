@@ -5,15 +5,27 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import * as React from "react";
 import {
-  Avatar, AvatarFallback, AvatarImage, Button, Command,
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Button,
+  Command,
   CommandGroup,
   CommandItem,
   CommandList,
-  CommandSeparator, Dialog, DropdownMenu,
+  CommandSeparator,
+  Dialog,
+  DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger, Label, Popover, PopoverContent, PopoverTrigger, toast
+  DropdownMenuTrigger,
+  Label,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  toast,
 } from "vst-ui";
+import { CollectionIcon } from "vst-ui/src/assets";
 import { cn } from "vst-ui/src/lib/utils";
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<
@@ -41,7 +53,10 @@ export default function UserCommand({ className }: PopoverTriggerProps) {
             role="combobox"
             aria-expanded={open}
             aria-label="Select a team"
-            className={cn("w-fit justify-between", className)}
+            className={cn(
+              "w-fit justify-between bg-card text-card-foreground",
+              className,
+            )}
           >
             <Avatar className="mr-2 h-5 w-5">
               <AvatarImage
@@ -61,7 +76,7 @@ export default function UserCommand({ className }: PopoverTriggerProps) {
               <CommandList>
                 <CommandGroup heading="Your account">
                   <Link href={`/users/${userData?.user?.id}`}>
-                    <CommandItem>
+                    <CommandItem className="cursor-pointer">
                       <Avatar className="mr-2 h-5 w-5">
                         <AvatarImage
                           src={userData?.user?.image || ""}
@@ -80,10 +95,13 @@ export default function UserCommand({ className }: PopoverTriggerProps) {
 
             <CommandGroup heading="Dashboards">
               <Link href={`/`}>
-                <CommandItem>VSTs</CommandItem>
+                <CommandItem className="cursor-pointer">VSTs</CommandItem>
               </Link>
               <Link href={`/collections`}>
-                <CommandItem>Collections</CommandItem>
+                <CommandItem className="cursor-pointer">
+                  <CollectionIcon className="size-4" />
+                  <span>Collections</span>
+                </CommandItem>
               </Link>
             </CommandGroup>
 
@@ -111,28 +129,56 @@ export default function UserCommand({ className }: PopoverTriggerProps) {
               </CommandItem>
 
               <DropdownMenu>
-                <DropdownMenuTrigger>
-                  <CommandItem className="flex cursor-pointer items-center">
+                <DropdownMenuTrigger className="w-full">
+                  <CommandItem className="flex cursor-pointer items-center gap-x-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className="size-4 text-muted-foreground"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M4.25 2A2.25 2.25 0 0 0 2 4.25v11.5A2.25 2.25 0 0 0 4.25 18h11.5A2.25 2.25 0 0 0 18 15.75V4.25A2.25 2.25 0 0 0 15.75 2H4.25ZM3.5 8v7.75c0 .414.336.75.75.75h11.5a.75.75 0 0 0 .75-.75V8h-13ZM5 4.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V5a.75.75 0 0 0-.75-.75H5ZM7.25 5A.75.75 0 0 1 8 4.25h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H8a.75.75 0 0 1-.75-.75V5ZM11 4.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V5a.75.75 0 0 0-.75-.75H11Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
                     <span>Change theme</span>
                   </CommandItem>
-                  {/* <Button
-                  variant="ghost"
-                  size="sm"
-                  className="w-full justify-start text-left text-xs"
-                >
-                  <p>Change theme</p>
-                </Button> */}
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={() => setTheme("light")}>
-                    Light
+                  <DropdownMenuItem
+                    onClick={() => {
+                      setTheme("default");
+                      location.reload();
+                    }}
+                  >
+                    Live (dark)
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("dark")}>
-                    Dark
+                  <DropdownMenuItem
+                    onClick={() => {
+                      setTheme("twitter");
+                      location.reload();
+                    }}
+                  >
+                    Tweeter (light)
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("system")}>
+                  <DropdownMenuItem
+                    onClick={() => {
+                      setTheme("teriyaki");
+                      location.reload();
+                    }}
+                  >
+                    Teriyaki (light)
+                  </DropdownMenuItem>
+                  {/* <DropdownMenuItem
+                    onClick={() => {
+                      setTheme("system");
+                      location.reload();
+                    }}
+                  >
                     System
-                  </DropdownMenuItem>
+                  </DropdownMenuItem> */}
                 </DropdownMenuContent>
               </DropdownMenu>
             </CommandGroup>

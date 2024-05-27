@@ -17,7 +17,7 @@ const Sidebar = () => {
   return (
     <div
       className="
-sticky top-0  col-span-1
+sticky top-0  col-span-1 border-r
 hidden  h-screen flex-col gap-y-2 overflow-x-hidden bg-background p-5 lg:col-span-1 lg:flex"
     >
       <Button
